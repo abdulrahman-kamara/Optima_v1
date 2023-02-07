@@ -7,16 +7,8 @@ function Activities() {
   //   ScrollReveal().reveal(".card");
   return (
     <section className="activite-contaier">
-      <span style={{ paddingRight: "800px" }}>
-        <h2
-          style={{
-            letterSpacing: "0.02em",
-            fontSize: "40px",
-            fontWeight: "bolder",
-          }}
-        >
-          Nos différentes Activités !
-        </h2>
+      <span className="spanheading">
+        <h2 className="heading">Nos différentes Activités !</h2>
       </span>
       <div className="main-container">
         <div
@@ -71,7 +63,7 @@ function Activities() {
           </div>
         </div>
         <div
-          class="card"
+          class="card card1"
           style={{
             Height: 100,
             width: 550,
@@ -255,7 +247,7 @@ function Activities() {
           </div>
         </div>
         <div
-          class="card"
+          class="card card1"
           style={{
             Height: 100,
             width: 550,
@@ -311,7 +303,7 @@ function Activities() {
           </div>
         </div>
         <div
-          class="card"
+          class="card card1"
           style={{
             Height: 100,
             width: 550,
@@ -333,7 +325,6 @@ function Activities() {
                     height: "44px",
                     objectFit: "cover",
                     objectPosition: "50% 50%",
-                    color: "blanchedalmond",
                   }}
                 />
               </h5>
