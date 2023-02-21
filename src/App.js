@@ -11,7 +11,7 @@ import Réclamations from "./pages/Réclamations";
 import Réseau from "./pages/Nore-reseau/Adherent";
 import Contact from "./pages/Contact";
 
-function App() {
+const App = () => {
   return (
     <>
       <BrowserRouter>
@@ -29,6 +29,6 @@ function App() {
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;

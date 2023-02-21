@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+.my-form {
+  height: 100%;
+  align-self: center;
+  top: 0;
+  width: 70%;
+  background-color: rgb(250, 250, 250);
+  border-radius: 20;
+  padding: 50px;
+}
+.select-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding-left: 50px;
+}
+.form-select {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.Société {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  padding-left: 50px;
+}
+.civilité {
+  display: flex;
+  padding-left: 50px;
+  justify-content: space-evenly;
+}
+.sex-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+}
+.select-sex {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+}
+.contact-name {
+  display: flex;
+  flex-direction: column;
+  width: 650px;
+}
+.address {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  padding-left: 50px;
+}
+.personal-info {
+  display: flex;
+  padding-left: 50px;
+  justify-content: space-evenly;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+}
+.button-sub {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  width: 200px;
+  height: 50px;
+}
+.section-footer {
+  align-self: center;
+  background-color: #e65d5e;
+  width: 1500px;
+  height: 400px;
+}
+.email-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
