@@ -79,3 +79,18 @@
   width: 200px;
   height: 50px;
 }
+.section-footer {
+  align-self: center;
+  background-color: #e65d5e;
+  width: 1500px;
+  height: 400px;
+}
+.email-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
