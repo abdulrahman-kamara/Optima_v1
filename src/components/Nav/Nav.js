@@ -9,7 +9,7 @@ function NavBar() {
   const [mobile, setmobile] = useState(false);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar shadow-sm">
       <div className="logo">
         <a className="nav-bar-link" href="/">
           <img src="/images/logo.jpg" alt="" className="logo-image" />
@@ -36,7 +36,7 @@ function NavBar() {
         <Link to="/certificat">
           <li>Certificats & Agréments</li>
         </Link>
-        <Link to="/about">
+        <Link to="https://www.cercleoptima.fr/shop/">
           <li>Boutique</li>
         </Link>
         <Link to="/carrières">

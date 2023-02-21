@@ -1,0 +1,125 @@
+.carriere-head {
+  display: flex;
+}
+.heading {
+  padding: 20px;
+  padding-left: 50px;
+  font-size: 34px;
+  font-weight: bold;
+}
+.card-bg {
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+  background-color: black;
+  width: 50%;
+  height: 80vh;
+}
+.my-cards {
+  padding-top: 150px;
+  margin-left: 200px;
+}
+.carriere {
+  width: 200%;
+}
+.card-title {
+  font-size: 34px;
+  padding-left: 20px;
+  font-weight: bold;
+  color: black;
+}
+.card-text {
+  font-size: 18px;
+}
+.card-second-text-h {
+  font-size: 30px;
+  color: red;
+}
+.card-second-text {
+  color: red;
+}
+.section-blank {
+  margin-top: 100px;
+  background-color: black;
+  height: 40vh;
+}
+.section-footer {
+  background-color: #e65d5e;
+  height: 35vh;
+}
+.email-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.section-text {
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .carriere-head {
+    display: block;
+  }
+  .heading {
+    padding: 20px;
+    padding-left: 50px;
+    font-size: 34px;
+    font-weight: bold;
+  }
+  .card-bg {
+    display: block;
+    justify-content: flex-start;
+    align-self: flex-start;
+    background-color: black;
+    width: 25%;
+    height: 40vh;
+  }
+  .carriere {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carriere-head {
+    display: block;
+  }
+  .heading {
+    padding: 20px;
+    padding-left: 50px;
+    font-size: 34px;
+    font-weight: bold;
+  }
+  .card-bg {
+    display: block;
+    justify-content: flex-start;
+    align-self: flex-start;
+    background-color: black;
+    width: 100%;
+    height: 80vh;
+  }
+  .my-cards {
+    padding-top: 150px;
+    margin-left: 0px;
+  }
+  .carriere {
+    width: 100%;
+  }
+  .section-footer {
+    align-self: center;
+    background-color: #e65d5e;
+    height: 50vh;
+  }
+  .email-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}

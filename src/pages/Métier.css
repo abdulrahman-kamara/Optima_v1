@@ -1,48 +1,65 @@
-.activite-contaier {
+.my-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-top: 100px;
-}
-.first-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0;
-  padding: auto;
-  align-items: center;
+  background-color: #e0e8f2;
+  width: 100%;
 }
 
-span {
-  display: block;
-  justify-content: center;
+.heading {
+  display: flex;
   color: rgb(18, 19, 19);
   font-size: 24px;
   font-weight: bolder;
 }
-.spanheading {
-  padding-right: "800px";
+.hero-text {
+  padding-right: 500px;
+  font-size: 34px;
+  font-weight: bold;
+  color: black;
 }
-.main-container {
+
+.main-section {
   display: flex;
+  width: 40%;
   background-color: black;
-  align-self: center;
-  padding-top: 20px;
-  padding: auto;
-  height: 330vh;
-  width: 90%;
+  margin-right: 1050px;
 }
-.card-text {
+.my-card {
+  padding-top: 20px;
+  width: 350px;
+}
+.left-cards {
+  width: 200%;
+  background-color: #e65d5e;
+}
+.text-icon {
+  display: flex;
+  margin-top: 20px;
+}
+
+.card-left {
+  padding-top: 250px;
+  padding-left: 50px;
+}
+.card-left {
+  padding-right: 50px;
+}
+.my-card-body {
+  margin-right: 150px;
+}
+.text-ul {
   text-align: start;
   list-style: circle;
-
-  padding: 10px;
+  font-size: 10px;
 }
-.heading h2 {
-  letter-spacing: 0.02em;
+.text-li {
+  color: white;
+}
+.head-text {
   font-size: 40px;
   font-weight: bolder;
+  padding-right: 700px;
 }
 
 .listtext {
@@ -50,33 +67,17 @@ span {
   text-align: center;
   padding: 5px;
 }
-.card {
-  transition: transform 0.5s ease-out 0s;
+.carriere {
+  transition: none !important;
 }
-.card:hover {
-  transform: translateX(50px);
-}
-
-.card-icon {
-  display: flex;
-  padding: 10px;
-  align-items: center;
-}
-.card-title-icon {
-  padding-right: 10px;
+.carriere:hover {
+  transform: none !important;
 }
 
-.card-text ul {
-  padding: 10px;
+/* .card-text {
+  text-align: left !important;
+} */
 
-  color: "white";
-}
-.card-text li {
-  padding-bottom: 10px;
-  font-size: 20px;
-  padding-left: 5px;
-  list-style: circle;
-}
 /* Responsive Tablets, Mobile, Ipads */
 
 @media (max-width: 576px) {
