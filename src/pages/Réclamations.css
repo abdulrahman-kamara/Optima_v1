@@ -71,9 +71,29 @@
   flex-direction: column;
   width: 380px;
 }
+.datepicker {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 50px;
+}
+.lieu {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  padding-left: 50px;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  padding-left: 50px;
+}
+
 .button-sub {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 .btn {
   width: 200px;
@@ -93,4 +113,81 @@
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+  .my-form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .form-select {
+    display: block;
+    width: 220px;
+  }
+  .civilité {
+    display: block;
+  }
+  .sex-option {
+    display: block;
+  }
+  .select-sex {
+    width: 220px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  .contact-name {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+  }
+  .personal-info {
+    display: block;
+  }
+  .contact-info {
+    width: 220px;
+  }
+  .section-footer {
+    align-self: center;
+    background-color: #e65d5e;
+    height: 50vh;
+  }
+  .email-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+@media (max-width: 1200px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+  .my-form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 }

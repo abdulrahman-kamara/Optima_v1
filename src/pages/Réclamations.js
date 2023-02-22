@@ -1,11 +1,12 @@
 import React from "react";
 import "./Réclamations.css";
+import Datepicker from "../components/Datepicker/Datepicker";
 
 function Réclamations() {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log("Form submitted");
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Form submitted");
+  };
 
   return (
     <div className="container">
@@ -16,7 +17,11 @@ function Réclamations() {
             appels peut être mis à disposition sur simple demande.
           </h5>
         </div>
-        <form class="row g-3 needs-validation" novalidate>
+        <form
+          class="row g-3 needs-validation"
+          novalidate
+          onSubmit={handleSubmit}
+        >
           <div class="select-list">
             <label for="validationCustom01" class="form-label">
               Activité concernée
@@ -36,7 +41,7 @@ function Réclamations() {
               type="text"
               class="form-control"
               id="validationCustom01"
-              value="Mark"
+              placeholder=""
               required
             />
           </div>
@@ -61,7 +66,7 @@ function Réclamations() {
                 type="text"
                 class="form-control"
                 id="validationCustom02"
-                value="Nom du contact"
+                placeholder=""
                 required
               />
             </div>
@@ -74,10 +79,9 @@ function Réclamations() {
               type="text"
               class="form-control"
               id="validationCustom02"
-              value="Address"
+              placeholder="Address"
               required
             />
-            <div class="valid-feedback">Looks good!</div>
           </div>
 
           <div class="personal-info">
@@ -89,7 +93,7 @@ function Réclamations() {
                 type="text"
                 class="form-control"
                 id="validationCustom02"
-                value=""
+                placeholder=""
                 required
               />
             </div>
@@ -99,18 +103,43 @@ function Réclamations() {
                 E-mail *
               </label>
               <input
-                type="text"
+                type="email"
                 class="form-control"
                 id="validationCustom02"
-                value=""
+                placeholder=""
                 required
               />
             </div>
           </div>
+          <div class="datepicker">
+            <Datepicker />
+          </div>
+          <div class="col-md-4 lieu">
+            <label for="validationCustom02" class="form-label">
+              Lieu ou Atelier :
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom02"
+              placeholder="Address"
+              required
+            />
+          </div>
+          <div class="col-md-4 message">
+            <label for="validationCustom02" class="form-label">
+              Message
+            </label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
 
           <div class="button-sub">
             <button class="btn btn-primary" type="submit">
-              Submit form
+              Envoyer
             </button>
           </div>
         </form>
