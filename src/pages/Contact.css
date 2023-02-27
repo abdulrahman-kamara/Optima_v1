@@ -1,8 +1,6 @@
-.reclamation-container {
+.form-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .form-header {
   display: flex;
@@ -25,10 +23,7 @@
   margin-bottom: 20px;
   padding-left: 50px;
 }
-.form-select {
-  display: flex;
-  flex-direction: column;
-}
+
 .Société {
   display: flex;
   flex-direction: column;
@@ -37,46 +32,44 @@
 }
 .civilité {
   display: flex;
-  padding-left: 50px;
-  justify-content: space-evenly;
 }
-.options {
+.personal-info {
+  display: flex;
+}
+.contact-name {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100px;
 }
-.option-select {
-  height: 35px;
+/* .sex-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+}
+.select-sex {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
 }
 
 .address {
   display: flex;
   flex-direction: column;
-  width: 1000px;
-  padding-left: 50px;
 }
-.personal-info {
-  display: flex;
-  padding-left: 50px;
-  justify-content: space-evenly;
-}
+
 .contact-info {
   display: flex;
   flex-direction: column;
   width: 380px;
 }
-.datepicker {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-left: 50px;
-}
+
 .lieu {
   display: flex;
   flex-direction: column;
   width: 1000px;
   padding-left: 50px;
-}
+} */
 .message {
   display: flex;
   flex-direction: column;
@@ -94,10 +87,11 @@
   height: 50px;
 }
 .section-footer {
-  align-self: center;
+  display: block;
+  width: 100%;
+  padding: 5px;
   background-color: #e65d5e;
-  width: 1500px;
-  height: 400px;
+  height: 50vh;
 }
 .email-text {
   display: flex;
@@ -110,11 +104,9 @@
 }
 
 @media (max-width: 576px) {
-  .reclamation-container {
-    display: block;
+  .form-container {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
   .form-header {
     display: flex;
@@ -124,37 +116,24 @@
   }
   .my-form {
     display: block;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  .select-list {
-    display: block;
-  }
-  .form-select {
-    display: block;
     flex-direction: column;
   }
+
   .civilité {
     display: block;
-  }
-  .sex-option {
-    display: block;
-  }
-  .select-sex {
-    height: 40px;
-    border-radius: 5px;
-  }
-  .contact-name {
-    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-self: center;
   }
+
   .personal-info {
     display: block;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
   }
-  .contact-info {
-    width: 220px;
-  }
+
   .section-footer {
     display: block;
     width: 100%;
@@ -174,11 +153,9 @@
 }
 
 @media (max-width: 768px) {
-  .reclamation-container {
-    display: block;
+  .form-container {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
   .form-header {
     display: flex;
@@ -188,36 +165,24 @@
   }
   .my-form {
     display: block;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
   }
-  .form-select {
-    display: block;
-    width: 220px;
-  }
+
   .civilité {
     display: block;
-  }
-  .sex-option {
-    display: block;
-  }
-  .select-sex {
-    width: 220px;
-    height: 40px;
-    border-radius: 5px;
-  }
-  .contact-name {
-    display: flex;
     flex-direction: column;
-    width: 220px;
+    justify-content: center;
+    align-self: center;
   }
+
   .personal-info {
     display: block;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
   }
-  .contact-info {
-    width: 220px;
-  }
+
   .section-footer {
     display: block;
     width: 100%;
@@ -236,11 +201,9 @@
   }
 }
 @media (max-width: 1200px) {
-  .reclamation-container {
-    display: block;
+  .form-container {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
   .form-header {
     display: flex;

@@ -9,7 +9,7 @@ function Réclamations() {
   };
 
   return (
-    <div className="container">
+    <div className="reclamation-container">
       <div class="my-form">
         <div>
           <h5 class="form-header">
@@ -47,18 +47,18 @@ function Réclamations() {
           </div>
 
           <div class="civilité">
-            <div class="sex-option">
+            <div class="options">
               <label for="validationCustom01" class="form-label">
                 Civilité
               </label>
-              <select class="select-sex" aria-label="Default select example">
+              <select class="option-select" aria-label="Default select example">
                 <option value="1">M.</option>
                 <option value="2">Mille</option>
                 <option value="3">Mme</option>
               </select>
             </div>
 
-            <div class="contact-name">
+            <div class="options">
               <label for="validationCustom02" class="form-label">
                 Nom du contact
               </label>
