@@ -1,10 +1,11 @@
 import axios from "axios"
 import apilink from "../Constant/Apilink"
-// import history from "./Helper/History"
+//  import history from "./Helper/History"
 
 const getAllAdherent = (search = "", actif = true, activite = "all", option = 2) => {
     return axios.get(apilink + "/adherent?search=" + search + "&actif=" + actif + "&activite=" + activite + "&option=" + option)
         .then(response => response.data)
+        
 }
 
 const getAdherent = (adherent) => {

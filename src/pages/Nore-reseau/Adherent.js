@@ -1,108 +1,148 @@
-// // import React, { useState, useEffect } from "react";
-// // import { NavLink } from "react-router-dom";
-// // import supervisionService from "../../Context/SupervisionService";
-// // import Checkbox from "@mui/material/Checkbox";
-// import "./Adherent.css";
-// const data = [
-//   "list of items",
-//   "list of items",
-//   "list of items",
-//   "list of items",
-//   "list of items",
-//   "list of items",
-//   "list of items",
-//   "list of items",
-// ];
+ import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import UseAnimations from "react-useanimations";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import Skeleton from "react-loading-skeleton";
+ import supervisionService from "../../Context/SupervisionService";
+import "./Adherent.css";
 
-// const Réseau = () => {
-//   // Tous les adherents
-//   // const [adherents, setAdherents] = useState([]);
-//   // // Element recherché
-//   // const [search, setSearch] = useState("");
-//   // Etat de chargement d'un adherent
-//   // const [onloading, setOnLoading] = useState(false);
-//   // // Adherent selectionné
-//   // const [selectedAdherent, setSelectedAdherent] = useState(0);
-//   // // Etat d'ouverture d'un filtre
-//   // const [filterOpened, setFilterOpened] = useState(false);
-//   // // Filtre (Actif pour le moment)
-//   // const [actif, setActif] = useState(true);
-//   // // Chargement de la liste des adherents
-//   // const [loadingscreen, setLoadingscreen] = useState(true);
 
-//   // useEffect(() => {
-//   //   setTimeout(() => {
-//   //     getAllAdherent(search, actif);
-//   //     setLoadingscreen(false);
-//   //   }, 1000);
-//   // }, [search, actif]);
+const Réseau = () => {
+  //Tous les adherents
+  const [adherents, setAdherents] = useState([]);
+  // Element recherché
+  const [search, setSearch] = useState("");
+  //Etat de chargement d'un adherent
+   const [onloading, setOnLoading] = useState(false);
+  // Adherent selectionné
+   const [selectedAdherent, setSelectedAdherent] = useState(0);
+  // Etat d'ouverture d'un filtre
+  const [filterOpened, setFilterOpened] = useState(false);
+  // Filtre (Actif pour le moment)
+  const [actif, setActif] = useState(true);
+  // Chargement de la liste des adherents
+  const [loadingscreen, setLoadingscreen] = useState(true);
 
-//   // const getAllAdherent = async (search, actif) => {
-//   //   await supervisionService
-//   //     .getAllAdherent(search, actif)
-//   //     .then((response) => setAdherents(response))
-//   //     .then((response) => console.log("adherents", adherents));
-//   // };
+  useEffect(() => {
+    setTimeout(() => {
+      getAllAdherents(search, actif);
+      setLoadingscreen(false);
+    }, 1000);
+  }, [search, actif]);
 
-//   // const handleChange = (event) => {
-//   //   const inputValue = event.target.value;
-//   //   setSearch(inputValue);
-//   // };
-//   // const toggleFiltre = () => {
-//   //   setFilterOpened(!filterOpened);
-//   // };
+  const getAllAdherents = async (search, actif) => {
+    await supervisionService
+      .getAllAdherent(search, actif)
+      .then((response) => setAdherents(response))
+      .then(response => console.log("data", adherents))
+  };
 
-//   // const handleCheck = () => {
-//   //   setActif(!actif);
-//   // };
 
-//   return (
-//     // <div className="map">
-//     //  <Map/>
-//     // </div>
+  const handleChange = (event) => {
+    const inputValue = event.target.value;
+    setSearch(inputValue);
+  };
+  const toggleFiltre = () => {
+    setFilterOpened(!filterOpened);
+  };
 
-//     <div className="container">
-//       <div className="mes-aderent">
-//         <h1>Mes Adherent</h1>
-//         <div className="search-section">
-//           <div className="search-bar">
-//             <i className="fas fa-search"></i>
-//             <input
-//               className="search"
-//               name="search"
-//               type="search"
-//               placeholder="Recherche..."
-//               // onChange={(event) => {
-//               //   handleChange(event);
-//               // }}
-//               autoComplete="off"
-//             />
-//           </div>
-//           {/* <div style={{ marginTop: "5px" }}>
-//             <Checkbox
-//               value={4}
-//               checked={actif}
-//               onChange={handleCheck}
-//               inputProps={{
-//                 "aria-label": "primary checkbox",
-//               }}
-//               sx={{ width: "60px", height: "40px" }}
-//             />
-//           </div> */}
-//           <div className="list-adherent">
-//             {/* <ul>
-//                 {data.map((data, i) =>
-//                 {
-//                   <li key={i}>{data}</li>
-//                 }
+  const handleCheck = () => {
+    setActif(!actif);
+  };
 
-//                 )}
-//                 </ul> */}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+  return (
+    // <div className="map">
+    //  <Map/>
+    // </div>
 
-// export default Réseau;
+    <div className="main-container">
+    <div className="container">
+      <div className="mes-aderent c-mt-6">
+        <h1 className="mes-hero">Mes Adherent</h1>
+        <div className="search-section">
+          <div className="search-bar">
+            <i className="fas fa-search"></i>
+            <input
+              className="search"
+              name="search"
+              type="search"
+              placeholder="Recherche..."
+              // onChange={(event) => {
+              //   handleChange(event);
+              // }}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginTop: "5px", marginLeft:"5px" }}>
+           <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+  <label class="form-check-label" for="flexCheckDefault">
+   actif
+  </label>
+</div>
+</div>
+          </div>
+          <div className="list-adherent">
+           {(!loadingscreen &&
+        adherents &&
+        adherents.map((adherent, i) => (
+          <NavLink
+            id={adherent.numero_adherent}
+            data={i}
+            key={i}
+            className="adherent"
+            to={
+              "/adherents/" + adherent.identification_adherent
+            } /*onClick={handleClick}*/
+          >
+            <span>{adherent.identification_adherent}</span>
+            <p style={{marginTop:"10px", }}>{adherent.nom_adherent}</p>
+           <MdOutlineKeyboardArrowRight/>
+          </NavLink>
+        ))) || (
+        <>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+          <div className="adherent">
+            <Skeleton height={20.8} />
+            <Skeleton height={17.6} />
+          </div>
+        </>
+      )}
+          </div>
+   
+      </div>
+    </div>
+    </div>
+
+
+  );
+};
+
+export default Réseau;
+
+
+
+
