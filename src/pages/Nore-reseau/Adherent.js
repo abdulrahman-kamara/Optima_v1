@@ -75,7 +75,7 @@ const Réseau = () => {
           </div>
           <div style={{ marginTop: "5px", marginLeft:"5px" }}>
            <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" value={4} checked={actif} onChange={handleCheck} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
    actif
   </label>
@@ -92,8 +92,8 @@ const Réseau = () => {
             key={i}
             className="adherent"
             to={
-              "/adherents/" + adherent.identification_adherent
-            } /*onClick={handleClick}*/
+              "/notre-reseau/" + adherent.identification_adherent
+            } 
           >
             <span>{adherent.identification_adherent}</span>
             <p style={{marginTop:"10px", }}>{adherent.nom_adherent}</p>

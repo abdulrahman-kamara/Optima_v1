@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import ButtonAppBar from "./components/Nav/Nav";
 import Accueil from "./pages/Accueil";
 import Activities from "./pages/Activities";
@@ -9,6 +9,7 @@ import Certificats from "./pages/Certificats";
 import Métier from "./pages/Métier";
 import Réclamations from "./pages/Réclamations";
 import Réseau from "./pages/Nore-reseau/Adherent";
+import AdherentDetail from "./pages/Nore-reseau/AdherentDetail";
 import Contact from "./pages/Contact";
 
 const App = () => {
@@ -22,7 +23,16 @@ const App = () => {
           <Route path="/notre métier" element={<Métier />} />
           <Route path="/certificat" element={<Certificats />} />
           <Route path="/carrières" element={<Carrières />} />
-          <Route path="/notre réseau" element={<Réseau />} />
+          <Route path="/notre-reseau" element={<Réseau/>}>
+          <Route path={`:Id`} element={<AdherentDetail/>}   />
+          </Route>
+           
+                                                
+    
+   
+                                                  
+                                                
+                                         
           <Route path="/réclamations" element={<Réclamations />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
