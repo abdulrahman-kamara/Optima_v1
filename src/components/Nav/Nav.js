@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import "./Nav.css";
 import { ImMenu } from "react-icons/im";
 import { ImCross } from "react-icons/im";
@@ -42,7 +41,7 @@ function NavBar() {
         <Link to="/carrières">
           <li>Carrières</li>
         </Link>
-        <Link to="/notre réseau">
+        <Link to="/notre-reseau">
           <li>Notre Réseau</li>
         </Link>
         <Link to="/contact">
