@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import { useParams, Navigate, Outlet } from 'react-router-dom'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import Geocode from "react-geocode"
-// import cerclelogo from "./images/logo.jpg"
+import company from "../../data/buildings.png"
 import supervisionService from '../../Context/SupervisionService'
+import "./AdherentDetail.css"
 
 
 // Style de la map
@@ -14,15 +15,14 @@ const mapStyles = {
 }
 
 function AdherentDetail(props) {
-const {id} = useParams()
+
 
   const [adherent, setAdherent] = useState(null)
   const [intervenants, setIntervenants] = useState([])
   const [coordonnees, setCoordonnees] = useState({})
-  // Etat d'ouverture d'un filtre
-  const [filterOpened, setFilterOpened] = useState(false)
-  // Filtre (Actif pour le moment)
-  const [qualifie, setQualifie] = useState(true)
+
+  const {identification_adherent} = useParams()
+console.log("mydata", identification_adherent);
 
 
   const getAdherentByIdentification = async (identification) => {
@@ -50,7 +50,7 @@ const {id} = useParams()
     // Adherent n'a pas encore été initialisé
     // On récupère l'adhérent et ses intervenants
     if (!adherent) {
-        getAdherentByIdentification(id)
+        getAdherentByIdentification(identification_adherent)
             .then(response => {
         
                 // Utilisation de l'api pour le Geocode
@@ -104,13 +104,13 @@ const {id} = useParams()
           <div className="container">
               <div className="mes-adherents c-mt-5">
                   <div className="presentation-adherent c-mt-2">
-                      <div className="image-adherent">
-                          <img src={adherent && adherent.logo ? "data:image/jpeg;base64," + adherent.logo : ""} alt="Pas de photo1 pour cette supervision" />
-                      </div>
+                  <div className='image-adherent'>
+                              <img src={adherent && adherent.logo ? "data:image/jpeg;base64," + adherent.logo : company} alt="Pas de photo1 pour cette supervision" />
+                          </div>
+                        
                       <div className="coordonnees">
                           <h4>{adherent && adherent.identification_adherent}</h4>
                           <span>{adherent && adherent.nom_adherent}</span>
-
                           <div className="adresse c-mt-1">
                               <div className="adresse-content">
                                   <p>{adherent && adherent.adresse1_adherent}</p>
@@ -155,7 +155,7 @@ const {id} = useParams()
       </div>
     
   }
-    <Outlet/>
+   
   </>
   )
 }

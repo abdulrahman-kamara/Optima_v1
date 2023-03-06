@@ -7,33 +7,17 @@ function Accueil() {
   const bgImage = image;
 
   return (
+
     <Container fluid>
-      <Row
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          height: "100vh",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "20px",
-          }}
-        >
+      <div className="home-container">
+        <div className="container">
+          <div className="hero-section">
           <h2>Offre Accompagnement Qualité :</h2>
           <h2 style={{ textDecoration: "underline" }}>
             Profiter de l'expérience de notre pôle auditeur !
           </h2>
 
-          <ul
-            style={{
-              justifyContent: "center",
-              fontSize: "24px",
-            }}
-          >
+          <ul>
             <li>Audit interne ou Audit blanc</li>
             <li>Formation, mise en place de système Qualité.</li>
             <li>
@@ -46,28 +30,27 @@ function Accueil() {
             <li>Conseil et Expertise en métrologie légale.</li>
           </ul>
         </div>
+          </div>
+      
 
-        <Col xs={12} md={4}>
-          {/* Second section */}
-        </Col>
-        <Col xs={12} md={4}>
-          {/* Third section */}
-        </Col>
-      </Row>
-      <Row
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          height: "100vh",
-        }}
-      >
-        <Col xs={12} md={6}>
-          {/* Fourth section */}
-        </Col>
-        <Col xs={12} md={6}>
-          {/* Fifth section */}
-        </Col>
-      </Row>
+      </div>
+      <div fluid class="section-blank"></div>
+      <div class="section-footer">
+        <span class="email-text">
+          <h6 class="section-text">E-mail</h6>
+          <p class="section-text">contact@cercleoptima.com</p>
+        </span>
+        <span class="email-text">
+          <h6 class="section-text">Téléphone</h6>
+          <p class="section-text">04 42 50 96 90</p>
+        </span>
+        <span class="email-text">
+          <p class="section-text">
+            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
+          </p>
+        </span>
+      </div>
+     
     </Container>
   );
 }

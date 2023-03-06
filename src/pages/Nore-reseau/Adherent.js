@@ -5,9 +5,10 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
  import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
+import AdherentMap from "./Map/AdherentMap";
 
 
-const Réseau = () => {
+const Reseau = () => {
   //Tous les adherents
   const [adherents, setAdherents] = useState([]);
   // Element recherché
@@ -57,6 +58,8 @@ const Réseau = () => {
 
     <div className="main-container">
     <div className="container">
+
+       <AdherentMap/> 
       <div className="mes-aderent c-mt-6">
         <h1 className="mes-hero">Mes Adherent</h1>
         <div className="search-section">
@@ -92,7 +95,7 @@ const Réseau = () => {
             key={i}
             className="adherent"
             to={
-              "/notre-reseau/" + adherent.identification_adherent
+              "/reseau/" + adherent.identification_adherent
             } 
           >
             <span>{adherent.identification_adherent}</span>
@@ -141,7 +144,7 @@ const Réseau = () => {
   );
 };
 
-export default Réseau;
+export default Reseau;
 
 
 

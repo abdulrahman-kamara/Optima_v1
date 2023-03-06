@@ -41,7 +41,7 @@ function NavBar() {
         <Link to="/carrières">
           <li>Carrières</li>
         </Link>
-        <Link to="/notre-reseau">
+        <Link to="/reseau">
           <li>Notre Réseau</li>
         </Link>
         <Link to="/contact">

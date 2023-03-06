@@ -11,6 +11,7 @@ import Réclamations from "./pages/Réclamations";
 import Réseau from "./pages/Nore-reseau/Adherent";
 import AdherentDetail from "./pages/Nore-reseau/AdherentDetail";
 import Contact from "./pages/Contact";
+import UnauthorizedPage from "./pages/UnauthorizedPage";
 
 const App = () => {
   return (
@@ -23,18 +24,11 @@ const App = () => {
           <Route path="/notre métier" element={<Métier />} />
           <Route path="/certificat" element={<Certificats />} />
           <Route path="/carrières" element={<Carrières />} />
-          <Route path="/notre-reseau" element={<Réseau/>}>
-          <Route path={`:Id`} element={<AdherentDetail/>}   />
-          </Route>
-           
-                                                
-    
-   
-                                                  
-                                                
-                                         
+          <Route path="/reseau" element={<Réseau/>}/>
+          <Route path="/reseau/:identification_adherent" element={<AdherentDetail/>}/> 
           <Route path="/réclamations" element={<Réclamations />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<UnauthorizedPage/>}/>
         </Routes>
       </BrowserRouter>
     </>
