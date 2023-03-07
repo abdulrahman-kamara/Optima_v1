@@ -24,8 +24,8 @@
     --comet-input-placeholder: #cbd1dc;
   }
 .main-container{
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
+   
     background-color: transparent;
     padding-left: 200px;
 
@@ -36,6 +36,7 @@
    display: flex;
  justify-content: space-around;
 box-shadow: var(--comet-shadow-medium);
+
 
 
 }

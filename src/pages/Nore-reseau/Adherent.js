@@ -56,10 +56,11 @@ const Reseau = () => {
     //  <Map/>
     // </div>
 
-    <div className="main-container">
+    <div className="main-container"> 
+     <AdherentMap/> 
     <div className="container">
 
-       <AdherentMap/> 
+     
       <div className="mes-aderent c-mt-6">
         <h1 className="mes-hero">Mes Adherent</h1>
         <div className="search-section">

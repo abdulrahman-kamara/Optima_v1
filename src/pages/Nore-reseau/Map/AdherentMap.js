@@ -3,121 +3,141 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useState, useEffect } from "react";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import data from "../../../data/skateboard-parks.json";
+
  import supervisionService from "../../../Context/SupervisionService"
-import { useParams, Navigate } from "react-router-dom";
- //import useSWR from 'swr'
+
 
 export const icon = new Icon({
   iconUrl: "/skateboarding.svg",
   iconSize: [25, 25],
 });
 
- //const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+
 
 export default function AdherentMap() {
-
-  const {identification_adherent} = useParams()
-  const [aderentLoc, setAdherentLoc] = useState(null);
-      const [actif, setActif] = useState(null)
-      const [Loadingscreen, setLoadingscreen] = useState(false)
+      //  const [Loadingscreen, setLoadingscreen] = useState(false)
       const [adherents, setAdherents] = useState(null)
-      const [intervenants, setIntervenants] = useState([])
-      const [coordonnees, setCoordonnees] = useState({})
-      const [search, setSearch] = useState("");
+      const [adherentlocation, setadherentlocation] = useState(null)
+      const [taximetre, setTaximetre] = useState(true)
+      const [tachygraphie, setTachygraphie] = useState(true)
+      const [ethylotest, setEthylotest] = useState(true)
+      const [autoecole, setAutoecole] = useState(true)
 
-  //  const url = supervisionService.getAllAdherent()
 
-  //  const {data, error} = useSWR(url, fetcher)
-
-  //  const locationadhrent = data && !error ?  data.slice(0, 500) : [];
-
-  useEffect(() => {
-    setTimeout(() => {
-      getAdherentByIdentification()
-      getAllAdherents(search, actif);
-      setLoadingscreen(false);
-    }, 1000);
-  }, [search, actif]);
-
-  const getAllAdherents = async (search, actif) => {
+  const getAllAdherents = async (search, actif, activite) => {
     await supervisionService
-      .getAllAdherent(search, actif)
-      .then((response) => setAdherents(response))
-      .then( console.log("dbestata", setAdherents))
+      .getAllAdherent(search, actif, activite)
+      .then((response) => {  console.log("response", response)
+    ; setAdherents(response)})
   };
 
-  const getAdherentByIdentification = async (identification) => {
-     await supervisionService.getAdherentByIdentification(identification)
-    .then(response => {
-      setAdherents(response)
-      return response
-    })
+  useEffect(()=> {
+    getAllAdherents("", true, "all")
+  }, [])
+
+  const handleTaximetre = () => {
+
+  setTaximetre(!taximetre);
+
     
-  }
 
-  console.log("myinfo", adherents)
-
-  useEffect(() => {
-    // Adherent n'a pas encore été initialisé
-    // On récupère l'adhérent et ses intervenants
-    if (!adherents) {
-        getAdherentByIdentification(identification_adherent)
-            .then(response => {
-        setAdherents(response)
-            })
-            .catch(error => Navigate.push('/404'))
-    }
-    // Adherent déjà initialisé, on met à jour
-    // que les intervenants
-   
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+  };
+  const handleTachygraphie = () => {
+    setTachygraphie(!tachygraphie);
+    
+  };
+  const handleEthylotest = () => {
+    setEthylotest(!ethylotest);
+    
+  };
+  const handleAutoecole = () => {
+    setAutoecole(!autoecole);
+    
+  };
 
 
 
   return (
+    <>
+    <div className="card-container" >
+     <div className="maker-icon">
+     <div style={{ marginTop: "5px", marginLeft:"5px", display:"flex", justifyContent:"space-evenly" }}>
+           <div class="form-check">
+  <input class="form-check-input" type="checkbox" value={4} checked={taximetre} onChange={handleTaximetre} id="flexCheckDefault"/>
+  <label class="form-check-label" for="flexCheckDefault">
+   Taximetre
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value={4} checked={tachygraphie} onChange={handleTachygraphie} id="flexCheckDefault"/>
+  <label class="form-check-label" for="flexCheckDefault">
+   Tachygraphie
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value={4} checked={ethylotest} onChange={handleEthylotest} id="flexCheckDefault"/>
+  <label class="form-check-label" for="flexCheckDefault">
+   Ethylotest
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value={4} checked={autoecole} onChange={handleAutoecole} id="flexCheckDefault"/>
+  <label class="form-check-label" for="flexCheckDefault">
+   Auto-Ecole
+  </label>
+</div>
+</div>
+</div>
     <MapContainer
-      center={[45.4, -75.7]}
-      zoom={13}
+      center={[47.824905, 2.618787]}
+      zoom={6}
       scrollWheelZoom={false}
-      style={{ width: "50%", height: "50vh" }}
+      style={{ width: "100%", height: "100vh" }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {data.features.map((park) => (
+      {adherents && adherents.map(adherent => (
         <Marker
-          key={park.properties.PARK_ID}
+          key={adherent.identification_adherent}
+          id={adherent.numero_adherent}
           position={[
-            park.geometry.coordinates[1],
-            park.geometry.coordinates[0],
+            adherent.atelier_latitude,
+            adherent.atelier_longitude
           ]}
           eventHandlers={{
             click: () => {
-              setAdherentLoc(park);
+              setadherentlocation(adherent);
             },
           }}
           icon={icon}
         />
       ))}
-      {aderentLoc && (
+       { adherentlocation && (
         <Popup
-          position={[
-            aderentLoc.geometry.coordinates[1],
-            aderentLoc.geometry.coordinates[0],
-          ]}
+        position={[
+          adherentlocation.atelier_latitude,
+        adherentlocation.atelier_longitude
+        ]}
           onClose={() => {
-            setAdherentLoc(null);
+            setadherentlocation(null);
           }}
         >
           <div>
-            <h2>{aderentLoc.properties.NAME}</h2>
-            <p>{aderentLoc.properties.DESCRIPTIO}</p>
+          <h2>{adherentlocation.identification_adherent}</h2>
+            <p>{ adherentlocation.nom_adherent}</p>
+            <p>{ adherentlocation.adresse1_adherent}</p>
+            <p>{ adherentlocation.ville_adherent}</p>
+           
+
           </div>
         </Popup>
-      )}
+      )} 
     </MapContainer>
+    </div>
+    </>
+    
   );
 }
