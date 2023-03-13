@@ -52,13 +52,11 @@ const Reseau = () => {
   };
 
   return (
-    // <div className="map">
-    //  <Map/>
-    // </div>
+   
 
     <div className="main-container"> 
      <AdherentMap/> 
-    <div className="container">
+    {/* <div className="container">
 
      
       <div className="mes-aderent c-mt-6">
@@ -138,7 +136,7 @@ const Reseau = () => {
           </div>
    
       </div>
-    </div>
+    </div> */} 
     </div>
 
 
