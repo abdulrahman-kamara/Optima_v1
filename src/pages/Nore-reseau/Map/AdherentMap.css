@@ -1,0 +1,9 @@
+.map-container{
+    margin-top: 10px;
+}
+.map-checkbox{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  
+}

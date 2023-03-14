@@ -54,13 +54,13 @@ const Reseau = () => {
   return (
    
 
-    <div className="main-container"> 
-     <AdherentMap/> 
-    {/* <div className="container">
-
+    <div className="adherent_main-container"> 
      
-      <div className="mes-aderent c-mt-6">
-        <h1 className="mes-hero">Mes Adherent</h1>
+     <div className="adherent-container">
+<AdherentMap/> 
+     
+      {/* <div className="mes-aderent c-mt-6">
+        <h5 className="mes-hero">Mes Adherent</h5>
         <div className="search-section">
           <div className="search-bar">
             <i className="fas fa-search"></i>
@@ -69,9 +69,9 @@ const Reseau = () => {
               name="search"
               type="search"
               placeholder="Recherche..."
-              // onChange={(event) => {
-              //   handleChange(event);
-              // }}
+              onChange={(event) => {
+                handleChange(event);
+              }}
               autoComplete="off"
             />
           </div>
@@ -135,8 +135,8 @@ const Reseau = () => {
       )}
           </div>
    
-      </div>
-    </div> */} 
+      </div> */}
+    </div> 
     </div>
 
 

@@ -48,32 +48,29 @@ a {
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  border: #101010;
 }
 .logo {
   display: flex;
+ 
+}
+ .logo-image {
+  width: 35px;
+ 
+  
+}
+.nav-bar-link{
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
-a .logo-image {
-  align-items: center;
-  display: flex;
-  position: absolute;
-  top: 20px;
-  left: 40px;
-  width: 40px;
-  height: 40px;
-  line-height: 20px;
-}
-a .logo-name {
-  margin-top: 10px;
-  padding-left: 30px;
+ .logo-name {
   font-weight: bold;
+  padding-left: 20px;
 }
 .nav-link {
   display: flex;
-  justify-content: flex-end;
-  width: 75%;
+  
 }
 
 .nav-link li {
@@ -83,6 +80,7 @@ a .logo-name {
   align-items: center;
   color: #586069;
   font-size: 20px;
+  font-weight: 700;
   padding: 0 10px;
   margin: 0 10px;
   cursor: pointer;
@@ -90,11 +88,11 @@ a .logo-name {
   font-size: small;
 }
 
-li :hover {
+.nav-link li :hover {
   background-color: blueviolet;
 }
 .nav-link li :hover {
-  color: var(--comet-text);
+  color: blue;
 }
 
 .nav-link link {
