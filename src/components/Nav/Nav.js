@@ -24,7 +24,7 @@ function NavBar() {
         // onMouseLeave={()=> setHover(false)}
       >
         <Link to="/">
-          <li>Accuiel</li>
+          <li>Accueil</li>
         </Link>
         <Link to="/activities">
           <li>Nos Activités</li>

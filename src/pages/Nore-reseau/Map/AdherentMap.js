@@ -26,7 +26,13 @@ export default function AdherentMap() {
       const [adherents, setAdherents] = useState(null)
       const [adherentlocation, setadherentlocation] = useState(null)
       const [marker, setmarker] = useState([])
-      const [isChecked, setIsChecked] = useState(false)
+      const [isChecked, setIsChecked] = useState({
+      taximetre: [],
+      gaz: [],
+      tachygraphie: [],
+      ethylotest: [],
+      autoecole: []
+      })
 
 
    
@@ -45,71 +51,52 @@ export default function AdherentMap() {
 
 
 
-const handleChange = (activite, e) =>{
-  getAllAdherents("", true, activite)
-  setIsChecked(prev => ({ ...prev, [e.target.value]: e.target.value }))
-}
-console.log(isChecked)
 
-// const handleTaxiChange = (e) =>{
-  
-//   e.preventDefault()
-//   //  setIsChecked({taximetre: event.target.value})
-// }
-// const handleTachyChange = (event) =>{
-//   setIsChecked({tachygraphie: event.target.value})
-// }
-// const handleEthyChange = (event) =>{
-//   setIsChecked({ethylotest: event.target.value})
-// }
-// const handleAutoChange = (event) =>{
-//   setIsChecked({autoecole: event.target.value})
-// }
-// const handleGazChange = (event) =>{
-//   setIsChecked({gaz: event.target.value})
+
+
 
 
 const  center =[47.824905, 2.618787]
 const mapRef = useRef()
 
-// const markers = [
-// {
-//   activite: "1",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: "2",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: "4",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: "5",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: 6,
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// }
-// ]
 
+
+const handleChange = (activite, e) =>{
+const {value, checked} = e.target
+
+const {taximetre,
+  gaz,
+  tachygraphie,
+  ethylotest,
+  autoecole} = isChecked
+  if(checked){
+    setIsChecked({
+      taximetre: [...taximetre, value],
+      gaz:[...gaz, value],
+      tachygraphie:[...tachygraphie, value],
+      ethylotest:[...ethylotest, value],
+      autoecole:[autoecole, value]
+    })
+  }else{
+    setIsChecked({
+      taximetre: taximetre.filter((e) => e !== value),
+      gaz: gaz.filter((e) => e !== value),
+      tachygraphie: tachygraphie.filter((e) => e !== value),
+      ethylotest: ethylotest.filter((e) => e !== value),
+      autoecole: autoecole.filter((e) => e !== value),
+    })
+  }
+  
+
+  
+
+  
+  console.log(`${value} is ${checked}`);
+
+
+   getAllAdherents("", true, activite)
+   
+} 
 
 
 
@@ -120,33 +107,33 @@ const mapRef = useRef()
  
     <div className="maker-icon">
      <div style={{  gap:"5px", display:"flex", justifyContent:"space-evenly" }}>
-           <div class="form-check map-checkbox">
-  <input class="form-check-input " type="checkbox" value={4} checked={isChecked} name="taximetre" onChange={e=> handleChange("1", e)} id="flexCheckDefault"/>
+           <div class="form-check map-checkbox" >
+  <input class="form-check-input " type="checkbox" value={("1")}  name="taximetre" onChange={e=> handleChange("1", e)} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
  Atelier Taximètre
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value={4} checked={isChecked.gaz} name="gaz" onChange={e=> handleChange("2", e)}id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" value={("2")} name="gaz" onChange={e=> handleChange("2", e)} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
   Analyseur de gazs et Opacimètre
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value={4} checked={isChecked.tachygraphie} name="tachygraphie"  onChange={e=> handleChange("4", e)} id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" value={("4")} name="tachygraphie"  onChange={e=> handleChange("4", e)} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
   Atelier Tachygraphe
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value={4} checked={isChecked.ethylotest} name="ethylotest" onChange={e=> handleChange("5", e)}id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" value={("5")} name="ethylotest" onChange={e=> handleChange("5", e)}id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
   Ethylotest
   </label>
 </div>
 
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value={4} checked={isChecked.autoecole} name="autoecole" onChange={e=> handleChange("6", e)} id="flexCheckDefault"/>
+  <input class="form-check-input" type="checkbox" value={("6")} name="autoecole" onChange={e=> handleChange("6", e)} id="flexCheckDefault"/>
   <label class="form-check-label" for="flexCheckDefault">
    Auto-Ecole
   </label>
@@ -169,12 +156,13 @@ const mapRef = useRef()
       
       {adherents && adherents.map(adherent => (
       
+      
 
        
        
 
 <LayerGroup   >
-           
+             
            
            <Marker 
            key={adherent.identification_adherent}
@@ -220,4 +208,66 @@ const mapRef = useRef()
   );
 }
 
-    
+    // const handleTaxiChange = (e) =>{
+  
+//   e.preventDefault()
+//   //  setIsChecked({taximetre: event.target.value})
+// }
+// const handleTachyChange = (event) =>{
+//   setIsChecked({tachygraphie: event.target.value})
+// }
+// const handleEthyChange = (event) =>{
+//   setIsChecked({ethylotest: event.target.value})
+// }
+// const handleAutoChange = (event) =>{
+//   setIsChecked({autoecole: event.target.value})
+// }
+// const handleGazChange = (event) =>{
+//   setIsChecked({gaz: event.target.value})
+
+  // const updatedAdherent = adherents && adherents.map(adherent => {
+  //   if (adherent === adherent.activite) {
+  //     return {...adherent, selected: !adherent.selected}
+  //   }else {
+  //     return adherent
+  //   }
+  // });
+  // setAdherents(updatedAdherent)
+
+  // const markers = [
+// {
+//   activite: "1",
+//   location: {
+//    lat: adherents.atelier_latitude,
+//    log:  adherents.atelier_longitude
+//   }
+// },
+// {
+//   activite: "2",
+//   location: {
+//    lat: adherents.atelier_latitude,
+//    log:  adherents.atelier_longitude
+//   }
+// },
+// {
+//   activite: "4",
+//   location: {
+//    lat: adherents.atelier_latitude,
+//    log:  adherents.atelier_longitude
+//   }
+// },
+// {
+//   activite: "5",
+//   location: {
+//    lat: adherents.atelier_latitude,
+//    log:  adherents.atelier_longitude
+//   }
+// },
+// {
+//   activite: 6,
+//   location: {
+//    lat: adherents.atelier_latitude,
+//    log:  adherents.atelier_longitude
+//   }
+// }
+// ]
