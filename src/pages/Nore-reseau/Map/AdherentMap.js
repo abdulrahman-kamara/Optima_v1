@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import "./AdherentMap.css"
  import supervisionService from "../../../Context/SupervisionService"
 import { useRef } from "react";
+import ChekBox from "./ChekBox";
 
 
 
@@ -26,12 +27,10 @@ export default function AdherentMap() {
       const [adherents, setAdherents] = useState(null)
       const [adherentlocation, setadherentlocation] = useState(null)
       const [marker, setmarker] = useState([])
-      const [isChecked, setIsChecked] = useState({
-      taximetre: [],
-      gaz: [],
-      tachygraphie: [],
-      ethylotest: [],
-      autoecole: []
+      const [Filters, setFilters] = useState({
+     
+        AdherentLocation: [],
+        price: []
       })
 
 
@@ -61,42 +60,38 @@ const mapRef = useRef()
 
 
 
-const handleChange = (activite, e) =>{
-const {value, checked} = e.target
+// const handleChange = (activite, e) =>{
 
-const {taximetre,
-  gaz,
-  tachygraphie,
-  ethylotest,
-  autoecole} = isChecked
-  if(checked){
-    setIsChecked({
-      taximetre: [...taximetre, value],
-      gaz:[...gaz, value],
-      tachygraphie:[...tachygraphie, value],
-      ethylotest:[...ethylotest, value],
-      autoecole:[autoecole, value]
-    })
-  }else{
-    setIsChecked({
-      taximetre: taximetre.filter((e) => e !== value),
-      gaz: gaz.filter((e) => e !== value),
-      tachygraphie: tachygraphie.filter((e) => e !== value),
-      ethylotest: ethylotest.filter((e) => e !== value),
-      autoecole: autoecole.filter((e) => e !== value),
-    })
-  }
-  
-
-  
-
-  
-  console.log(`${value} is ${checked}`);
-
-
-   getAllAdherents("", true, activite)
+//    getAllAdherents("", true, activite)
    
-} 
+// }  
+
+
+
+// filtering the resukt of the checked box
+
+const showFilterResult = (filters) => {
+  getAllAdherents()
+
+}
+
+
+
+
+const handleFilter = (filters, activite) => {
+  console.log(filters);
+  const newFilters = {...Filters}
+  newFilters[activite] = Filters
+
+  // condition ici
+
+
+  showFilterResult(newFilters)
+  setFilters(newFilters)
+
+}
+
+
 
 
 
@@ -106,40 +101,9 @@ const {taximetre,
    
  
     <div className="maker-icon">
-     <div style={{  gap:"5px", display:"flex", justifyContent:"space-evenly" }}>
-           <div class="form-check map-checkbox" >
-  <input class="form-check-input " type="checkbox" value={("1")}  name="taximetre" onChange={e=> handleChange("1", e)} id="flexCheckDefault"/>
-  <label class="form-check-label" for="flexCheckDefault">
- Atelier Taximètre
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value={("2")} name="gaz" onChange={e=> handleChange("2", e)} id="flexCheckDefault"/>
-  <label class="form-check-label" for="flexCheckDefault">
-  Analyseur de gazs et Opacimètre
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value={("4")} name="tachygraphie"  onChange={e=> handleChange("4", e)} id="flexCheckDefault"/>
-  <label class="form-check-label" for="flexCheckDefault">
-  Atelier Tachygraphe
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value={("5")} name="ethylotest" onChange={e=> handleChange("5", e)}id="flexCheckDefault"/>
-  <label class="form-check-label" for="flexCheckDefault">
-  Ethylotest
-  </label>
-</div>
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value={("6")} name="autoecole" onChange={e=> handleChange("6", e)} id="flexCheckDefault"/>
-  <label class="form-check-label" for="flexCheckDefault">
-   Auto-Ecole
-  </label>
-  
-</div>
-</div>
+    <ChekBox 
+    handleFilter={filters => handleFilter(filters, "AdherentLocation")}
+    />
 </div>
 
     <MapContainer
