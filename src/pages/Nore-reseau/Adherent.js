@@ -35,7 +35,6 @@ const Reseau = () => {
     await supervisionService
       .getAllAdherent(search, actif)
       .then((response) => setAdherents(response))
-      .then(response => console.log("data", adherents))
   };
 
 
