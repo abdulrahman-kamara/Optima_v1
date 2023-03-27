@@ -1,43 +1,42 @@
 import React from "react";
-import {
-  FeatureGroup,
-  LayerGroup,
-  LayersControl,
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useState, useEffect } from "react";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./AdherentMap.css";
 import supervisionService from "../../../Context/SupervisionService";
 import { useRef } from "react";
-// import ChekBox from "./ChekBox";
-import { Checkbox } from "antd";
 
-export const icon = new Icon({
+export const taximetre = new Icon({
   iconUrl: "/taxi.jpg",
+  iconSize: [40, 40],
+});
+
+export const gaz = new Icon({
+  iconUrl: "/gaz.jpg",
   iconSize: [25, 25],
 });
 
-export const icon1 = new Icon({
+export const tachygraphie = new Icon({
   iconUrl: "/truck.jpg",
   iconSize: [25, 25],
 });
+
+export const ethylotest = new Icon({
+  iconUrl: "logo.jpg",
+  iconSize: [25, 25],
+});
+
+export const autoecole = new Icon({
+  iconUrl: "/auto-ecole.jpg",
+  iconSize: [25, 25],
+});
+
 
 export default function AdherentMap() {
   //  const [Loadingscreen, setLoadingscreen] = useState(false)
   const [adherents, setAdherents] = useState(null);
   const [adherentlocation, setadherentlocation] = useState(null);
-  const [filteredData, setfilteredData] = useState({
-    tax: true,
-    tco: true,
-    gaz: true,
-    ead: true,
-    aut: true,
-  });
   const [valueOptions, setValueOptions] = useState([]);
 
   useEffect(() => {
@@ -48,6 +47,7 @@ export default function AdherentMap() {
     await supervisionService
       .getAllAdherent(search, actif, activite)
       .then((response) => {
+        console.log("response", response);
         setAdherents(response);
       });
   };
@@ -57,47 +57,87 @@ export default function AdherentMap() {
   const mapRef = useRef();
 
   // update the state of the checkbox and also update the state of the map
-  const handleChange = (e, activite) => {
+  // const handleChange = (e, activite, indexToRemove = null) => {
+  //   const { value, checked } = e.target;
+
+  //   if (checked) {
+  //     var _valueOptions = [...valueOptions, e.target.value];
+  //     var _adherents = [];
+
+  //     setValueOptions((prev) => [...prev, e.target.value]);
+
+  //     console.log("_valueOptions", _valueOptions);
+  //     supervisionService.getAllAdherent("", true, activite).then((response) => {
+  //       console.log("response", response);
+  //       _adherents = response;
+  //     });
+
+  //     if (_valueOptions.length === 1) {
+  //       supervisionService
+  //         .getAllAdherent("", true, activite)
+  //         .then((response) => {
+  //           console.log("response", response);
+  //           setAdherents(response);
+  //         });
+  //     } else if (_valueOptions.length > 1) {
+  //       supervisionService
+  //         .getAllAdherent("", true, activite)
+  //         .then((response) => {
+  //           let _adherents = [...adherents, ...response];
+  //           _adherents = _adherents.filter(
+  //             (obj, index) =>
+  //               _adherents.findIndex(
+  //                 (_adherent) =>
+  //                   _adherent.identification_adherent ===
+  //                   obj.identification_adherent
+  //               ) === index
+  //           );
+  //           console.log("_adherents", _adherents);
+  //           setAdherents(_adherents);
+  //         });
+  //     } else {
+  //       setValueOptions(valueOptions.filter((_value) => _value !== value));
+  //     }
+  //   }
+  // };
+
+  const handleChange = async (e, activite) => {
     const { value, checked } = e.target;
 
     if (checked) {
-      var _valueOptions = [...valueOptions, e.target.value];
-      var _adherents = [];
+      const newOptions = [...valueOptions, value];
+      setValueOptions(newOptions);
 
-      setValueOptions((prev) => [...prev, e.target.value]);
+      const adherentsResponse = await supervisionService.getAllAdherent(
+        "",
+        true,
+        activite
+      );
+      const allAdherents = adherentsResponse || [];
 
-      console.log("_valueOptions", _valueOptions);
-      supervisionService.getAllAdherent("", true, activite).then((response) => {
-        console.log("response", response);
-        _adherents = response;
-      });
+      let newAdherents = [];
 
-      if (_valueOptions.length === 1) {
-        supervisionService
-          .getAllAdherent("", true, activite)
-          .then((response) => {
-            console.log("response", response);
-            setAdherents(response);
-          });
-      } else if (_valueOptions.length > 1) {
-        supervisionService
-          .getAllAdherent("", true, activite)
-          .then((response) => {
-            let _adherents = [...adherents, ...response];
-            _adherents = _adherents.filter(
-              (obj, index) =>
-                _adherents.findIndex(
-                  (_adherent) =>
-                    _adherent.identification_adherent ===
-                    obj.identification_adherent
-                ) === index
-            );
-            console.log("_adherents", _adherents);
-            setAdherents(_adherents);
-          });
-      } else {
-        setValueOptions(valueOptions.filter((_value) => _value !== value));
+      if (newOptions.length === 1) {
+        newAdherents = allAdherents;
+      } else if (newOptions.length > 1) {
+        const newAdherentsResponse = await supervisionService.getAllAdherent(
+          "",
+          true,
+          activite
+        );
+        newAdherents = [...adherents, ...(newAdherentsResponse || [])];
+        console.log("response", newAdherents);
+        newAdherents = newAdherents.filter(
+          (obj, index) =>
+            newAdherents.findIndex(
+              (_adherent) =>
+                _adherent.identification_adherent ===
+                obj.identification_adherent
+            ) === index
+        );
       }
+     
+      setAdherents(newAdherents);
     } else {
       setValueOptions(valueOptions.filter((_value) => _value !== value));
     }
@@ -209,7 +249,13 @@ export default function AdherentMap() {
                     setadherentlocation(adherent);
                   },
                 }}
-                icon={icon1}
+                icon={
+                  valueOptions.includes("1")
+                    ? taximetre
+                    : valueOptions.includes("2")
+                    ? gaz
+                    : valueOptions.includes("4") ? tachygraphie : valueOptions.includes("5") ? tachygraphie : valueOptions.includes("6") ? autoecole : ethylotest
+                }
               />
             ))}
 
@@ -224,10 +270,11 @@ export default function AdherentMap() {
               }}
             >
               <div>
-                <h2>{adherentlocation.identification_adherent}</h2>
-                <p>{adherentlocation.nom_adherent}</p>
-                <p>{adherentlocation.adresse1_adherent}</p>
-                <p>{adherentlocation.ville_adherent}</p>
+                <p>Identification <span>{adherentlocation.identification_adherent}</span></p>
+                <p>Nom<span>{adherentlocation.nom_adherent}</span> </p>
+                <p>Numero<span>{adherentlocation.numero_adherent}</span></p>
+                <p>Addresse <span>{adherentlocation.adresse1_adherent}</span></p>
+            
               </div>
             </Popup>
           )}
@@ -236,67 +283,3 @@ export default function AdherentMap() {
     </>
   );
 }
-
-// const handleTaxiChange = (e) =>{
-
-//   e.preventDefault()
-//   //  setIsChecked({taximetre: event.target.value})
-// }
-// const handleTachyChange = (event) =>{
-//   setIsChecked({tachygraphie: event.target.value})
-// }
-// const handleEthyChange = (event) =>{
-//   setIsChecked({ethylotest: event.target.value})
-// }
-// const handleAutoChange = (event) =>{
-//   setIsChecked({autoecole: event.target.value})
-// }
-// const handleGazChange = (event) =>{
-//   setIsChecked({gaz: event.target.value})
-
-// const updatedAdherent = adherents && adherents.map(adherent => {
-//   if (adherent === adherent.activite) {
-//     return {...adherent, selected: !adherent.selected}
-//   }else {
-//     return adherent
-//   }
-// });
-// setAdherents(updatedAdherent)
-
-// const markers = [
-// {
-//   activite: "1",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: "2",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: "4",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: "5",
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// },
-// {
-//   activite: 6,
-//   location: {
-//    lat: adherents.atelier_latitude,
-//    log:  adherents.atelier_longitude
-//   }
-// }
-// ]

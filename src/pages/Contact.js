@@ -1,11 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Contact.css";
 
+
+const initialValue = {firstName: "", lastName: "", email: "", phone: "", society:"", occupation: "", message: ""}
+
+const initailState = {value: initialValue}
 const Contact = () => {
-  const handleSubmit = (event) => {
+const [state, setState] = useState(initailState)
+
+const {value} = state
+
+
+
+
+
+  const handleSubmit = ({event, target}) => {
     event.preventDefault();
-    console.log("Form submitted");
+    
+
+    
   };
+
+
+
+
+
   return (
     <div className="form-container">
       <div className="my-form">
@@ -14,12 +33,12 @@ const Contact = () => {
         </div>
         <form
           className="row g-3 needs-validation"
-          novalidate
+          noValidate
           onSubmit={handleSubmit}
         >
           <div className="civilité">
             <div className="prenom">
-              <label for="validationCustom02" className="form-label">
+              <label  className="form-label">
                 Prenom
               </label>
               <input
@@ -31,7 +50,7 @@ const Contact = () => {
               />
             </div>
             <div className="col-md-4 nom">
-              <label for="validationCustom02" className="form-label">
+              <label  className="form-label">
                 Nom de famille
               </label>
               <input
@@ -43,7 +62,7 @@ const Contact = () => {
               />
             </div>
             <div className="email">
-              <label for="validationCustom02" className="form-label">
+              <label  className="form-label">
                 E-mail *
               </label>
               <input
@@ -58,7 +77,7 @@ const Contact = () => {
 
           <div className="personal-info">
             <div className="telephone">
-              <label for="validationCustom02" className="form-label">
+              <label  className="form-label">
                 Téléphone
               </label>
               <input
@@ -70,7 +89,7 @@ const Contact = () => {
               />
             </div>
             <div className="col-md-4 société">
-              <label for="validationCustom02" className="form-label">
+              <label  className="form-label">
                 société
               </label>
               <input
@@ -82,7 +101,7 @@ const Contact = () => {
               />
             </div>
             <div className="col-md-4 occupation">
-              <label for="validationCustom02" className="form-label">
+              <label  className="form-label">
                 occupation
               </label>
               <input
@@ -96,7 +115,7 @@ const Contact = () => {
           </div>
 
           <div className="col-md-4 message">
-            <label for="validationCustom02" className="form-label">
+            <label  className="form-label">
               Message
             </label>
             <textarea

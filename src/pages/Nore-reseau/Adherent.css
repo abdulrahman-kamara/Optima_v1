@@ -236,8 +236,6 @@ box-shadow: var(--comet-shadow-medium);
     .adherent-container{
        display: block;
     align-self: center;
-
-    
     }
     .mes-aderent{
         display: flex;
