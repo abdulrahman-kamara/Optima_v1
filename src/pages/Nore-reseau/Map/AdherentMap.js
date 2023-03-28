@@ -283,3 +283,35 @@ export default function AdherentMap() {
     </>
   );
 }
+// icon={
+                //   valueOptions.includes("1")
+                //     ? taximetre
+                //     : valueOptions.includes("2")
+                //     ? gaz
+                //     : valueOptions.includes("4") ? tachygraphie : valueOptions.includes("5") ? tachygraphie : valueOptions.includes("6") ? autoecole : ethylotest
+                // }
+
+                  // export const taximetre = new Icon({
+  //   iconUrl: "/taxi.jpg",
+  //   iconSize: [40, 40],
+  // });
+  
+  // export const gaz = new Icon({
+  //   iconUrl: "/gaz.jpg",
+  //   iconSize: [25, 25],
+  // });
+  
+  // export const tachygraphie = new Icon({
+  //   iconUrl: "/truck.jpg",
+  //   iconSize: [25, 25],
+  // });
+  
+  // export const ethylotest = new Icon({
+  //   iconUrl: "logo.jpg",
+  //   iconSize: [25, 25],
+  // });
+  
+  // export const autoecole = new Icon({
+  //   iconUrl: "/auto-ecole.jpg",
+  //   iconSize: [25, 25],
+  // })
