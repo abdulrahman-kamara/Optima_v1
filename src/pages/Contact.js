@@ -1,25 +1,32 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import "./Contact.css";
-
+import emailjs from '@emailjs/browser';
 
 const initialValue = {firstName: "", lastName: "", email: "", phone: "", society:"", occupation: "", message: ""}
 
 const initailState = {value: initialValue}
 const Contact = () => {
 const [state, setState] = useState(initailState)
-
 const {value} = state
 
 
+const form = useRef();
 
 
+const sendEmail = (event) => {
+  event.preventDefault();
 
-  const handleSubmit = ({event, target}) => {
-    event.preventDefault();
-    
+  emailjs.sendForm('service_2nvebav', 'template_s93bcoq', form.current, 'KweSbc76vuc4y4N6o')
+    .then((result) => {
+        console.log(result.text);
+        console.log("message sent");
+    }, (error) => {
+        console.log(error.text);
+    });
 
-    
-  };
+};
+
+
 
 
 
@@ -34,7 +41,8 @@ const {value} = state
         <form
           className="row g-3 needs-validation"
           noValidate
-          onSubmit={handleSubmit}
+          ref={form}
+          onSubmit={sendEmail}
         >
           <div className="civilité">
             <div className="prenom">
@@ -44,7 +52,7 @@ const {value} = state
               <input
                 type="text"
                 className="form-control"
-                id="validationCustom02"
+              name="prenom"
                 placeholder=""
                 required
               />
@@ -56,7 +64,7 @@ const {value} = state
               <input
                 type="text"
                 className="form-control"
-                id="validationCustom02"
+              name="nom"
                 placeholder="Nom de famille"
                 required
               />
@@ -68,7 +76,7 @@ const {value} = state
               <input
                 type="email"
                 className="form-control"
-                id="validationCustom02"
+              name="email"
                 placeholder=""
                 required
               />
@@ -83,7 +91,7 @@ const {value} = state
               <input
                 type="text"
                 className="form-control"
-                id="validationCustom02"
+              name="tel"
                 placeholder=""
                 required
               />
@@ -95,7 +103,7 @@ const {value} = state
               <input
                 type="text"
                 className="form-control"
-                id="validationCustom02"
+              name="society"
                 placeholder="société"
                 required
               />
@@ -107,7 +115,7 @@ const {value} = state
               <input
                 type="text"
                 className="form-control"
-                id="validationCustom02"
+              name="occupation"
                 placeholder="occupation"
                 required
               />
@@ -120,7 +128,7 @@ const {value} = state
             </label>
             <textarea
               className="form-control"
-              id="exampleFormControlTextarea1"
+             name="message"
               rows="3"
             ></textarea>
           </div>

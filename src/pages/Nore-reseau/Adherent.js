@@ -1,12 +1,11 @@
  import React, { useState, useEffect } from "react";
-import { Await, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
  import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
 import { LayerGroup, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import L, { icon } from "leaflet";
-import { Icon } from "leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useRef } from "react";
 
@@ -26,6 +25,7 @@ const Reseau = () => {
   const [loadingscreen, setLoadingscreen] = useState(true);
   const [adherentlocation, setadherentlocation] = useState(null);
   const [valueOptions, setValueOptions] = useState([]);
+  const [markers, setMarkers] = useState([])
 
 
 
@@ -39,7 +39,7 @@ const Reseau = () => {
   const getAllAdherents = async (search, actif, activite) => {
     await supervisionService
       .getAllAdherent(search, actif, activite)
-      .then((response) => setAdherents(response))
+      .then((response) => setAdherents(response)).then((response) => setMarkers(response))
       .then(response => console.log("data", adherents))
   };
 
@@ -109,6 +109,7 @@ const handleChanges = async (e, activite) => {
      console.log(_valueOptions)
     setValueOptions(_valueOptions);
     if (_valueOptions.length === 0) {
+      setValueOptions(_valueOptions);
       await supervisionService.getAllAdherent("", true, activite).then((response) => {
         console.log("response", response);
         setAdherents(response);
@@ -139,35 +140,6 @@ const handleChanges = async (e, activite) => {
   
 }
 
-//  const taximetre = L.icon({
-//   iconUrl: "/taxi.jpg",
-//   iconSize: [40, 40],
-//   iconAnchor:[22, 36]
-// });
-
-//  const gaz = L.icon({
-//   iconUrl: "/gaz.jpg",
-//   iconSize: [25, 25],
-//   iconAnchor:[22, 36]
-// });
-
-//  const tachygraphie = L.icon({
-//   iconUrl: "/truck.jpg",
-//   iconSize: [25, 25],
-//   iconAnchor:[22, 36]
-// });
-
-//  const ethylotest = L.icon({
-//   iconUrl: "logo.jpg",
-//   iconSize: [25, 25],
-//   iconAnchor:[22, 36]
-// });
-
-//  const autoecole = L.icon({
-//   iconUrl: "/auto-ecole.jpg",
-//   iconSize: [25, 25],
-//   iconAnchor:[22, 36]
-// })
 
 
 const iconMap = {
@@ -220,7 +192,7 @@ const iconMap = {
               justifyContent: "space-evenly",
             }}
           >
-            <div class="form-check map-checkbox">
+            <div className="form-check map-checkbox">
               <input
                 class="form-check-input "
                 type="checkbox"
@@ -229,11 +201,11 @@ const iconMap = {
                 onChange={(e) => handleChanges(e, "1")}
                 id="flexCheckDefault"
               />
-              <label class="form-check-label" for="flexCheckDefault">
+              <label className="form-check-label" >
                 Atelier Taximètre
               </label>
             </div>
-            <div class="form-check">
+            <div className="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
@@ -242,7 +214,7 @@ const iconMap = {
                 onChange={(e) => handleChanges(e, "2")}
                 id="flexCheckDefault"
               />
-              <label class="form-check-label" for="flexCheckDefault">
+              <label className="form-check-label" >
                 Analyseur de gazs et Opacimètre
               </label>
             </div>
@@ -255,7 +227,7 @@ const iconMap = {
                 onChange={(e) => handleChanges(e, "4")}
                 id="flexCheckDefault"
               />
-              <label class="form-check-label" for="flexCheckDefault">
+              <label className="form-check-label" >
                 Atelier Tachygraphe
               </label>
             </div>
@@ -268,7 +240,7 @@ const iconMap = {
                 onChange={(e) => handleChanges(e, "5")}
                 id="flexCheckDefault"
               />
-              <label class="form-check-label" for="flexCheckDefault">
+              <label className="form-check-label" >
                 Ethylotest
               </label>
             </div>
@@ -282,7 +254,7 @@ const iconMap = {
                 onChange={(e) => handleChanges(e, "6")}
                 id="flexCheckDefault"
               />
-              <label class="form-check-label" >
+              <label className="form-check-label" >
                 Auto-Ecole
               </label>
             </div>
@@ -318,7 +290,8 @@ const iconMap = {
                   },
                 }}
               icon={
-            valueOptions.includes("1") ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
+            
+            valueOptions.includes("1")  ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
             valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
                 }
               />
@@ -369,7 +342,7 @@ const iconMap = {
           <div style={{ marginTop: "5px", marginLeft:"5px" }}>
            {/* <div class="form-check">
   <input class="form-check-input" type="checkbox" value={4} checked={actif} onChange={handleCheck} id="flexCheckDefault"/>
-  <label class="form-check-label" for="flexCheckDefault">
+  <label class="form-check-label" >
    actif
   </label>
 </div> */}
