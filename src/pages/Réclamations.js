@@ -28,9 +28,13 @@ function Réclamations() {
             </label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choisissez une Option</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="1">Taxi</option>
+              <option value="2">Tachygraphe</option>
+              <option value="3">Analyseur de gaz/ Opacimètre</option>
+              <option value="2">Ethylotest</option>
+              <option value="3">Auto-Ecole</option>
+              <option value="2">Pont Elévateur</option>
+              <option value="3">Formation</option>
             </select>
           </div>
           <div class=" col-md-4 Société">
@@ -53,7 +57,7 @@ function Réclamations() {
               </label>
               <select class="option-select" aria-label="Default select example">
                 <option value="1">M.</option>
-                <option value="2">Mille</option>
+                <option value="1">Melle</option>
                 <option value="3">Mme</option>
               </select>
             </div>

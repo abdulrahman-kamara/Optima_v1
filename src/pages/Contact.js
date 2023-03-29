@@ -2,12 +2,18 @@ import React, {useState, useRef} from "react";
 import "./Contact.css";
 import emailjs from '@emailjs/browser';
 
-const initialValue = {firstName: "", lastName: "", email: "", phone: "", society:"", occupation: "", message: ""}
+const initialValue = {prenom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
 
 const initailState = {value: initialValue}
 const Contact = () => {
-const [state, setState] = useState(initailState)
-const {value} = state
+const [prenom, setPrenom] = useState("")
+const [nom, setnom] = useState("")
+const [email, setemail] = useState("")
+const [tel, settel] = useState("")
+const [society, setsociety] = useState("")
+const [occupation, setoccupation] = useState("")
+const [message, setmessage] = useState("")
+const [error, setError] = useState({})
 
 
 const form = useRef();
@@ -27,6 +33,33 @@ const sendEmail = (event) => {
 };
 
 
+const validateForm = () => {
+  let error = {}
+  if(!prenom){
+    error.prenom = "prenom est require"
+  }
+  if(!nom){
+    error.nom = "nom est require"
+  }
+  if(!email){
+    error.email = "nom est require"
+  }
+  if(!tel){
+    error.tel = "tel est require"
+  }
+  if(!society){
+    error.society = "society est require"
+  }
+  if(!occupation){
+    error.occupation = "occupation est require"
+  }
+  if(!message){
+    error.message = "message est require"
+  }
+
+  setError(error)
+  return Object.keys(error).length === 0
+}
 
 
 
@@ -131,10 +164,11 @@ const sendEmail = (event) => {
              name="message"
               rows="3"
             ></textarea>
+            {error.message && <span>{error.message}</span>}
           </div>
 
           <div className="button-sub">
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary" type="submit" disabled={!validateForm}>
               Envoyer
             </button>
           </div>
