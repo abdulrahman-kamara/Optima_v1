@@ -9,20 +9,24 @@ import email_key from  "../Constant/email/email_key"
 import  { Circles } from 'react-loader-spinner';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-
+// the values of the contact information
 const initialValue = {prenom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
 
 
 
 const Contact = () => {
+  // i used useRef hook to be able to return an object that can i can use during the lifecyle of this component and also to access a DOM child directly
 const form = useRef();  
+// this stae handle the initailvalues of the form ans set it so it can be access locally
 const [formData, setFormData] = useState(initialValue)
+//to display my error messages
 const [error, setError] = useState({})
+// showing the loading state of the submit request
 const [isLoading, setIsLoading] = useState(false)
 
 
 
-
+// the submit function that handle the validation and the submit request of the form. and also using react emailjs liberey
 const sendEmail = (e) => {
   e.preventDefault();
   let newErrors = {}
@@ -56,10 +60,8 @@ const sendEmail = (e) => {
   }
 };
 
-
+//seeting the submit button unclickable if the values are not yet given and make it clickable when all the fields a filled
 const isDisabled = !(formData.prenom && formData.nom && formData.email && formData.tel && formData.society && formData.occupation && formData.message);
-
-
 
   return (
     <div className="form-container">
@@ -202,8 +204,8 @@ const isDisabled = !(formData.prenom && formData.nom && formData.email && formDa
           <div className="button-sub">
             <button className="btn btn-primary" type="submit" disabled={isDisabled}>
               {isLoading ? (
-<div className="spinner">
-  <Circles
+            <div className="spinner">
+           <Circles
               height="50"
               width="50"
               
@@ -213,15 +215,15 @@ const isDisabled = !(formData.prenom && formData.nom && formData.email && formDa
               wrapperClass=""
               visible={true}
             />
-</div>
+              </div>
               
-              ):     "Envoyer"}
+              ): "Envoyer" 
+              }
          
             </button>
           </div>
         </form>
       </div>
-
       <div className="section-footer">
         <span className="email-text">
           <h6 className="section-text">E-mail</h6>

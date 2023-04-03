@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams, Navigate, Outlet } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import Geocode from "react-geocode"
 import company from "../../data/buildings.png"
@@ -18,7 +18,6 @@ function AdherentDetail(props) {
 
 
   const [adherent, setAdherent] = useState(null)
-  const [intervenants, setIntervenants] = useState([])
   const [coordonnees, setCoordonnees] = useState({})
 
   const {identification_adherent} = useParams()
@@ -41,12 +40,12 @@ console.log("mydata", identification_adherent);
      * @param {number} adherent 
      * @param {Boolean} qualifie 
      */
-    const getAllIntervenant = async (adherent, qualifie) => {
-      await supervisionService.getAllIntervenant(adherent, qualifie)
-          .then(
-              response => setIntervenants(response)
-          )
-  }
+//     const getAllIntervenant = async (adherent, qualifie) => {
+//       await supervisionService.getAllIntervenant(adherent, qualifie)
+//           .then(
+//               response => setIntervenants(response)
+//           )
+//   }
 
   useEffect(() => {
     // Adherent n'a pas encore été initialisé
