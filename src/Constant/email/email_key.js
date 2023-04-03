@@ -1,29 +1,8 @@
-const activiteList = [
+const serviceId = "KweSbc76vuc4y4N6o"
   
-    {
-        nom: "Taximètre", // TAX
-        numero: 1
-    },
-    {
-        nom: "Gaz / Opa", // GZO
-        numero: 2
-    },
-    {
-        nom: "Tachygraphe", // TCO
-        numero: 4
-    },
-    {
-        nom: "Ethylotest", // EAD
-        numero: 5
-    },
-    {
-        nom: "Auto-Ecole", // AUT
-        numero: 6
-    },
-   
-]
+  
 
-export default activiteList;
+export default serviceId;
 
 {/* <div style={{  gap:"5px", display:"flex", justifyContent:"space-evenly" }}>
 <div class="form-check map-checkbox" >
