@@ -108,6 +108,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.name-sign{
+  display: flex;
+
+}
+.sign{
+  color: #e65d5e;
+  
+}
 
 @media (max-width: 576px) {
   .form-container {

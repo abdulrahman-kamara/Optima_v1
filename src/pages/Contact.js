@@ -60,7 +60,7 @@ const sendEmail = (e) => {
   }
 };
 
-//seeting the submit button unclickable if the values are not yet given and make it clickable when all the fields a filled
+//seeting the submit button unclickable if the values are not yet given and make it clickable when all the fields are filled
 const isDisabled = !(formData.prenom && formData.nom && formData.email && formData.tel && formData.society && formData.occupation && formData.message);
 
   return (
