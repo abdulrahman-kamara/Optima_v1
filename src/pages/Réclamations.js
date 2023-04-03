@@ -1,11 +1,58 @@
-import React from "react";
+import React, {useState, useRef} from "react";
 import "./Réclamations.css";
 import Datepicker from "../components/Datepicker/Datepicker";
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import email_id from  "../Constant/email/email_id" 
+import email_template from  "../Constant/email/email_template" 
+import email_key from  "../Constant/email/email_key"
+
+// the values of the contact information
+const initialValue = {place: "", contract: "", email: "", tel: "", society:"", address: "", message: ""}
+
 
 function Réclamations() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form submitted");
+   // i used useRef hook to be able to return an object that can i can use during the lifecyle of this component and also to access a DOM child directly
+const form = useRef();  
+// this stae handle the initailvalues of the form ans set it so it can be access locally
+const [formData, setFormData] = useState(initialValue)
+//to display my error messages
+const [error, setError] = useState({})
+// showing the loading state of the submit request
+const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newErrors = {}
+    if (!formData.prenom)newErrors =  {...newErrors, prenom: "votre prenom est requirer"};
+    if(!formData.nom)newErrors = {...newErrors, nom: "votre nom est requirer"};
+    if(!formData.email)newErrors = {...newErrors, email: "votre email est requirer"}
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors = {...newErrors, email: "le format est invaliable"}
+    if(!formData.tel)newErrors = {...newErrors, tel: "votre tel est requirer"}
+    else if  (!/^\d{10}$/.test(formData.tel)) newErrors = {...newErrors, tel: "le format est invaliable"}
+    if(!formData.society)newErrors = {...newErrors, society: "votre society est requirer"};
+    if(!formData.occupation)newErrors = {...newErrors, occupation: "votre occupation est requirer"};
+    if(!formData.message)newErrors = {...newErrors, message: "votre message est requirer"};
+    setError(newErrors)
+    if(Object.keys(newErrors).length === 0){
+      setIsLoading(true)
+      
+    emailjs.sendForm(email_id, email_template, form.current, email_key,)
+      .then((result) => {
+          console.log(result.text);
+          console.log("message sent"); 
+          toast.success("Votre message est bien envoyer Merci!")
+          setFormData(initialValue)
+      }).catch ((error) => {
+          console.log(error.text);
+          toast.error("Votre message est pas envoyer Merci!")
+         
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+    }
   };
 
   return (
