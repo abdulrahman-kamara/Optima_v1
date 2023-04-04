@@ -1,212 +1,246 @@
 import React, {useState, useRef} from "react";
 import "./Réclamations.css";
-import Datepicker from "../components/Datepicker/Datepicker";
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import email_id from  "../Constant/email/email_id" 
-import email_template from  "../Constant/email/email_template" 
-import email_key from  "../Constant/email/email_key"
+import { ToastContainer, toast } from 'react-toastify';import ReactDatePicker from "react-datepicker";
+;
 
-// the values of the contact information
-const initialValue = {place: "", contract: "", email: "", tel: "", society:"", address: "", message: ""}
+// import email_id from "../Constant/email/reclamation-email/email_id"
+// import email_key from "../Constant/email/reclamation-email/email_key"
+// import email_template from "../Constant/email/reclamation-email/email_template"
+
+
+const initialValue = {activite: "", society: "", email: "", phone: "", civilite:"", address: "", place: "", contract_name: "", message: ""}
 
 
 function Réclamations() {
-   // i used useRef hook to be able to return an object that can i can use during the lifecyle of this component and also to access a DOM child directly
-const form = useRef();  
-// this stae handle the initailvalues of the form ans set it so it can be access locally
 const [formData, setFormData] = useState(initialValue)
-//to display my error messages
+const [selectedDate, setSelectedDate] = useState(null)
 const [error, setError] = useState({})
-// showing the loading state of the submit request
 const [isLoading, setIsLoading] = useState(false)
+const form = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let newErrors = {}
-    if (!formData.prenom)newErrors =  {...newErrors, prenom: "votre prenom est requirer"};
-    if(!formData.nom)newErrors = {...newErrors, nom: "votre nom est requirer"};
-    if(!formData.email)newErrors = {...newErrors, email: "votre email est requirer"}
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors = {...newErrors, email: "le format est invaliable"}
-    if(!formData.tel)newErrors = {...newErrors, tel: "votre tel est requirer"}
-    else if  (!/^\d{10}$/.test(formData.tel)) newErrors = {...newErrors, tel: "le format est invaliable"}
-    if(!formData.society)newErrors = {...newErrors, society: "votre society est requirer"};
-    if(!formData.occupation)newErrors = {...newErrors, occupation: "votre occupation est requirer"};
-    if(!formData.message)newErrors = {...newErrors, message: "votre message est requirer"};
-    setError(newErrors)
-    if(Object.keys(newErrors).length === 0){
-      setIsLoading(true)
-      
-    emailjs.sendForm(email_id, email_template, form.current, email_key,)
-      .then((result) => {
-          console.log(result.text);
-          console.log("message sent"); 
-          toast.success("Votre message est bien envoyer Merci!")
-          setFormData(initialValue)
-      }).catch ((error) => {
-          console.log(error.text);
-          toast.error("Votre message est pas envoyer Merci!")
-         
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-    }
-  };
+// Regular expressions for email and phone validation
+const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const phoneRegex = /^[0-9]{10}$/;
+
+
+
+
+
+
+const sendEmail = (e) => {
+  e.preventDefault();
+  let newErrors = {}
+  if (!formData.activite)newErrors =  {...newErrors, activite: "votre activite est requirer"};
+  if (!formData.place)newErrors =  {...newErrors, place: "votre place est requirer"};
+  if (!formData.contract_name)newErrors =  {...newErrors, contract_name: "votre contract_name est requirer"};
+  if(!formData.civilite)newErrors = {...newErrors, civilite: "votre civilite est requirer"};
+  if(!formData.email)newErrors = {...newErrors, email: "votre email est requirer"}
+  else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors = {...newErrors, email: "le format est invaliable"}
+  if(!formData.tel)newErrors = {...newErrors, tel: "votre tel est requirer"}
+  else if  (!/^\d{10}$/.test(formData.phone)) newErrors = {...newErrors, phone: "le format est invaliable"}
+  if(!formData.society)newErrors = {...newErrors, society: "votre society est requirer"};
+  if(!formData.address)newErrors = {...newErrors, address: "votre address est requirer"};
+  if(!formData.message)newErrors = {...newErrors, message: "votre message est requirer"};
+  if(selectedDate === null)newErrors ={...newErrors, selectedDate: "vous doit choisi un date"} 
+  setError(newErrors)
+  if(Object.keys(newErrors).length === 0){
+    setIsLoading(true)
+    
+  emailjs.sendForm("email_id", "email_template", form.current, "email_key",)
+    .then((result) => {
+        console.log(result.text);
+        console.log("message sent"); 
+        toast.success("Votre message est bien envoyer Merci!")
+        setFormData(initialValue)
+    }).catch ((error) => {
+        console.log(error.text);
+        toast.error("Votre message est pas envoyer Merci!")
+       
+    })
+    .finally(() => {
+      setIsLoading(false)
+    })
+  }
+};
+
+
+
+
+const isDisabled = !(formData.activite && formData.place && formData.email && formData.phone && formData.society && formData.address && formData.message && formData.contract_name && formData.civilite);
+
 
   return (
     <div className="reclamation-container">
-      <div class="my-form">
+      <div className="my-form">
         <div>
-          <h5 class="form-header">
+          <h5 className="form-header">
             La description du processus de traitement des réclamations et des
             appels peut être mis à disposition sur simple demande.
           </h5>
         </div>
         <form
-          class="row g-3 needs-validation"
-          novalidate
-          onSubmit={handleSubmit}
+          className="row g-3 needs-validation"
+         ref={form}
+          onSubmit={sendEmail}
         >
-          <div class="select-list">
-            <label for="validationCustom01" class="form-label">
+          <div className="select-list">
+            <label className="form-label">
               Activité concernée
             </label>
-            <select class="form-select" aria-label="Default select example">
+            <select className="form-select" name="activite" value={formData.activite}  onChange={e => setFormData({...formData, activite : e.target.value})}>
               <option selected>Choisissez une Option</option>
-              <option value="1">Taxi</option>
-              <option value="2">Tachygraphe</option>
-              <option value="3">Analyseur de gaz/ Opacimètre</option>
-              <option value="2">Ethylotest</option>
-              <option value="3">Auto-Ecole</option>
-              <option value="2">Pont Elévateur</option>
-              <option value="3">Formation</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
             </select>
+                   {error.activite && <span>{error.activite}</span>}
           </div>
-          <div class=" col-md-4 Société">
-            <label for="validationCustom01" class="form-label">
+          <div className=" col-md-4 Société">
+            <label className="form-label">
               Société
             </label>
             <input
               type="text"
-              class="form-control"
-              id="validationCustom01"
+              className="form-control"
+              value={formData.society}
               placeholder=""
-              required
+              name="society"
+              onChange={e => setFormData({...formData, society : e.target.value})}
             />
+            {error.society && <span>{error.society}</span>}
           </div>
 
-          <div class="civilité">
-            <div class="options">
-              <label for="validationCustom01" class="form-label">
+          <div className="civilité">
+            <div className="options">
+              <label className="form-label">
                 Civilité
               </label>
-              <select class="option-select" aria-label="Default select example">
+              <select className="option-select" name="civilite" value={formData.civilite}   onChange={e => setFormData({...formData, civilite : e.target.value})}>
                 <option value="1">M.</option>
-                <option value="1">Melle</option>
+                <option value="2">Mille</option>
                 <option value="3">Mme</option>
               </select>
+              {error.civilite && <span>{error.civilite}</span>}
             </div>
 
-            <div class="options">
-              <label for="validationCustom02" class="form-label">
+            <div className="options">
+              <label  className="form-label">
                 Nom du contact
               </label>
               <input
                 type="text"
-                class="form-control"
-                id="validationCustom02"
+                className="form-control"
+                name="contract_name"
+                value={formData.contract_name}
                 placeholder=""
-                required
+                onChange={e => setFormData({...formData, contract_name : e.target.value})}
               />
+              {error.contract_name && <span>{error.contract_name}</span>}
             </div>
           </div>
-          <div class="col-md-4 address">
-            <label for="validationCustom02" class="form-label">
+          <div className="col-md-4 address">
+            <label  className="form-label">
               Address
             </label>
             <input
               type="text"
-              class="form-control"
-              id="validationCustom02"
+              className="form-control"
+              name="address"
+              value={formData.address}
               placeholder="Address"
-              required
+              onChange={e => setFormData({...formData, address : e.target.value})}
             />
+            {error.address && <span>{error.address}</span>}
           </div>
 
-          <div class="personal-info">
-            <div class="contact-info">
-              <label for="validationCustom02" class="form-label">
+          <div className="personal-info">
+            <div className="contact-info">
+              <label  className="form-label">
                 Téléphone
               </label>
               <input
                 type="text"
-                class="form-control"
-                id="validationCustom02"
+                className="form-control"
+                name="phone"
+                value={formData.phone}
                 placeholder=""
-                required
+                onChange={e => setFormData({...formData, phone : e.target.value})}
+                pattern={phoneRegex}
               />
+              {error.phone && <span>{error.phone}</span>}
             </div>
 
-            <div class="contact-info">
-              <label for="validationCustom02" class="form-label">
+            <div className="contact-info">
+              <label  className="form-label">
                 E-mail *
               </label>
               <input
                 type="email"
-                class="form-control"
-                id="validationCustom02"
+                className="form-control"
+                name="email"
+                value={formData.email}
                 placeholder=""
-                required
+                onChange={e => setFormData({...formData, email : e.target.value})}
+                pattern={emailRegex}
               />
+              {error.email && <span>{error.email}</span>}
             </div>
           </div>
-          <div class="datepicker">
-            <Datepicker />
+          <div className="datepicker">
+            <ReactDatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            />
+            
           </div>
-          <div class="col-md-4 lieu">
-            <label for="validationCustom02" class="form-label">
+          <div className="col-md-4 lieu">
+            <label  className="form-label">
               Lieu ou Atelier :
             </label>
             <input
               type="text"
-              class="form-control"
-              id="validationCustom02"
-              placeholder="Address"
-              required
+              className="form-control"
+              name="place"
+              value={formData.place}
+              placeholder="leiu ou artilier"
+              onChange={e => setFormData({...formData, place : e.target.value})}
             />
+            {error.place && <span>{error.place}</span>}
           </div>
-          <div class="col-md-4 message">
-            <label for="validationCustom02" class="form-label">
+          <div className="col-md-4 message">
+            <label  className="form-label">
               Message
             </label>
             <textarea
-              class="form-control"
-              id="exampleFormControlTextarea1"
+              className="form-control"
+              name="message"
+              value={formData.message}
               rows="3"
+              onChange={e => setFormData({...formData, message : e.target.value})}
             ></textarea>
+            {error.message && <span>{error.message}</span>}
           </div>
 
-          <div class="button-sub">
-            <button class="btn btn-primary" type="submit">
+          <div className="button-sub">
+            <button className="btn btn-primary" type="submit" >
               Envoyer
             </button>
           </div>
         </form>
       </div>
 
-      <div class="section-footer">
-        <span class="email-text">
-          <h6 class="section-text">E-mail</h6>
-          <p class="section-text">contact@cercleoptima.com</p>
+      <div className="section-footer">
+        <span className="email-text">
+          <h6 className="section-text">E-mail</h6>
+          <p className="section-text">contact@cercleoptima.com</p>
         </span>
-        <span class="email-text">
-          <h6 class="section-text">Téléphone</h6>
-          <p class="section-text">04 42 50 96 90</p>
+        <span className="email-text">
+          <h6 className="section-text">Téléphone</h6>
+          <p className="section-text">04 42 50 96 90</p>
         </span>
-        <span class="email-text">
-          <p class="section-text">
+        <span className="email-text">
+          <p className="section-text">
             Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
           </p>
         </span>

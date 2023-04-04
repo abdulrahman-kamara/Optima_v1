@@ -3,9 +3,9 @@ import "./Contact.css";
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import email_id from  "../Constant/email/email_id" 
-import email_template from  "../Constant/email/email_template" 
-import email_key from  "../Constant/email/email_key" 
+import email_id from  "../Constant/email/contact-email/email_id" 
+import email_template from  "../Constant/email/contact-email/email_template" 
+import email_key from  "../Constant/email/contact-email/email_key" 
 import  { Circles } from 'react-loader-spinner';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
