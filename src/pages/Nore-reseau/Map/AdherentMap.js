@@ -56,50 +56,7 @@ export default function AdherentMap() {
   const center = [47.824905, 2.618787];
   const mapRef = useRef();
 
-  // update the state of the checkbox and also update the state of the map
-  // const handleChange = (e, activite, indexToRemove = null) => {
-  //   const { value, checked } = e.target;
-
-  //   if (checked) {
-  //     var _valueOptions = [...valueOptions, e.target.value];
-  //     var _adherents = [];
-
-  //     setValueOptions((prev) => [...prev, e.target.value]);
-
-  //     console.log("_valueOptions", _valueOptions);
-  //     supervisionService.getAllAdherent("", true, activite).then((response) => {
-  //       console.log("response", response);
-  //       _adherents = response;
-  //     });
-
-  //     if (_valueOptions.length === 1) {
-  //       supervisionService
-  //         .getAllAdherent("", true, activite)
-  //         .then((response) => {
-  //           console.log("response", response);
-  //           setAdherents(response);
-  //         });
-  //     } else if (_valueOptions.length > 1) {
-  //       supervisionService
-  //         .getAllAdherent("", true, activite)
-  //         .then((response) => {
-  //           let _adherents = [...adherents, ...response];
-  //           _adherents = _adherents.filter(
-  //             (obj, index) =>
-  //               _adherents.findIndex(
-  //                 (_adherent) =>
-  //                   _adherent.identification_adherent ===
-  //                   obj.identification_adherent
-  //               ) === index
-  //           );
-  //           console.log("_adherents", _adherents);
-  //           setAdherents(_adherents);
-  //         });
-  //     } else {
-  //       setValueOptions(valueOptions.filter((_value) => _value !== value));
-  //     }
-  //   }
-  // };
+ 
 
   const handleChange = async (e, activite) => {
     const { value, checked } = e.target;
