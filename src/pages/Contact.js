@@ -103,9 +103,12 @@ const handleCaptchaChange = (value) => {
                 value={formData.prenom}
                 name="prenom"
                 placeholder="prenom"
-                onChange={e => setFormData({...formData, prenom : e.target.value})}
+                onChange={e => {setFormData({...formData, prenom : e.target.value}); if (error.prenom && e.target.value) {
+                  const { prenom: _, ...rest } = error;
+                  setError(rest);
+                }} }
               />
-              {/* {error.prenom && <div>{error.prenom}</div>} */}
+              {error.prenom && <div>{error.prenom}</div>}
                 
             </div>
             <div className="col-md-4 nom">
@@ -118,9 +121,11 @@ const handleCaptchaChange = (value) => {
                 value={formData.nom}
                 name="nom"
                 placeholder="nom"
-             onChange={e => setFormData({...formData, nom : e.target.value})}
-              />
-              {/* {error.nom && <div>{error.nom}</div>} */}
+                onChange={e => {setFormData({...formData, nom : e.target.value}); if (error.nom && e.target.value) {
+                  const { nom: _, ...rest } = error;
+                  setError(rest);
+                }} }              />
+              {error.nom && <div>{error.nom}</div>}
                 
             </div>
             <div className="email">
@@ -174,9 +179,11 @@ const handleCaptchaChange = (value) => {
                 value={formData.society}
                 name="society"
                 placeholder="society"
-                onChange={e => setFormData({...formData, society : e.target.value})}
-              />
-              {/* {error.society && <div>{error.society}</div>} */}
+                onChange={e => {setFormData({...formData, society : e.target.value}); if (error.society && e.target.value) {
+                  const { society: _, ...rest } = error;
+                  setError(rest);
+                }} }              />
+              {error.society && <div>{error.society}</div>}
            
             </div>
             <div className="col-md-4 occupation">
@@ -189,9 +196,11 @@ const handleCaptchaChange = (value) => {
                 value={formData.occupation}
                 name="occupation"
                 placeholder="occupation"
-                onChange={e => setFormData({...formData, occupation : e.target.value})}
-              />
-              {/* {error.occupation && <div>{error.occupation}</div>} */}
+                onChange={e => {setFormData({...formData, occupation : e.target.value}); if (error.occupation && e.target.value) {
+                  const { occupation: _, ...rest } = error;
+                  setError(rest);
+                }} }              />
+              {error.occupation && <div>{error.occupation}</div>}
               
             </div>
           </div>
@@ -206,10 +215,12 @@ const handleCaptchaChange = (value) => {
               rows="3"
               name="message"
               placeholder="Ecrir votre message"
-              onChange={e => setFormData({...formData, message : e.target.value})}
-            ></textarea>
+              onChange={e => {setFormData({...formData, message : e.target.value}); if (error.message && e.target.value) {
+                const { message: _, ...rest } = error;
+                setError(rest);
+              }} }            ></textarea>
            
-            {/* {error.message && <span>{error.message}</span>} */}
+            {error.message && <span>{error.message}</span>}
           </div>
           <ReCAPTCHA
           ref={recaptchaRef}
