@@ -7,7 +7,8 @@ import email_id from  "../Constant/email/contact-email/email_id"
 import email_template from  "../Constant/email/contact-email/email_template" 
 import email_key from  "../Constant/email/contact-email/email_key" 
 import  { Circles } from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import ReCAPTCHA from "react-google-recaptcha";
+import capchakey from "../Constant/capcha_key/capcha"
 
 // the values of the contact information
 const initialValue = {prenom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
@@ -23,7 +24,10 @@ const [formData, setFormData] = useState(initialValue)
 const [error, setError] = useState({})
 // showing the loading state of the submit request
 const [isLoading, setIsLoading] = useState(false)
-
+//google capcha verification 
+const [captchaValue, setCaptchaValue] = useState("");
+const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+const recaptchaRef = React.createRef()
 
 
 // the submit function that handle the validation and the submit request of the form. and also using react emailjs liberey
@@ -42,7 +46,7 @@ const sendEmail = (e) => {
   setError(newErrors)
   if(Object.keys(newErrors).length === 0){
     setIsLoading(true)
-    
+    if(isCaptchaVerified){
   emailjs.sendForm(email_id, email_template, form.current, email_key,)
     .then((result) => {
         console.log(result.text);
@@ -58,10 +62,17 @@ const sendEmail = (e) => {
       setIsLoading(false)
     })
   }
+    }
+
 };
 
+const handleCaptchaChange = (value) => {
+  console.log("im not a robot");
+  setCaptchaValue(value);
+  setIsCaptchaVerified(true);
+};
 //seeting the submit button unclickable if the values are not yet given and make it clickable when all the fields are filled
-const isDisabled = !(formData.prenom && formData.nom && formData.email && formData.tel && formData.society && formData.occupation && formData.message);
+// const isDisabled = !(formData.prenom && formData.nom && formData.email && formData.tel && formData.society && formData.occupation && formData.message);
 
   return (
     <div className="form-container">
@@ -200,9 +211,14 @@ const isDisabled = !(formData.prenom && formData.nom && formData.email && formDa
            
             {/* {error.message && <span>{error.message}</span>} */}
           </div>
-
+          <ReCAPTCHA
+          ref={recaptchaRef}
+        sitekey={capchakey}
+        onChange={handleCaptchaChange}
+        className="capcha"
+      />
           <div className="button-sub">
-            <button className="btn btn-primary" type="submit" disabled={isDisabled}>
+            <button className="btn btn-primary" type="submit" disabled={!isCaptchaVerified}>
               {isLoading ? (
             <div className="spinner">
            <Circles

@@ -74,13 +74,15 @@
 .lieu {
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
   padding-left: 50px;
 }
 .message {
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 100%;
   padding-left: 50px;
 }
 
@@ -88,6 +90,15 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+span{
+  font-size: small;
+  color: #e65d5e;
+}
+.capcha{
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 .btn {
   width: 200px;
