@@ -50,11 +50,18 @@ span {
   text-align: center;
   padding: 5px;
 }
+.red-card{
+  border-radius: 10px;
+  transition: transform 0.5s ease-out 0s;
+}
 .card {
   transition: transform 0.5s ease-out 0s;
 }
 .card:hover {
   transform: translateX(50px);
+}
+.red-card:hover {
+  transform: translateX(10px);
 }
 
 .card-icon {

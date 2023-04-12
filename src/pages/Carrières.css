@@ -21,6 +21,11 @@
 }
 .carriere {
   width: 200%;
+  background-color:  #f7fafb;
+  padding: 10px 10px 15px 15px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: rgb(222, 235, 247);
 }
 .card-title {
   font-size: 34px;

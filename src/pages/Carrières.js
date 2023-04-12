@@ -16,11 +16,11 @@ function Carrières() {
       </div>
 
       <div className="card-bg">
-        <div class="col-sm-6 mb-3 mb-sm-0 my-cards">
-          <div class="card carriere">
-            <div class="card-body">
-              <h5 class="card-title">Nous rejoindre</h5>
-              <p class="card-text">
+        <div className="col-sm-6 mb-3 mb-sm-0 my-cards">
+          <div className=" carriere">
+            <div className="my-body">
+              <h5 className="card-title">Nous rejoindre</h5>
+              <p className="card-text">
                 Toujours en quête de nouveaux talents, Cercle Optima gère un
                 vivier de candidatures ! Si l'amélioration continue, la qualité,
                 la métrologie légale vous intéressent que vous êtes autonome et

@@ -172,7 +172,7 @@ function Activities() {
           </div>
 
           <div class="col-sm-6">
-            <div class="card mb-4 bg-danger">
+            <div class="red-card mb-4 bg-danger">
               <div class="card-body">
                 <div className="card-icon">
                   <h5 class="card-title-icon">
@@ -198,7 +198,7 @@ function Activities() {
                 </li>
               </div>
             </div>
-            <div class="card mb-4 bg-danger">
+            <div class="red-card mb-4 bg-danger">
               <div class="card-body">
                 <div className="card-icon">
                   <h5 class="card-title-icon">
@@ -241,7 +241,7 @@ function Activities() {
                 </li>
               </div>
             </div>
-            <div class="card mb-4 bg-danger">
+            <div class="red-card mb-4 bg-danger">
               <div class="card-body">
                 <div className="card-icon">
                   <h5 class="card-title-icon">

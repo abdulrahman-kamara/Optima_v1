@@ -18,28 +18,16 @@ const getAdherentByIdentification = (identification) => {
         .then(response => response.data)
 }
 
+const getAllAdherentAgrements = (numero_adherent) => { 
+    return axios.get(apilink + "/adherent/agrements/" + numero_adherent)
+    .then(response => response.data )
+}
+
  const supervisionService = {
     getAllAdherent,
     getAdherent,
     getAdherentByIdentification,
+    getAllAdherentAgrements
 }
 export default supervisionService;
 
-// const handleResponse = (response) => {
-//     return response.text()
-//         .then(
-//             text => {
-//                 const data = text
-//                 if (!response.ok) {
-//                     if (response.status === 401 || response.status === 403) {
-//                         history.push('/logout')
-//                         // eslint-disable-next-line no-restricted-globals
-//                         location.reload(true)
-//                     }
-//                     const error = JSON.parse(data).message
-//                     return Promise.reject(error)
-//                 }
-//                 return data
-//             }
-//         )
-// }

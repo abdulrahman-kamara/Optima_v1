@@ -2,7 +2,7 @@
 import { NavLink } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
- import supervisionService from "../../Context/SupervisionService";
+import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
 import { LayerGroup, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
@@ -265,7 +265,7 @@ const iconMap = {
           center={center}
           zoom={6}
           scrollWheelZoom={false}
-          style={{ width: "100%", height: "100vh", paddingRight: "100px" }}
+          className="map"
           ref={mapRef}
         >
           <TileLayer
@@ -319,7 +319,8 @@ const iconMap = {
           )}
         
         </MapContainer>
-      </div>
+        </div>
+      
 
   
      
@@ -339,14 +340,7 @@ const iconMap = {
               autoComplete="off"
             />
           </div>
-          <div style={{ marginTop: "5px", marginLeft:"5px" }}>
-           {/* <div class="form-check">
-  <input class="form-check-input" type="checkbox" value={4} checked={actif} onChange={handleCheck} id="flexCheckDefault"/>
-  <label class="form-check-label" >
-   actif
-  </label>
-</div> */}
-</div>
+      
           </div>
           <div className="list-adherent">
            {(!loadingscreen &&

@@ -151,6 +151,7 @@ button {
     right: 20px;
   }
   .nav-links-mobile {
+    
     display: block;
     list-style: none;
     box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
@@ -216,20 +217,12 @@ button {
     display: none;
   }
   .nav-links-mobile {
-    position: absolute;
+   
     display: block;
-    list-style: none;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
-    transition: all 0.5s ease-in-out;
-    width: 100%;
-    background-color: #ffff;
-    overflow-x: scroll;
-    height: 100%;
-    box-sizing: border-box;
-    left: 200px;
+   
   }
   ul {
-    position: fixed;
+   
     top: -20px;
     padding-bottom: 20px;
     cursor: pointer;
@@ -251,7 +244,7 @@ button {
     text-align: center;
     font-size: small;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.575);
+    background-color: rgba(221, 61, 61, 0.575);
   }
   .mobile-menu-icon {
     position: absolute;
@@ -287,7 +280,7 @@ button {
     display: none;
   }
   .nav-links-mobile {
-    position: absolute;
+    
     display: block;
     list-style: none;
     box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
