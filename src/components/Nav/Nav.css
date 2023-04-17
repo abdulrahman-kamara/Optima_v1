@@ -33,12 +33,7 @@
   color: var(--comet-text);
 }
 
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
+
 .navbar {
   line-height: 10vh;
   height: 10vh;
@@ -50,15 +45,21 @@ a {
   box-sizing: border-box;
   border: #101010;
 }
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 .logo {
   display: flex;
  
 }
  .logo-image {
   width: 35px;
- 
-  
 }
+
 .nav-bar-link{
   display: flex;
   justify-content: center;
@@ -67,6 +68,7 @@ a {
  .logo-name {
   font-weight: bold;
   padding-left: 20px;
+  color:#265386 ;
 }
 .nav-link {
   display: flex;
@@ -78,21 +80,18 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: #586069;
+  color: #265386;
   font-size: 20px;
   font-weight: 700;
-  padding: 0 10px;
+  padding:10px;
   margin: 0 10px;
   cursor: pointer;
   text-decoration: none;
   font-size: small;
 }
 
-.nav-link li :hover {
-  background-color: blueviolet;
-}
-.nav-link li :hover {
-  color: blue;
+ul li:hover{
+  color: #6e8efb
 }
 
 .nav-link link {
@@ -154,7 +153,7 @@ button {
     
     display: block;
     list-style: none;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
+    box-shadow: rgba(244, 244, 246, 0.867) 0 30px 30px -20px;
     transition: all 0.5s ease-in-out;
     width: 50%;
     background-color: #ffff;
@@ -165,27 +164,20 @@ button {
     right: 0;
   }
 
-  ul {
+  ul .nav-link {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     right: 0;
     padding: 10px;
-    border-radius: 20px;
     margin-bottom: 100px;
   }
 
-  ul li {
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    width: 100%;
-    transition: all 0.5s ease-in-out;
-    text-align: center;
-    font-size: 10px;
-    background-color: rgba(255, 255, 255, 0.575);
-    right: 0;
+ 
+  ul li:hover{
+    padding: 10px;
+    color: #4869ee;
   }
 
   .hero h1 {
@@ -222,7 +214,6 @@ button {
    
   }
   ul {
-   
     top: -20px;
     padding-bottom: 20px;
     cursor: pointer;
@@ -235,7 +226,7 @@ button {
     margin: 10px;
   }
 
-  ul li {
+  ul li .nav-link {
     display: flex;
     flex-direction: column;
     padding: 32px;
@@ -244,7 +235,7 @@ button {
     text-align: center;
     font-size: small;
     cursor: pointer;
-    background-color: rgba(221, 61, 61, 0.575);
+   
   }
   .mobile-menu-icon {
     position: absolute;
@@ -280,22 +271,22 @@ button {
     display: none;
   }
   .nav-links-mobile {
-    
     display: block;
     list-style: none;
     box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
     transition: all 0.5s ease-in-out;
     width: 100%;
     background-color: #ffff;
+    z-index: 1000;
     overflow-x: scroll;
     height: 100%;
     box-sizing: border-box;
-    border-left: 1px solid rgb(126, 117, 117);
+    border-left: 1px solid rgb(232, 223, 223);
     right: 0;
   }
 
-  ul {
-    position: fixed;
+    ul {
+    position: fixed; 
     top: -20px;
     padding-bottom: 20px;
     cursor: pointer;
@@ -308,13 +299,17 @@ button {
     margin: 10px;
   }
 
+  ul li .nav-link:hover{
+    padding: 2px;
+    background-color: #d9dfed;
+    color: var(--comet-hover-color)
+  }
+
   ul li {
     padding: 10px;
     width: 30vh;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
     text-align: center;
     font-size: large;
-    background-color: rgba(255, 255, 255, 0.575);
   }
 
   .mobile-menu-icon {

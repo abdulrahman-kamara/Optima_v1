@@ -16,13 +16,8 @@ function NavBar() {
         </a>
       </div>
 
-      <ul
-        className={mobile ? "nav-links-mobile" : "nav-link"}
-        onClick={() => setmobile(false)}
-
-        // onMouseEnter={()=> setHover(false)}
-        // onMouseLeave={()=> setHover(false)}
-      >
+      <ul className={mobile ? "nav-links-mobile" : "nav-link"}
+        onClick={() => setmobile(false)}>
         <Link to="/">
           <li>Accueil</li>
         </Link>

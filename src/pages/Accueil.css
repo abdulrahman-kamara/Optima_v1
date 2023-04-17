@@ -1,8 +1,85 @@
-.section-footer {
+.home{
+  display: flex;
+
+}
+.home-container{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-content: center;
+}
+section{
+
+  height: 100%;
+}
+.hero-section{
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  padding-left: 100px;
+  background-image: url('../components/Background/backgroundImage.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+ .list-accueil ol{
+  padding-top: 20px;
+  text-align: left 
+}
+.blank-section{
+    background-color: black;
+    height: 30vh;
+}
+.second-section{
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.section-image{
+  height: 100vh;
+}
+ h4{
+  padding: 0 10px;
+  color: var(--comet-light);
+  text-align:left;
+}
+p{
+  margin-top: 20px;
+  padding: 0 10px; 
+   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--comet-light);
+
+}
+.section-number{
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.section-text{
+  color: var(--comet-light);
+}
+
+.plus{
+  height: 50px;
+
+  background-color: aliceblue;
+}
+
+
+
+
+.footer {
     align-self: center;
     background-color: #e65d5e;
-    width: 1500px;
-    height: 400px;
+    width: 100%;
+    height: 200px;
   }
   .email-text {
     display: flex;
@@ -11,5 +88,27 @@
     align-content: center;
     align-items: center;
     padding-top: 10px;
-    padding-bottom: 10px;
+ 
+  }
+
+  @media (max-width: 992px) {
+    .home-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+     
+     }
+    .hero-section{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+     
+    
+    }
+    .list-accueil ol{
+      padding-top: 20px;
+      text-align: left 
+    }
   }
