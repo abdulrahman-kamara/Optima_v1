@@ -15,7 +15,7 @@ section{
 .hero-section{
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 10px;
   padding-left: 100px;
   background-image: url('../components/Background/backgroundImage.webp');
   background-size: cover;
@@ -25,70 +25,128 @@ section{
 }
  .list-accueil ol{
   padding-top: 20px;
-  text-align: left 
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 100px;
+ font-weight:bold;
+   
 }
 .blank-section{
     background-color: black;
     height: 30vh;
 }
-.second-section{
+.section-metier{
   background-color: black;
-  display: flex;
-  justify-content: space-between;
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid : 0px;
+}
+.section-text{
+display: flex;
+flex-direction: column;
+
 }
 .section-image{
   height: 100vh;
+  display: flex;
+  justify-content: right;
+  padding: 10px;
+  
 }
  h4{
-  padding: 0 10px;
+padding-left: 10px;
+font-size: 40px;
   color: var(--comet-light);
-  text-align:left;
+ 
 }
 p{
-  margin-top: 20px;
-  padding: 0 10px; 
-   text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+ margin-top: 50px;
+ padding: 10px;
+color: var(--comet-light);
+text-align: left;
+justify-content: flex-start;
+align-items: end;
 
-  color: var(--comet-light);
 
 }
-.section-number{
-  margin-top: 200px;
+.section-number {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.section-année{
+  padding-left: 200px;
+  
+}
+
+.section-percentage {
+  text-align: right;
 }
 
 .section-text{
   color: var(--comet-light);
 }
+.plus-line{
+  display: flex;
+  
+}
 
 .plus{
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: 50px;
+  width: 80%;
+  background-color: black;
+}
+.arrowlink{
+  justify-content: center;
+  align-content: center;
+  width: 130px;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e65d5e;
+  border: 1px solid red;
+}
+.arrowlink:hover{
+  background-color: black;
+}
+.section-activite{
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.activite-heading{
+ display: flex;
+ flex-direction: column;
+ margin-top: 20px;
 
-  background-color: aliceblue;
+ padding: 10px;
+}
+.section-items{
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  
 }
 
 
 
 
 .footer {
-    align-self: center;
+   display: flex;
+   flex-direction: column;
     background-color: #e65d5e;
     width: 100%;
-    height: 200px;
+    height: 422px;
   }
   .email-text {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    padding-top: 10px;
- 
+    
   }
 
   @media (max-width: 992px) {
@@ -111,4 +169,43 @@ p{
       padding-top: 20px;
       text-align: left 
     }
+    .section-metier{
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+  
+      grid : 0px;
+    }
+    .section-number {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .section-année{
+      padding-left: 0px;
+    }
+   
+    .section-activite{
+      background-color: black;
+      display: block;
+
+      
+     
+    }
+    .activite-heading{
+     display: flex;
+     flex-direction: column;
+     margin-top: 20px;
+    
+     padding: 10px;
+    }
+    .section-items{
+      margin-top: 20px;
+     display: block;
+      
+      
+    }
+    
   }

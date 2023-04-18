@@ -24,7 +24,7 @@ function NavBar() {
         <Link to="/activities">
           <li>Nos Activités</li>
         </Link>
-        <Link to="/notre métier">
+        <Link to="/notre-métier">
           <li>Notre métier</li>
         </Link>
         <Link to="/certificat">
