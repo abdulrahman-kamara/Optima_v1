@@ -43,7 +43,7 @@
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  border: #101010;
+  border-bottom:1px solid #dedcdc;
 }
 
 li {
