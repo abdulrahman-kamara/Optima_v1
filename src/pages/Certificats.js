@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import supervisionService from "../Context/SupervisionService";
 import Card from "../components/Card/Card"
+import { motion } from "framer-motion";
 
 function Certificats() {
 const [data, setData] = useState([])
@@ -22,8 +23,8 @@ await supervisionService
   
 };
   return (
-    <div style={{display:"flex", justifyContent:"center", alignContent:"center", backgroundColor:"#fcfdfd",}}>
-    <div  style={{width:"70%", boxShadow:"#151b26", }}>
+    <div style={{display:"flex", justifyContent:"center", alignContent:"center", backgroundColor:"white", marginTop:"2rem",  boxShadow: "10px 10px 20px #888888"}}>
+    <div>
       {data && data.map((data, i) =>(
         <Card key={i} data={data}/>
       ) )}

@@ -88,6 +88,16 @@ span{
   font-size: small;
   color: #e65d5e;
 }
+.myspan{
+display: flex;
+font-size: small;
+color: #e65d5e;
+justify-content: center;
+align-items: center;
+font-size: 20px;
+padding-left: 10px;
+    
+}
 .sign{
   color: #e65d5e;
   

@@ -54,10 +54,12 @@ a {
 }
 .logo {
   display: flex;
- 
+   justify-content: center;
+  align-items: center;
 }
  .logo-image {
-  width: 35px;
+  width: 30px;
+  margin-bottom: 10px;
 }
 
 .nav-bar-link{
@@ -67,7 +69,8 @@ a {
 }
  .logo-name {
   font-weight: bold;
-  padding-left: 20px;
+  font-size: 24px ;
+  padding-left: 10px;
   color:#265386 ;
 }
 .nav-link {
@@ -113,6 +116,9 @@ button {
 .mobile-menu-icon {
   display: none;
 }
+
+/* responsive design */
+
 @media (max-width: 576px) {
   .logo {
     display: flex;
@@ -184,6 +190,7 @@ button {
     font-size: 50px;
   }
 }
+
 
 @media (max-width: 768px) {
   a .logo-image {

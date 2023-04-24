@@ -1,6 +1,5 @@
 .home{
   display: flex;
-
 }
 .home-container{
  display: flex;
@@ -54,10 +53,10 @@ flex-direction: column;
   
 }
  h4{
-padding-left: 10px;
-font-size: 40px;
+  padding-left: 10px;
+  font-size: 40px;
   color: var(--comet-light);
- 
+  animation: animate 2s linear infinite;
 }
 p{
   display: flex;

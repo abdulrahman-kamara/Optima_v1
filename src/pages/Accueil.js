@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { BsArrowRight, BsBank, BsTelephoneForward } from "react-icons/bs";
 import { GiChart } from "react-icons/gi";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { motion } from "framer-motion"
+import { AnimatePresence } from "framer-motion";
 
 import "./Accueil.css"
 
@@ -15,12 +17,13 @@ function Accueil() {
     <div>
         <div className="home-container">
           <section>
-          <div className="hero-section">
+          <motion.div className="hero-section" >
           <h2 style={{  marginTop:"50px" }}>Offre Accompagnement Qualité :</h2>
           <h2 style={{ textDecoration: "underline", }}>
             Profiter de l'expérience de notre pôle auditeur !
           </h2>
-            <div className="list-accueil">
+            <motion.div className="list-accueil" animate={{ x: 100 }}
+  transition={{ ease: "easeOut", duration: 2 }}>
             <ol>
             <li>Audit interne ou Audit blanc</li>
             <li>Formation, mise en place de système Qualité.</li>
@@ -33,12 +36,14 @@ function Accueil() {
             </li>
             <li>Conseil et Expertise en métrologie légale.</li>
           </ol>
-            </div>
+            </motion.div>
           
-        </div>
+        </motion.div>
         </section>
         <div className="section-metier">
-          <div className="section-text">
+          <motion.div className="section-text" animate={{ x: 100 }}
+  transition={{ ease: "easeOut", duration: 2 }}
+  >
             <h4>
             
 Le réseau au croisement de la métrologie légale et du système qualité.
@@ -49,12 +54,17 @@ Le réseau au croisement de la métrologie légale et du système qualité.
  
  Nous sommes expert dans les métiers de la vérification, l'installation des instruments de mesure. Notre panel de services regroupés en une offre unique s'articulent autour d'un système qualité, d'un logiciel d'aide à la décision et d'un accompagnement terrain. (Formation, Hotline technique et réglementaire, audits internes et évaluation des compétences de vos équipes). Le but de cette démarche ? respect des normes et des réglementations, délivrance de produits conformes, amélioration continue et optimisation des te
           </p> 
-          </div>
+          </motion.div>
           
          
-          <div className="section-image">
+          <motion.div className="section-image"animate={{
+      scale: [1, 2, 2, 1, 1],
+      rotate: [0, 0, 270, 270, 0],
+      borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+    }}
+>
             <img src="\images\section_image.jpg" alt="section-image" />
-          </div>
+          </motion.div>
           <div className="section-number">
             <div className="section-année">
               <h3>
@@ -90,7 +100,8 @@ Le réseau au croisement de la métrologie légale et du système qualité.
             Notre expertise
               </h4>
         
-          <div className="section-items">
+          <motion.div className="section-items" animate={{ y: 100 }}
+  transition={{ ease: "easeOut", duration: 2 }}>
             <div>
               <GiChart style={{paddingLeft:"5px", }} size={40} color="#fffff"/>
               <p>Système de management de la qualité</p>
@@ -107,7 +118,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
               <BsBank style={{paddingLeft:"5px", fontSize:"40px", }}/>
               <p>Normes et règlementation</p>
             </div>
-          </div>
+          </motion.div>
           </div>
             </div>
             <div className="plus-line">
