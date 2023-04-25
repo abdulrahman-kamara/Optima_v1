@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 import { BsArrowRight, BsBank, BsTelephoneForward } from "react-icons/bs";
 import { GiChart } from "react-icons/gi";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-import { motion } from "framer-motion"
-import { AnimatePresence } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion"
+
 
 import "./Accueil.css"
 
 
 function Accueil() {
-  
+  const { scrollYProgress,   } = useScroll();
+  const scaleX = useSpring(scrollYProgress)
+
   return (
 
     <div>
@@ -48,12 +50,14 @@ function Accueil() {
             
 Le réseau au croisement de la métrologie légale et du système qualité.
           </h4>
-          <p>
-            
-Le réseau au croisement de la métrologie légale et du système qualité.
- 
+          <motion.p 
+
+ animate={{ rotate: 360 }}
+ transition={{ type: 'spring' }}
+
+>
  Nous sommes expert dans les métiers de la vérification, l'installation des instruments de mesure. Notre panel de services regroupés en une offre unique s'articulent autour d'un système qualité, d'un logiciel d'aide à la décision et d'un accompagnement terrain. (Formation, Hotline technique et réglementaire, audits internes et évaluation des compétences de vos équipes). Le but de cette démarche ? respect des normes et des réglementations, délivrance de produits conformes, amélioration continue et optimisation des te
-          </p> 
+          </motion.p> 
           </motion.div>
           
          
@@ -81,7 +85,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
           </div>
 
         </div>
-        <div className="plus-line">
+        <motion.div className="plus-line" style={{ scaleX }}>
         <div className="plus">
         </div>
         <div className="arrowlink">
@@ -89,7 +93,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
             </Link>
 
           </div>
-        </div>
+        </motion.div>
         <div className="section-activite">
         <div className="section-image">
             <img src="\images\technicien tachy.jpg" alt="section-image" />
@@ -130,10 +134,9 @@ Le réseau au croisement de la métrologie légale et du système qualité.
 
           </div>
         </div>
-      
-
+    
       <div  className="blank-section"></div>
-      <div className="footer">
+      {/* <div className="footer">
         <span className="email-text">
           <h6 className="section-text">E-mail</h6>
           <p className="section-text">contact@cercleoptima.com</p>
@@ -147,7 +150,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
             Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
           </p>
         </span>
-      </div>
+      </div> */}
      
     </div>
     </div>

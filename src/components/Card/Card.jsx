@@ -7,7 +7,7 @@ const Cards = ({ data }) => {
       className="card  mb-3"
       style={{
         maxWidth: "50rem",
-        backgroundColor: "#C1CAD6",
+        backgroundColor: "#C1CAD6 ",
       }}
     >
       <div
@@ -33,7 +33,7 @@ const Cards = ({ data }) => {
           }}
         >
           {" "}
-          Numero de Agrement :{" "}
+          Numéro de Agrement :{" "}
           <span
             style={{
               display: "flex",

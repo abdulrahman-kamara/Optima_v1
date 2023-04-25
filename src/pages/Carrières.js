@@ -4,6 +4,7 @@ import "./Carrières.css";
 
 function Carrières() {
   return (
+    <>
     <Container
       fluid
       style={{
@@ -20,7 +21,7 @@ function Carrières() {
           <div className=" carriere">
             <div className="my-body">
               <h5 className="card-title">Nous rejoindre</h5>
-              <p className="card-text">
+              <p className="text-p" >
                 Toujours en quête de nouveaux talents, Cercle Optima gère un
                 vivier de candidatures ! Si l'amélioration continue, la qualité,
                 la métrologie légale vous intéressent que vous êtes autonome et
@@ -37,23 +38,10 @@ function Carrières() {
           </div>
         </div>
       </div>
-      <div fluid class="section-blank"></div>
-      <div class="section-footer">
-        <span class="email-text">
-          <h6 class="section-text">E-mail</h6>
-          <p class="section-text">contact@cercleoptima.com</p>
-        </span>
-        <span class="email-text">
-          <h6 class="section-text">Téléphone</h6>
-          <p class="section-text">04 42 50 96 90</p>
-        </span>
-        <span class="email-text">
-          <p class="section-text">
-            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
-          </p>
-        </span>
-      </div>
+     
     </Container>
+     <div fluid class="section-blank"></div>
+    </>
   );
 }
 

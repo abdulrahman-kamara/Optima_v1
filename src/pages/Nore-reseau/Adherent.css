@@ -123,6 +123,7 @@ box-shadow: var(--comet-shadow-medium);
     .main-container{
         display: block;
         background-color: transparent;
+    
     }
     .adherent-container{
        display: block;
@@ -204,11 +205,12 @@ box-shadow: var(--comet-shadow-medium);
   @media (max-width: 1200px) {
     .main-container{
         display: block;
-       
+     
     }
     .adherent-container{
         display: block;
-    width: 100%;
+        width: 100%;
+        padding: 10px;
  
      }
     .mes-aderent{

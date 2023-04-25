@@ -298,7 +298,7 @@ const handleCaptchaChange = (value) => {
           </div>
         </form>
       </div>
-
+{/* 
       <div className="section-footer">
         <span className="email-text">
           <h6 className="section-text">E-mail</h6>
@@ -313,7 +313,7 @@ const handleCaptchaChange = (value) => {
             Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
           </p>
         </span>
-      </div>
+      </div> */}
     </div>
   );
 }

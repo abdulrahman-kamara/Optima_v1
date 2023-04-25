@@ -44,6 +44,7 @@
   width: 100%;
   box-sizing: border-box;
   border-bottom:1px solid #dedcdc;
+
 }
 
 li {
@@ -64,17 +65,19 @@ a {
 
 .nav-bar-link{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 10px;
+  
 }
  .logo-name {
+  margin-top: 20px;
   font-weight: bold;
   font-size: 24px ;
-  padding-left: 10px;
+  padding-left: 20px;
   color:#265386 ;
 }
 .nav-link {
   display: flex;
+  
   
 }
 

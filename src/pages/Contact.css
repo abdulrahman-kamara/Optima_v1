@@ -59,20 +59,13 @@
   height: 50px;
 }
 .section-footer {
-  display: block;
-  width: 100%;
-  padding: 5px;
+  display: flex;
+ flex-direction: column;
   background-color: #e65d5e;
   height: 50vh;
+  width: 100%;
 }
 .email-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 .spinner {
   position: fixed;

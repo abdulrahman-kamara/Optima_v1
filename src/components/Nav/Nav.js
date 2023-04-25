@@ -3,21 +3,35 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 import { ImMenu } from "react-icons/im";
 import { ImCross } from "react-icons/im";
+import { motion, useTime, useTransform} from "framer-motion";
 
 function NavBar() {
   const [mobile, setmobile] = useState(false);
+  const time = useTime()
+const rotate = useTransform(
+  time,
+  [0, 4000], // For every 4 seconds...
+  [0, 360], // ...rotate 360deg
+  { clamp: false }
+)
 
   return (
     <nav className="navbar shadow-sm">
       <div className="logo">
-        <a className="nav-bar-link" href="/">
-          <img src="/images/logo.jpg" alt="" className="logo-image" />
+        <motion.a className="nav-bar-link" href="/"  whileHover={{ scale: 1.2 }}
+  onHoverStart={e => {}}
+  onHoverEnd={e => {}}>
+    <motion.div style={{rotate}}>
+       <img src="/images/logo.jpg" alt="" className="logo-image" />
+    </motion.div>
           <h6 className="logo-name">CERCLE OPTIMA</h6>
-        </a>
+        </motion.a>
       </div>
 
-      <ul className={mobile ? "nav-links-mobile" : "nav-link"}
-        onClick={() => setmobile(false)}>
+      <motion.ul className={mobile ? "nav-links-mobile" : "nav-link"}
+        onClick={() => setmobile(false)} 
+       
+        >
         <Link to="/">
           <li>Accueil</li>
         </Link>
@@ -45,7 +59,7 @@ function NavBar() {
         <Link to="/réclamations">
           <li>Réclamations / Appels</li>
         </Link>
-      </ul>
+      </motion.ul>
       <button className="mobile-menu-icon" onClick={() => setmobile(!mobile)}>
         {mobile ? <ImCross size={15} /> : <ImMenu size={25} />}
       </button>

@@ -32,7 +32,7 @@ section{
 }
 .blank-section{
     background-color: black;
-    height: 30vh;
+    height: 20vh;
 }
 .section-metier{
   background-color: black;
@@ -137,11 +137,11 @@ align-items: end;
 
 
 .footer {
-   display: flex;
+   /* display: flex;
    flex-direction: column;
     background-color: #e65d5e;
     width: 100%;
-    height: 422px;
+    height: 422px; */
   }
   .email-text {
     display: flex;

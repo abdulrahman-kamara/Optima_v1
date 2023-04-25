@@ -12,6 +12,7 @@ import Réseau from "./pages/Nore-reseau/Adherent";
 import AdherentDetail from "./pages/Nore-reseau/AdherentDetail";
 import Contact from "./pages/Contact";
 import UnauthorizedPage from "./pages/UnauthorizedPage";
+import Footer from "./components/Nav/Footer/fotter";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<UnauthorizedPage/>}/>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   );

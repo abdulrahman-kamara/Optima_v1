@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 function Certificats() {
 const [data, setData] = useState([])
+const [searchTerm, setSearchTerm] = useState('');
 
 
 useEffect(() => {
@@ -22,8 +23,18 @@ await supervisionService
   })
   
 };
+
+
+const searchFilter = (data) => {
+  return data.filter((item) => {
+    if (item && item.titre_agrement && item.titre_agrement.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
+      return item;
+    }
+  });
+};
   return (
-    <div style={{display:"flex", justifyContent:"center", alignContent:"center", backgroundColor:"white", marginTop:"2rem",  boxShadow: "10px 10px 20px #888888"}}>
+    <div style={{display:"flex",  justifyContent:"center", alignContent:"center", backgroundColor:"white", marginTop:"2rem",}}>
+  
     <div>
       {data && data.map((data, i) =>(
         <Card key={i} data={data}/>
@@ -34,3 +45,6 @@ await supervisionService
 }
 
 export default Certificats;
+
+
+  {/* <input type="text" placeholder="Search by numéro d'adhérent" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} /> */}

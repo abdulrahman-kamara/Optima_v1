@@ -23,7 +23,7 @@ function Métier() {
           <div className="row">
             <div className="card-right">
               <div className="col-sm-6 mb-3 mb-sm-0 my-card">
-                <div className=" carriere">
+                <div className="metier-carriere">
                   <div className="card-body my-card-body">
                     <div className="text-icon">
                       <p>
@@ -56,7 +56,7 @@ function Métier() {
                 </div>
               </div>
               <div className="col-sm-6 mb-3 mb-sm-0 my-card">
-                <div className=" carriere">
+                <div className=" metier-carriere">
                   <div className="card-body my-card-body ">
                     <div className="text-icon">
                       <p>
@@ -89,7 +89,7 @@ function Métier() {
                 </div>
               </div>
               <div className="col-sm-6 mb-3 mb-sm-0 my-card">
-                <div className=" carriere">
+                <div className=" metier-carriere">
                   <div className="card-body my-card-body">
                     <div className="text-icon">
                       <p>
@@ -210,22 +210,9 @@ function Métier() {
           </div>
         </div>
       </div>
-      <div fluid className="section-blank"></div>
-      <div className="section-footer">
-        <span className="email-text">
-          <h6 className="section-text">E-mail</h6>
-          <p className="section-text">contact@cercleoptima.com</p>
-        </span>
-        <span className="email-text">
-          <h6 className="section-text">Téléphone</h6>
-          <p className="section-text">04 42 50 96 90</p>
-        </span>
-        <span className="email-text">
-          <p className="section-text">
-            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
-          </p>
-        </span>
-      </div>
+      
+     <div fluid className="section-blank"></div>
+      
     </Container>
   );
 }
