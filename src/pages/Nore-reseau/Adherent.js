@@ -18,7 +18,7 @@ const Reseau = () => {
   //Tous les adherents
   const [adherents, setAdherents] = useState([]);
   // Element recherché
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(undefined);
   //Etat de chargement d'un adherent
   const [actif, setActif] = useState(true);
   // Chargement de la liste des adherents
@@ -139,9 +139,7 @@ const handleChanges = async (e, activite) => {
   }
   
 }
-
-
-
+// map icon with leaflet
 const iconMap = {
   taximetre: L.icon({
     iconUrl: "/taxi.jpg",
@@ -179,11 +177,9 @@ const iconMap = {
   return (
    
 
-    <div className="adherent_main-container"> 
-     
-     <div className="adherent-container">
-
-<div className="map-container">
+  <div className="adherent_main-container"> 
+  <div className="adherent-container">
+  <div className="map-container">
         <div className="maker-icon">
           <div
             style={{
@@ -194,7 +190,7 @@ const iconMap = {
           >
             <div className="form-check map-checkbox">
               <input
-                class="form-check-input "
+                className="form-check-input "
                 type="checkbox"
                 value="1"
                 name="taximetre"
@@ -207,7 +203,7 @@ const iconMap = {
             </div>
             <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value="2"
                 name="gaz"
@@ -220,7 +216,7 @@ const iconMap = {
             </div>
             <div class="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value="4"
                 name="tachygraphie"
@@ -233,7 +229,7 @@ const iconMap = {
             </div>
             <div class="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value="5"
                 name="ethylotest"
@@ -247,7 +243,7 @@ const iconMap = {
 
             <div class="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value="6"
                 name="autoecole"
@@ -328,7 +324,7 @@ const iconMap = {
         <h5 className="mes-hero">Mes Adherents</h5>
         <div className="search-section">
           <div className="search-bar">
-            <i className="fas fa-search"></i>
+            {/* <i className="fas fa-search"></i> */}
             <input
               className="search"
               name="search"
@@ -355,9 +351,10 @@ const iconMap = {
               "/reseau/" + adherent.identification_adherent
             } 
           >
-            <span>{adherent.identification_adherent}</span>
-            <p style={{marginTop:"10px", }}>{adherent.nom_adherent}</p>
-           <MdOutlineKeyboardArrowRight/>
+            <p>{adherent.nom_adherent}</p>
+            <p>{adherent.ville}</p>
+            <p>{adherent.departement}</p>
+           <MdOutlineKeyboardArrowRight style={{paddingLeft:"10px", marginTop:"30px", color:"white" }} size={40} />
           </NavLink>
         ))) || (
         <>
@@ -400,96 +397,5 @@ const iconMap = {
 
   );
 }
-
-
-
-
-
  export default Reseau;
 
-
-   // const handleChanges = async (e, activite) => {
-  //   const { value, checked } = e.target;
-
-  //   if (checked) {
-  //     const newOptions = [...valueOptions, value];
-  //     setValueOptions(newOptions);
-
-  //     const adherentsResponse = await supervisionService.getAllAdherent(
-  //       "",
-  //       true,
-  //       activite
-  //     );
-  //     const allAdherents = adherentsResponse || [];
-
-  //     let newAdherents = [];
-
-  //     if (newOptions.length === 1) {
-  //       newAdherents = allAdherents;
-  //     } else if (newOptions.length > 1) {
-  //       const newAdherentsResponse = await supervisionService.getAllAdherent(
-  //         "",
-  //         true,
-  //         activite
-  //       );
-  //       newAdherents = [...adherents, ...(newAdherentsResponse || [])];
-  //       console.log("response", newAdherents);
-  //       newAdherents = newAdherents.filter(
-  //         (obj, index) =>
-  //           newAdherents.findIndex(
-  //             (_adherent) =>
-  //               _adherent.identification_adherent ===
-  //               obj.identification_adherent
-  //           ) === index
-  //       );
-  //     }
-     
-  //     setAdherents(newAdherents);
-  //   } else{
-  //     setValueOptions(valueOptions.filter((_value) => _value !== value));
-  //    await supervisionService.getAllAdherent("", true, activite).then((response) => {
-  //     setAdherentss(response)
-  //     })
-     
-  //   }
-  // };
-
-    // const getMarkerIcon = (adherents) => {
-  //   if(adherents == valueOptions.includes("1")){
-  //     return L.icon({
-  //       iconUrl: "/taxi.jpg",
-  //       iconSize: [40, 40],
-  //     })
-
-  //   }else if (adherents === valueOptions.includes("2")) {
-  //     return L.icon({
-  //        iconUrl: "/gaz.jpg",
-  //   iconSize: [25, 25],
-  //     })
-     
-  //   }else if (adherents === valueOptions.includes("4")) {
-  //     return L.icon({
-  //       iconUrl: "/truck.jpg",
-  //       iconSize: [25, 25],
-  //     })
-      
-  //   }else if (adherents === valueOptions.includes("5")) {
-  //     return L.icon({
-  //       iconUrl: "/truck.jpg",
-  //       iconSize: [25, 25],
-  //     })
-  //   }
-
-  //   else if (adherents === valueOptions.includes("6")) {
-  //     return L.icon({
-  //       iconUrl: "/auto-ecole.jpg",
-  //       iconSize: [25, 25],
-  //     })
-  //   }else{
-  //     return L.icon({
-  //       iconUrl: "logo.jpg",
-  //       iconSize: [25, 25],
-  //     })
-  //   }
-
-  // }

@@ -21,7 +21,7 @@ const rotate = useTransform(
         <motion.a className="nav-bar-link" href="/"  whileHover={{ scale: 1.2 }}
   onHoverStart={e => {}}
   onHoverEnd={e => {}}>
-    <motion.div style={{rotate}}>
+    <motion.div>
        <img src="/images/logo.jpg" alt="" className="logo-image" />
     </motion.div>
           <h6 className="logo-name">CERCLE OPTIMA</h6>

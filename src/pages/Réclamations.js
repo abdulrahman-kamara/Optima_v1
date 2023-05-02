@@ -107,9 +107,13 @@ const handleCaptchaChange = (value) => {
                   setError(rest);
                 }} }>
               <option defaultValue="">Choisissez une Option</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="1">Taximètre</option>
+              <option value="2">Tachygraphe</option>
+              <option value="3">Analyseur de gaz/Opacimètre</option>
+              <option value="1">Ethylotest</option>
+              <option value="2">Auto-Ecole</option>
+              <option value="3">Pont Elévateur</option>
+              <option value="3">Formation</option>
             </select>
                    {error.activite && <span>{error.activite}</span>}
           </div>
@@ -298,22 +302,6 @@ const handleCaptchaChange = (value) => {
           </div>
         </form>
       </div>
-{/* 
-      <div className="section-footer">
-        <span className="email-text">
-          <h6 className="section-text">E-mail</h6>
-          <p className="section-text">contact@cercleoptima.com</p>
-        </span>
-        <span className="email-text">
-          <h6 className="section-text">Téléphone</h6>
-          <p className="section-text">04 42 50 96 90</p>
-        </span>
-        <span className="email-text">
-          <p className="section-text">
-            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
-          </p>
-        </span>
-      </div> */}
     </div>
   );
 }

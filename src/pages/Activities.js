@@ -8,7 +8,7 @@ function Activities() {
   return (
     <section className="activite-contaier">
       <span className="spanheading">
-        <h2 className="heading">Nos différentes Activités !</h2>
+        <h2 className="heading">Nos différentes Activités</h2>
       </span>
       <div className="main-container">
         <div class="row">
@@ -214,7 +214,7 @@ function Activities() {
                     />
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold text-light">
-                    Analyseurs de gaz et Opacimètre
+                    Analyseur de gaz et Opacimètre
                   </h6>
                 </div>
 

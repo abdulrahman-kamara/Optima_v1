@@ -11,11 +11,22 @@ const FooterContainer = styled(motion.footer)`
   height: 110px;
   width: 100%;
 
+  @media only screen and (min-width: 768px) {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
 `;
 
 const FooterText = styled.p`
   font-size: 12px;
   text-align: center;
+  @media only screen and (min-width: 768px) {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const footerVariants = {

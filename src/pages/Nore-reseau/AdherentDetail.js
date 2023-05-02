@@ -163,32 +163,3 @@ console.log("mydata", identification_adherent);
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_SECRET
 })(AdherentDetail)
-
-  // const [intervenants, setIntervenants] = useState([])
-      // const [coordonnees, setCoordonnees] = useState({})
-      // const [search, setSearch] = useState("");
-
-  //   const url = supervisionService.getAllAdherent(search, actif)
-  //  const {data, isLoading, error} = useSWR(url, fetcher)
-
-  //  const locationadhrent = data && !error ?  data.slice(0, 500) : [];
-  //  console.log("test", data);
-
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getAdherentByIdentification()
-  //     getAllAdherents(search, actif);
-  //     setLoadingscreen(false);
-  //   }, 1000);
-  // }, [search, actif]);
-
-  // const getAllAdherents = async (search, actif) => {
-  //   await supervisionService
-  //     .getAllAdherent(search, actif)
-  //     .then((response) => setAdherents(response))
-      
-  // };
-    // const [aderentLoc, setAdherentLoc] = useState(null);
-  //     const [actif, setActif] = useState(null)
-  // const fetcher = (...args) => fetch(...args).then(res => res.json())

@@ -6,6 +6,7 @@
     /*10*/
     padding-right: 0px;
     /*10*/
+    height: 100vh;
 }
 .presentation-adherent {
     display: flex;
@@ -72,6 +73,7 @@
     border-top: 1px solid #e1e4e8;
     transition: 0.3s;
     cursor: pointer;
+    
 }
 
 .presentation-adherent h4 {
