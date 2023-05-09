@@ -6,30 +6,50 @@ import "./Carrières.css"
 
 function Certificats() {
 const [data, setData] = useState([])
-const [searchItems, setsearchItems] = useState('');
-
+const [filteredData, setFilteredData] = useState('');
+const [selectOption, setSelectOption] = useState('');
 
 useEffect(() => {
-   
-  getAllAdherentAgrement(0);
-  
-
+     getAllAdherentAgrement(0);
 }, []);
 
+
+// useEffect(() => {
+   
+//    const filtered = data.filter(item => {
+//     return item.activite === selectOption;
+//    })
+
+//    setFilteredData(filtered)
+// console.log(filtered);
+// }, [selectOption, data]);
+
+
+
 const getAllAdherentAgrement = async (numero_adherent) => {
-await supervisionService
+  try {
+    const response = await supervisionService
   .getAllAdherentAgrements(numero_adherent)
-  .then((response) =>{ setData(response)
+   setData(response)
   console.log("data", response);
-  console.log("data", data[4]);
-  })
+  
+  
+  } catch (error) {
+    console.error("fetching data:", error);
+  }
+
   
 };
+
+const handleOptionChange = e => {
+  setSelectOption(e.target.value)
+}
+
 
 
 const searchFilter = (data) => {
   return data.filter((item) => {
-    if (item && item.titre_agrement && item.titre_agrement.toString().toLowerCase().includes(searchItems.toLowerCase())) {
+    if (item.ac) {
       return item;
     }
   });
@@ -37,10 +57,21 @@ const searchFilter = (data) => {
   return (
     <div style={{display:"flex", flexDirection:"column",  justifyContent:"center", alignItems:"center", backgroundColor:"white", marginTop:"2rem", padding:"20px"}}>
  
-    <input className="form-control"  type="text" value={searchItems} placeholder="search" onChange={(e) => setsearchItems(e.target.value)} style={{ display:"flex", borderRadius:"5px", padding:"5px", maxWidth:"50rem", flexWrap: "wrap", marginBottom:"1rem", border:"2px solid #ccc"}}/>
+ <div>
+      <select value={selectOption} onChange={handleOptionChange}>
+        <option value="">All</option>
+        <option value="1">Taximètre</option>
+        <option value="2">Tachygraphe</option>
+        <option value="4">Ethylotest</option>
+        <option value="5">Gaz/Opacimètre</option>
+        <option value="6">Auto-Ecole</option>
+      </select>
+
+      </div>
+    {/* <input className="form-control"  type="text" value={searchItems} placeholder="search" onChange={(e) => setsearchItems(e.target.value)} style={{ display:"flex", borderRadius:"5px", padding:"5px", maxWidth:"50rem", flexWrap: "wrap", marginBottom:"1rem", border:"2px solid #ccc"}}/> */}
  
     <div style={{ display: "flex",  flexDirection:"column", flexWrap: "wrap", }}>
-      { searchFilter(data).map((data, i) =>(
+      {filteredData && filteredData.map((data, i) =>(
         <Card key={i} data={data}/>
       ) )}
     </div>
