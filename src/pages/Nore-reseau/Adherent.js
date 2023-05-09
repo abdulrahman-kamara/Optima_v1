@@ -18,7 +18,7 @@ const Reseau = () => {
   //Tous les adherents
   const [adherents, setAdherents] = useState([]);
   // Element recherché
-  const [search, setSearch] = useState(undefined);
+  const [search, setSearch] = useState("");
   //Etat de chargement d'un adherent
   const [actif, setActif] = useState(true);
   // Chargement de la liste des adherents
@@ -33,7 +33,12 @@ const Reseau = () => {
    
       getAllAdherents(search, actif, );
       setLoadingscreen(false);
+
+      const filteredData = adherents.filter(item => {
+        return adherents.nom_adherent && adherents.ville && adherents.departement.includes(search.toLowerCase())
+      })
   
+      setAdherents(filteredData)
   }, [search, actif]);
 
   const getAllAdherents = async (search, actif, activite) => {
@@ -45,8 +50,8 @@ const Reseau = () => {
 
 
   const handleChange = (event) => {
-    const inputValue = event.target.value;
-    setSearch(inputValue);
+     setSearch(event.target.value);
+     console.log(event.target.value);
   };
 
 
@@ -273,7 +278,8 @@ const iconMap = {
           {adherents &&
             adherents.map((adherent) => (
             <LayerGroup key={adherent.numero_adherent}>
-              <Marker
+              {adherent.atelier_latitude && adherent.atelier_longitude &&(
+                <Marker
                 key={adherent.identification_adherent}
                 id={adherent.numero_adherent}
                 position={[
@@ -291,10 +297,12 @@ const iconMap = {
             valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
                 }
               />
+              )}
+              
                 </LayerGroup>
             ))}
 
-          {adherentlocation && (
+          {adherentlocation && adherentlocation.atelier_latitude && adherentlocation.atelier_longitude && (
             <Popup
               position={[
                 adherentlocation.atelier_latitude,
@@ -327,8 +335,8 @@ const iconMap = {
             {/* <i className="fas fa-search"></i> */}
             <input
               className="search"
-              name="search"
-              type="search"
+              type="text"
+              value={search}
               placeholder="Recherche..."
               onChange={(event) => {
                 handleChange(event);

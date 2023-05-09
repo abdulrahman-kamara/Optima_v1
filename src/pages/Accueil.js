@@ -8,9 +8,10 @@ import { motion, useScroll, useSpring } from "framer-motion"
 
 
 import "./Accueil.css"
+import CardImage from "../components/Card/CardImage";
 
 
-function Accueil() {
+function Accueil({images}) {
   const { scrollYProgress,   } = useScroll();
   const scaleX = useSpring(scrollYProgress)
 
@@ -83,7 +84,6 @@ Le réseau au croisement de la métrologie légale et du système qualité.
               <p>indépendant</p>
             </div>
           </div>
-
         </div>
         <motion.div className="plus-line" style={{ scaleX }}>
         <div className="plus">
@@ -94,6 +94,9 @@ Le réseau au croisement de la métrologie légale et du système qualité.
 
           </div>
         </motion.div>
+        <div className="my-card">
+        <CardImage />
+        </div>
         <div className="section-activite">
         <div className="section-image">
             <img src="\images\technicien tachy.jpg" alt="section-image" />
@@ -105,7 +108,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
               </h4>
         
           <motion.div className="section-items" animate={{ y: 100 }}
-  transition={{ ease: "easeOut", duration: 2 }}>
+                 transition={{ ease: "easeOut", duration: 2 }}>
             <div>
               <GiChart style={{paddingLeft:"5px", }} size={40} color="#fffff"/>
               <p>Système de management de la qualité</p>
@@ -136,22 +139,6 @@ Le réseau au croisement de la métrologie légale et du système qualité.
         </div>
     
       <div  className="blank-section"></div>
-      {/* <div className="footer">
-        <span className="email-text">
-          <h6 className="section-text">E-mail</h6>
-          <p className="section-text">contact@cercleoptima.com</p>
-        </span>
-        <span className="email-text">
-          <h6 className="section-text">Téléphone</h6>
-          <p className="section-text">04 42 50 96 90</p>
-        </span>
-        <span className="email-text">
-          <p className="section-text">
-            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
-          </p>
-        </span>
-      </div> */}
-     
     </div>
     </div>
   );

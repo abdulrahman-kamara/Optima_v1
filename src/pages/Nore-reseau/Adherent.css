@@ -68,12 +68,11 @@ box-shadow: var(--comet-shadow-medium);
     width: 100%;
     background-color: var(--comet-white);
     box-shadow: var(--comet-shadow-medium);
-    border-radius: 5px;
-    border: 2px solid var(--comet-light-black);
+    
+   
 }
-/* .fas{
-    padding-right: 10px;
-} */
+
+
 
 .list-adherent{
 display: flex;
@@ -84,7 +83,7 @@ background-color: var(--comet-light-black);
 box-shadow: var(--comet-shadow-medium);
 border: var(--comet-border);
 padding: 0 10px;
-border-radius: 20px;
+border-radius: 15px;
 margin-top: 10px;
 width: 100%;
   
@@ -92,7 +91,9 @@ width: 100%;
 }
 
 .search {
-    width: 100%;
+    width: 100%; 
+    border-radius: 5px; 
+    border: 2px solid var(--comet-light-black);
 }
 
 .adherent{
