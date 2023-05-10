@@ -1,33 +1,136 @@
-.my-card{
-
+.section-card{
+    display: flex;
+    flex-direction:  column;
+    justify-content: center;
+   margin-bottom: 150px;
    
-  
+}
+.d-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 50px;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    position: relative;
+    width: 100%;
+}
+.para-link{
+    padding-left: 80px;
 }
 
-.my-cards {
-    width: 350px;
-    height: 200px;
+.s-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
     /* overflow: hidden; */
     position: relative;
- 
+    margin-bottom: 140px; 
   }
   
-  .custom-card .card-img {
-    height: 100%;
-    width: 100%;
+  .card-image {
+    height: 240px;
+    width: 400px;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
+    
+    
   }
   
-  .custom-card .custom-card-title {
+   .custom-card-title  {
+   top: 11.5rem;
     position: absolute;
-    bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    width: 100%;
+    width: 17rem;
     padding: 1rem;
     margin: 0;
   }
+  .custom-card-title:hover{
+    background-color:snow;
+    color: black;
+  }
+
+  @media (max-width: 568px) {
+    .section-card{
+        display: flex;
+        flex-direction:  column;
+        justify-content: center;
+       margin-bottom: 10px;
+   }
+   .d-cards{
+    display: grid;
+  
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    margin-bottom: 40px; 
+}
+ }
+
+ @media ( max-width: 768px) {
+    .section-card{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    
+   }
+   .d-cards{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr) !important;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px; 
+}
+    
+  }
+  @media ( max-width: 992px) {
+    .section-card{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    
+   }
+   .d-cards{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px; 
+}
+    
+  }
+
+  @media (max-width: 1400px) {
+    .section-card{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    
+   }
+   .d-cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px; 
+}
+    
+  }
+
+ 
+
+  
