@@ -58,16 +58,14 @@ flex-direction: column;
   color: var(--comet-light);
   animation: animate 2s linear infinite;
 }
-p{
+.paragraph{
   display: flex;
- margin-top: 50px;
- padding: 10px;
-color: var(--comet-light);
-text-align: left;
-justify-content: flex-start;
-align-items: end;
-
-
+  margin-top: 50px;
+  padding: 10px;
+  color: var(--comet-light);
+  text-align: left;
+  justify-content: flex-start;
+  align-items: end;
 }
 .section-number {
   display: flex;
@@ -78,19 +76,15 @@ align-items: end;
 }
 .section-année{
   padding-left: 200px;
-  
 }
-
 .section-percentage {
   text-align: right;
 }
-
 .section-text{
   color: var(--comet-light);
 }
 .plus-line{
   display: flex;
-  
 }
 
 .plus{
@@ -132,15 +126,9 @@ align-items: end;
   grid-template-columns: 1fr 1fr ;
   
 }
-
-
-
-
-
-  .email-text {
+.email-text {
     display: flex;
-    
-  }
+}
 
 
   @media (max-width: 992px) {

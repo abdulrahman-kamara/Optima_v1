@@ -8,6 +8,7 @@ import { LayerGroup, MapContainer, Marker, Popup, TileLayer } from "react-leafle
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useRef } from "react";
+import { Card } from "react-bootstrap";
 
  
 
@@ -34,11 +35,11 @@ const Reseau = () => {
       getAllAdherents(search, actif, );
       setLoadingscreen(false);
 
-      const filteredData = adherents.filter(item => {
-        return adherents.nom_adherent && adherents.ville && adherents.departement.includes(search.toLowerCase())
-      })
+      // const filteredData = adherents.filter(item => {
+      //   return item.nom_adherent && item.ville && item.departement.includes(search.toLowerCase())
+      // })
   
-      setAdherents(filteredData)
+      // setAdherents(filteredData)
   }, [search, actif]);
 
   const getAllAdherents = async (search, actif, activite) => {
@@ -50,8 +51,15 @@ const Reseau = () => {
 
 
   const handleChange = (event) => {
-     setSearch(event.target.value);
-     console.log(event.target.value);
+    
+     const filteredData = adherents.filter(item => {
+      setSearch(event.target.value);
+      return item.nom_adherent && item.ville && item.departement.includes(search.toLowerCase())
+
+      
+    })
+   
+     console.log("searchinput", search);
   };
 
 
@@ -66,6 +74,7 @@ const Reseau = () => {
 //updating the value change for each checkbox and unchecked checkbox in the array
 const handleChanges = async (e, activite) => {
   const { value, checked } = e.target;
+ 
 
   var _valueOptions = [];
   var _adherents = [];
@@ -187,11 +196,8 @@ const iconMap = {
   <div className="map-container">
         <div className="maker-icon">
           <div
-            style={{
-              gap: "5px",
-              display: "flex",
-              justifyContent: "space-evenly",
-            }}
+            
+            className="sub-checkbox"
           >
             <div className="form-check map-checkbox">
               <input
@@ -232,7 +238,7 @@ const iconMap = {
                 Atelier Tachygraphe
               </label>
             </div>
-            <div class="form-check">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -246,7 +252,7 @@ const iconMap = {
               </label>
             </div>
 
-            <div class="form-check">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -264,7 +270,7 @@ const iconMap = {
 
         <MapContainer
           center={center}
-          zoom={6}
+          zoom={12}
           scrollWheelZoom={false}
           className="map"
           ref={mapRef}
@@ -342,11 +348,13 @@ const iconMap = {
                 handleChange(event);
               }}
               autoComplete="off"
+              
             />
           </div>
       
           </div>
-          <div className="list-adherent">
+          <div className="list-background">
+             <div className="list-adherent">
            {(!loadingscreen &&
         adherents &&
         adherents.map((adherent, i) => (
@@ -359,10 +367,17 @@ const iconMap = {
               "/reseau/" + adherent.identification_adherent
             } 
           >
-            <p>{adherent.nom_adherent}</p>
-            <p>{adherent.ville}</p>
-            <p>{adherent.departement}</p>
-           <MdOutlineKeyboardArrowRight style={{paddingLeft:"10px", marginTop:"30px", color:"white" }} size={40} />
+           <div className="adherent-card">
+             <p className="adherent-nom">{adherent.nom_adherent}</p>
+            <div className="vill-depart">
+               <p className="adherent-ville">{adherent.ville}</p>
+               <p className="adherent-depart">{adherent.departement}</p>
+               <MdOutlineKeyboardArrowRight  size={30} className="icon-card"/>
+            </div>
+           </div>
+           
+           
+           
           </NavLink>
         ))) || (
         <>
@@ -397,6 +412,8 @@ const iconMap = {
         </>
       )}
           </div>
+          </div>
+         
    
       </div>
     </div> 

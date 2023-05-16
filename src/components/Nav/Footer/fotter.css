@@ -24,6 +24,7 @@
   }
   @media (max-width: 992px) {
     .cercle-footer{
+      
         display: flex;
         flex-direction: column !important;
         justify-content: center;

@@ -107,19 +107,19 @@ Le réseau au croisement de la métrologie légale et du système qualité.
           <motion.div className="section-items">
             <div>
               <GiChart style={{paddingLeft:"5px", }} size={40} color="#fffff"/>
-              <p>Système de management de la qualité</p>
+              <p className="paragraph">Système de management de la qualité</p>
             </div>
             <div>
               <BsTelephoneForward style={{paddingLeft:"5px",  }} size={40} color="#fffff"/>
-              <p>Support technique, aide à la décision</p>
+              <p className="paragraph">Support technique, aide à la décision</p>
             </div>
             <div>
               <AiOutlineFundProjectionScreen style={{paddingLeft:"5px",  }} size={40} color="#fffff"/>
-              <p>Informatique, développement de logiciels</p>
+              <p className="paragraph">Informatique, développement de logiciels</p>
             </div>
             <div>
               <BsBank style={{paddingLeft:"5px", fontSize:"40px", }}/>
-              <p>Normes et règlementation</p>
+              <p className="paragraph">Normes et règlementation</p>
             </div>
           </motion.div>
           </div>

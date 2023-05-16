@@ -75,6 +75,22 @@
   color: white;
 }
 
+.custom-select{
+  
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  
+  background-color: white;
+  width: 100%;
+
+}
+.value-select{
+  width: 40rem;
+  border-radius: 5px;
+}
+
 @media (max-width: 576px) {
   .carriere-head {
     display: block;
@@ -145,5 +161,8 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+  .value-select{
+    width:auto;
   }
 }
