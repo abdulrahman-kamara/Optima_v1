@@ -78,32 +78,19 @@ console.log("mydata", identification_adherent);
             })
             .catch(error => Navigate.push('/404'))
     }
-    // Adherent déjà initialisé, on met à jour
-    // que les intervenants
    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
 
 
-// // Accéder au profil d'un intervenant
-// const goToIntervenant = async (event) => {
-//   let intervenant = event.currentTarget.id
-//   await supervisionService.getIntervenantQualif(adherent.numero_adherent, parseInt(intervenant))
-//       .then(
-//           response => {
-//               localStorage.setItem('monIntervenant', JSON.stringify(response))
-//           }
-//       )
-//       Navigate.push(id + '/intervenant')
-// }
+
 
   return (
     <>
     {adherent &&
       <div className="jumbotron">
           <div className="container">
-              <div className="mes-adherents c-mt-5">
+              <div className="mes-adherent-detail c-mt-5">
                   <div className="presentation-adherent c-mt-2">
                   <div className='image-adherent'>
                               <img src={adherent && adherent.logo ? "data:image/jpeg;base64," + adherent.logo : company} alt="Pas de photo1 pour cette supervision" />

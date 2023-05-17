@@ -209,7 +209,7 @@ const iconMap = {
                 id="flexCheckDefault"
               />
               <label className="form-check-label" >
-                Atelier Taximètre
+                Taximètre
               </label>
             </div>
             <div className="form-check">
@@ -222,7 +222,7 @@ const iconMap = {
                 id="flexCheckDefault"
               />
               <label className="form-check-label" >
-                Analyseur de gazs et Opacimètre
+                Analyseur de gaz/Opacimètre
               </label>
             </div>
             <div class="form-check">
@@ -235,7 +235,7 @@ const iconMap = {
                 id="flexCheckDefault"
               />
               <label className="form-check-label" >
-                Atelier Tachygraphe
+                Tachygraphe
               </label>
             </div>
             <div className="form-check">
@@ -270,7 +270,7 @@ const iconMap = {
 
         <MapContainer
           center={center}
-          zoom={12}
+          zoom={6}
           scrollWheelZoom={false}
           className="map"
           ref={mapRef}
