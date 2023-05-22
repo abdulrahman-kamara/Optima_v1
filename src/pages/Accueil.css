@@ -20,7 +20,6 @@ section{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
 }
  .list-accueil ol{
   padding-top: 20px;
@@ -43,20 +42,25 @@ section{
 .section-text{
 display: flex;
 flex-direction: column;
+margin-top: 40px;
 
 }
 .section-image{
-  height: 100vh;
+  height: 70vh;
   display: flex;
   justify-content: right;
   padding: 10px;
   
 }
  h4{
-  padding-left: 10px;
+  padding-left: 20px;
   font-size: 40px;
   color: var(--comet-light);
   animation: animate 2s linear infinite;
+}
+.para-section{
+  margin-top: 20px;
+  padding-left: 20px;
 }
 .paragraph{
   display: flex;
@@ -144,7 +148,7 @@ flex-direction: column;
       flex-direction: column;
       justify-content: center;
       align-content: center;
-     
+     padding-left: 0;
     
     }
     .list-accueil ol{
@@ -214,6 +218,8 @@ flex-direction: column;
       flex-direction: column;
       justify-content: center;
       align-content: center;
+      padding-left: 0;
+      padding: 10px;
      
     
     }

@@ -7,9 +7,10 @@ import "./fotter.css"
 
 const Footer = () => {
   return (
-    <div className='cercle-footer'>
+    <div className='footer-c'>
+<div className='cercle-footer'>
       <p>
-      E-mail :
+      E-mail:
       </p>
       <p>contact@cercleoptima.com</p>
       <p>Téléphone :</p>
@@ -17,6 +18,8 @@ const Footer = () => {
       <p>Addresse :</p>
       <p>Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France</p>
     </div>
+    </div>
+    
   );
 };
 

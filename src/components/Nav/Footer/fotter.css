@@ -1,16 +1,22 @@
-.cercle-footer{
+.footer-c{
     background-color: darkgray;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:10px;
-  
+    padding:20px;
+}
+.cercle-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 
 .cercle-footer p {
     margin-top: 0px !important;
     justify-content: center;
-
+    padding: 10px;
+    color: white;
 }
 
 @media (max-width: 768px) {

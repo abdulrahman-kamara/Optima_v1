@@ -8,11 +8,9 @@ import { LayerGroup, MapContainer, Marker, Popup, TileLayer } from "react-leafle
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useRef } from "react";
-import { Card } from "react-bootstrap";
+
 
  
-
-
 
 
 const Reseau = () => {
@@ -55,21 +53,15 @@ const Reseau = () => {
      const filteredData = adherents.filter(item => {
       setSearch(event.target.value);
       return item.nom_adherent && item.ville && item.departement.includes(search.toLowerCase())
-
       
     })
    
      console.log("searchinput", search);
   };
 
-
-
   //the center of the map
   const center = [47.824905, 2.618787];
   const mapRef = useRef();
-
-
-
 
 //updating the value change for each checkbox and unchecked checkbox in the array
 const handleChanges = async (e, activite) => {
@@ -115,7 +107,6 @@ const handleChanges = async (e, activite) => {
         });
     } else {
       setValueOptions(valueOptions.filter((_value) => _value !== value));
-     
     }
   }
   else {
@@ -148,10 +139,7 @@ const handleChanges = async (e, activite) => {
         setAdherents(l_adherents)
       });
     }
-
-    
   }
-  
 }
 // map icon with leaflet
 const iconMap = {
@@ -182,15 +170,7 @@ const iconMap = {
   })
 }
 
-
-
-
-
-
-
   return (
-   
-
   <div className="adherent_main-container"> 
   <div className="adherent-container">
   <div className="map-container">
@@ -279,8 +259,6 @@ const iconMap = {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-
-            
           {adherents &&
             adherents.map((adherent) => (
             <LayerGroup key={adherent.numero_adherent}>
@@ -298,16 +276,13 @@ const iconMap = {
                   },
                 }}
               icon={
-            
             valueOptions.includes("1")  ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
             valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
                 }
               />
               )}
-              
                 </LayerGroup>
             ))}
-
           {adherentlocation && adherentlocation.atelier_latitude && adherentlocation.atelier_longitude && (
             <Popup
               position={[
@@ -327,13 +302,8 @@ const iconMap = {
               </div>
             </Popup>
           )}
-        
         </MapContainer>
         </div>
-      
-
-  
-     
       <div className="mes-aderent c-mt-6"> 
         <h5 className="mes-hero">Mes Adherents</h5>
         <div className="search-section">
@@ -348,10 +318,8 @@ const iconMap = {
                 handleChange(event);
               }}
               autoComplete="off"
-              
             />
           </div>
-      
           </div>
           <div className="list-background">
              <div className="list-adherent">
@@ -375,9 +343,6 @@ const iconMap = {
                <MdOutlineKeyboardArrowRight  size={30} className="icon-card"/>
             </div>
            </div>
-           
-           
-           
           </NavLink>
         ))) || (
         <>

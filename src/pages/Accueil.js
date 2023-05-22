@@ -8,6 +8,7 @@ import { motion, useScroll, useSpring } from "framer-motion"
 import "./Accueil.css"
 import "../components/Card/Card.css"
 import CardImage from "../components/Card/CardImage";
+import Footer from "../components/Nav/Footer/fotter";
 
 
 function Accueil({images}) {
@@ -42,24 +43,19 @@ function Accueil({images}) {
         </motion.div>
         </section>
         <div className="section-metier">
-          <motion.div className="section-text">
+          <div className="section-text">
             <h4>
             
 Le réseau au croisement de la métrologie légale et du système qualité.
           </h4>
-          <motion.p 
-
- animate={{ rotate: 360 }}
- transition={{ type: 'spring' }}
-
->
+          <p className="para-section">
  Nous sommes expert dans les métiers de la vérification, l'installation des instruments de mesure. Notre panel de services regroupés en une offre unique s'articulent autour d'un système qualité, d'un logiciel d'aide à la décision et d'un accompagnement terrain. (Formation, Hotline technique et réglementaire, audits internes et évaluation des compétences de vos équipes). Le but de cette démarche ? respect des normes et des réglementations, délivrance de produits conformes, amélioration continue et optimisation des te
-          </motion.p> 
-          </motion.div>
+          </p> 
+          </div>
           
          
           <motion.div className="section-image">
-            <img src="\images\section_image.jpg" alt="section-image" />
+            <img src="\images\section_image.jpg" alt="section" />
           </motion.div>
           <div className="section-number">
             <div className="section-année">
@@ -96,7 +92,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
         </div>
         <div className="section-activite">
         <div className="section-image">
-            <img src="\images\technicien tachy.jpg" alt="section-image" />
+            <img src="\images\technicien tachy.jpg" alt="section" />
           </div>
           
           <div className="activite-heading">
@@ -135,6 +131,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
         </div>
     
       <div  className="blank-section"></div>
+      <Footer/>
     </div>
     </div>
   );

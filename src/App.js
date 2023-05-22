@@ -31,8 +31,6 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<UnauthorizedPage/>}/>
         </Routes>
-        {<Réseau/> ? "":    <Footer/>}
-     
       </BrowserRouter>
     </>
   );

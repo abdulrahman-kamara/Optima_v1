@@ -3,6 +3,7 @@ import supervisionService from "../Context/SupervisionService";
 import Card from "../components/Card/Card"
 import { motion } from "framer-motion";
 import "./Carrières.css"
+import "../components/Card/Card.css"
 
 function Certificats() {
 const [data, setData] = useState([])
@@ -50,10 +51,10 @@ const seleceted = (adherent) => {
 
 
   return (
-    <div style={{display:"flex", flexDirection:"column",  justifyContent:"center", alignItems:"center",  marginTop:"2rem", padding:"20px"}} >
+    <div className="c-c" >
  
  <div className="custom-select">
-      <select value={selectOption} onChange={handleOptionChange} className="value-select">
+      <select value={selectOption} onChange={handleOptionChange} className="c-select">
         <option value="">All</option>
         <option value="1">Taximètre</option>
         <option value="2">Gaz/Opacimètre</option>
@@ -65,7 +66,7 @@ const seleceted = (adherent) => {
       </div>
   
  
-    <div style={{ display: "flex",  flexDirection:"column", flexWrap: "wrap",marginTop:"20px" }}>
+    <div className="my-grid-c">
       { filteredData?.map((data, i) =>(
         <Card key={i} data={data}/>
       ) )}

@@ -30,8 +30,9 @@ span {
   align-self: center;
   padding-top: 20px;
   padding: auto;
-  height: 330vh;
-  width: 90%;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
 }
 .card-text {
   text-align: start;

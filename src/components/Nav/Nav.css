@@ -159,18 +159,18 @@ button {
     right: 20px;
   }
   .nav-links-mobile {
-    
     display: block;
     list-style: none;
     box-shadow: rgba(244, 244, 246, 0.867) 0 30px 30px -20px;
     transition: all 0.5s ease-in-out;
-    width: 50%;
+    width: 100%;
     background-color: #ffff;
     overflow-x: scroll;
     height: 100vh;
     box-sizing: border-box;
     margin-right: 10px;
-    right: 0;
+    left: 134px;
+    z-index: 1000;
   }
 
   ul .nav-link {

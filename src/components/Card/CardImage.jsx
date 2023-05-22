@@ -1,6 +1,4 @@
 import React from "react";
-import images from "./listOfImage";
-import { Card, Col, Container, Row } from "react-bootstrap";
 import "./Card.css";
 import { Link } from "react-router-dom";
 

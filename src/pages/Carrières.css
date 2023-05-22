@@ -21,7 +21,7 @@
 }
 .carriere {
   width: 200%;
-  background-color:  #dceef4;
+  background-color:  #ffff;
   padding: 10px 10px 15px 15px;
   border-radius: 10px;
   box-sizing: border-box;
@@ -45,11 +45,11 @@
 .card-second-text {
   color: red;
 }
-.section-blank {
+/* .section-blank {
   margin-top: 100px;
   background-color: black;
   height: 40vh;
-}
+} */
 .section-footer {
   background-color: #e65d5e;
   height: 35vh;
