@@ -89,6 +89,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+   
 }
 
 .adherent{
@@ -97,6 +98,7 @@
     border:1px solid rgba(180, 180, 196, 0.481);
     border-radius: 20px;
     box-shadow: var(--comet-shadow-medium); 
+    margin-top: 10px;
 }
 
 .adherent-card{
@@ -349,12 +351,13 @@
         flex-direction: column;
         padding-left: 0px;
         margin-top: 10px;
+        width: 100%;
     }
     .list-adherent{
         display: flex;
         padding: 0 10px;
         border-radius: 20px;
-        margin-top: 300px;
+        /* margin-top: 300px; */
         width: 100%;
     }
     .adherent{
@@ -423,10 +426,10 @@
         align-items: center;
     } */
   
-    /* .adherent_main-container{
+    .adherent_main-container{
     display: flex;
     justify-content: space-evenly;
-    } */
+    }
    
     .adherent-ville::after{
       display: none;
