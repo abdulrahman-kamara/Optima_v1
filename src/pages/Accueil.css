@@ -61,6 +61,8 @@ margin-top: 40px;
 .para-section{
   margin-top: 20px;
   padding-left: 20px;
+  color: var(--comet-light);
+  font-size: 20px;
 }
 .paragraph{
   display: flex;
@@ -69,7 +71,7 @@ margin-top: 40px;
   color: var(--comet-light);
   text-align: left;
   justify-content: flex-start;
-  align-items: end;
+  align-items: flex-end;
 }
 .section-number {
   display: flex;
@@ -77,12 +79,15 @@ margin-top: 40px;
   justify-content: space-between;
   margin-top: 10px;
   margin-bottom: 10px;
+ 
 }
 .section-année{
-  padding-left: 200px;
+  padding-left: 200px; 
+  color: var(--comet-light);
 }
 .section-percentage {
   text-align: right;
+  color: var(--comet-light);
 }
 .section-text{
   color: var(--comet-light);

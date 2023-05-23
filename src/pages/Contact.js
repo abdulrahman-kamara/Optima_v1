@@ -13,8 +13,6 @@ import capchakey from "../Constant/capcha_key/capcha"
 // the values of the contact information
 const initialValue = {prenom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
 
-
-
 const Contact = () => {
   // i used useRef hook to be able to return an object that can i can use during the lifecyle of this component and also to access a DOM child directly
 const form = useRef();  
@@ -56,14 +54,12 @@ const sendEmail = (e) => {
     }).catch ((error) => {
         console.log(error.text);
         toast.error("Votre message est pas envoyer Merci!")
-       
     })
     .finally(() => {
       setIsLoading(false)
     })
   }
     }
-
 };
 
 const handleCaptchaChange = (value) => {
@@ -218,7 +214,7 @@ const handleCaptchaChange = (value) => {
               onChange={e => {setFormData({...formData, message : e.target.value}); if (error.message && e.target.value) {
                 const { message: _, ...rest } = error;
                 setError(rest);
-              }} }            ></textarea>
+              }}}></textarea>
            
             {error.message && <span>{error.message}</span>}
           </div>
@@ -227,7 +223,7 @@ const handleCaptchaChange = (value) => {
         sitekey={capchakey}
         onChange={handleCaptchaChange}
         className="capcha"
-      />
+          />
           <div className="button-sub">
             <button className="btn btn-primary" type="submit" disabled={!isCaptchaVerified}>
               {isLoading ? (
@@ -235,7 +231,6 @@ const handleCaptchaChange = (value) => {
            <Circles
               height="50"
               width="50"
-              
               color="blue"
               ariaLabel="circles-loading"
               wrapperStyle={{}}
@@ -243,29 +238,12 @@ const handleCaptchaChange = (value) => {
               visible={true}
             />
               </div>
-              
               ): "Envoyer" 
               }
-         
             </button>
           </div>
         </form>
       </div>
-      {/* <div className="section-footer">
-        <span className="email-text">
-          <h6 className="section-text">E-mail</h6>
-          <p className="section-text">contact@cercleoptima.com</p>
-        </span>
-        <span className="email-text">
-          <h6 className="section-text">Téléphone</h6>
-          <p className="section-text">04 42 50 96 90</p>
-        </span>
-        <span className="email-text">
-          <p className="section-text">
-            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
-          </p>
-        </span>
-      </div> */}
     </div>
   );
 };

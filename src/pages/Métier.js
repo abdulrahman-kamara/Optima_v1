@@ -211,7 +211,6 @@ function Métier() {
           </div>
         </div>
       </div>
-      
      <div fluid className="section-blank"></div>
      <Footer/>
       

@@ -137,7 +137,6 @@ console.log("mydata", identification_adherent);
                           </Map>
                       }
                   </div>
-                 
               </div>
           </div>
       </div>

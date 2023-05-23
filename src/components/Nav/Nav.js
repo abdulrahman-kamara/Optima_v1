@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import { ImMenu } from "react-icons/im";
 import { ImCross } from "react-icons/im";
-import { motion, useTime, useTransform} from "framer-motion";
+import { motion} from "framer-motion";
 
 function NavBar() {
   const [mobile, setmobile] = useState(false);
-  const time = useTime()
-const rotate = useTransform(
-  time,
-  [0, 4000], // For every 4 seconds...
-  [0, 360], // ...rotate 360deg
-  { clamp: false }
-)
+  const mobileMenuRef = useRef()
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if(mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)){
+       setmobile(false)
+    }
+  }
+  document.addEventListener('mousedown', handleClickOutside);
+
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+},[])
+
 
   return (
     <nav className="navbar shadow-sm">
@@ -29,7 +37,7 @@ const rotate = useTransform(
       </div>
 
       <motion.ul className={mobile ? "nav-links-mobile" : "nav-link"}
-        onClick={() => setmobile(false)} 
+       ref={mobileMenuRef}
        
         >
         <Link to="/">

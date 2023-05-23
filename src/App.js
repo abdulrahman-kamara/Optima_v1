@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ButtonAppBar from "./components/Nav/Nav";
 import Accueil from "./pages/Accueil";
 import Activities from "./pages/Activities";
@@ -12,7 +12,7 @@ import Réseau from "./pages/Nore-reseau/Adherent";
 import AdherentDetail from "./pages/Nore-reseau/AdherentDetail";
 import Contact from "./pages/Contact";
 import UnauthorizedPage from "./pages/UnauthorizedPage";
-import Footer from "./components/Nav/Footer/fotter";
+
 
 const App = () => {
   return (

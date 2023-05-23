@@ -1,10 +1,12 @@
-// import { Button, Card, CardActions, CardContent, List, ListItem, ListItemText, Typography } from "@mui/material";
 import React from "react";
 import { RiTaxiLine } from "react-icons/ri";
 import "./Activities.css";
-// import ScrollReveal from "scrollreveal";
+
+
+
 function Activities() {
-  //   ScrollReveal().reveal(".card");
+
+  
   return (
     <section className="activite-contaier">
       <span className="spanheading">

@@ -8,6 +8,7 @@ import { LayerGroup, MapContainer, Marker, Popup, TileLayer } from "react-leafle
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useRef } from "react";
+import { Circles } from "react-loader-spinner";
 
 
  
@@ -22,23 +23,14 @@ const Reseau = () => {
   const [actif, setActif] = useState(true);
   // Chargement de la liste des adherents
   const [loadingscreen, setLoadingscreen] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [adherentlocation, setadherentlocation] = useState(null);
   const [valueOptions, setValueOptions] = useState([]);
   const [markers, setMarkers] = useState([])
 
 
 
-  useEffect(() => {
-   
-      getAllAdherents(search, actif, );
-      setLoadingscreen(false);
 
-      // const filteredData = adherents.filter(item => {
-      //   return item.nom_adherent && item.ville && item.departement.includes(search.toLowerCase())
-      // })
-  
-      // setAdherents(filteredData)
-  }, [search, actif]);
 
   const getAllAdherents = async (search, actif, activite) => {
     await supervisionService
@@ -47,15 +39,21 @@ const Reseau = () => {
       .then(response => console.log("data", adherents))
   };
 
+  useEffect(() => {
+      getAllAdherents(search, actif, );
+      setLoadingscreen(false);
+
+      setTimeout(() =>{
+        setIsLoading(false)
+      }, 2000)
+      
+  }, [search, actif]);
 
   const handleChange = (event) => {
-    
      const filteredData = adherents.filter(item => {
       setSearch(event.target.value);
       return item.nom_adherent && item.ville && item.departement.includes(search.toLowerCase())
-      
     })
-   
      console.log("searchinput", search);
   };
 
@@ -321,7 +319,19 @@ const iconMap = {
             />
           </div>
           </div>
-          <div className="list-background">
+          {isLoading ? ( <div className="adh-spinner">
+   <Circles
+      height="50"
+      width="50"
+      
+      color="#4869ee"
+      ariaLabel="circles-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+    />
+      </div>):(
+            <div className="list-background">
              <div className="list-adherent">
            {(!loadingscreen &&
         adherents &&
@@ -377,7 +387,9 @@ const iconMap = {
         </>
       )}
           </div>
-          </div>
+          </div> 
+          )}
+         
          
    
       </div>

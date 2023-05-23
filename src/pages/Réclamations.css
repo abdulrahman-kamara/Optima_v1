@@ -46,7 +46,9 @@
   width: 100%;
 }
 .option-select {
-  height: 35px;
+  height: 37px;
+  border-radius: 5px;
+  border-color: #6e8ffb55;
 }
 
 .address {
@@ -70,6 +72,12 @@
   justify-content: center;
   flex-direction: column;
   padding-left: 50px;
+ 
+}
+.dates{
+   border-radius: 5px;
+   border-color: #6e8ffb2d;
+   padding: 5px;
 }
 .lieu {
   display: flex;

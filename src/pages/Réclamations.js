@@ -134,7 +134,6 @@ const handleCaptchaChange = (value) => {
             />
             {error.society && <span>{error.society}</span>}
           </div>
-
           <div className="civilité">
             <div className="options">
               <label className="form-label">
@@ -151,7 +150,6 @@ const handleCaptchaChange = (value) => {
               </select>
               {error.civilite && <span>{error.civilite}</span>}
             </div>
-
             <div className="options">
               <label  className="form-label">
                 Nom du contact
@@ -187,7 +185,6 @@ const handleCaptchaChange = (value) => {
             />
             {error.address && <span>{error.address}</span>}
           </div>
-
           <div className="personal-info">
             <div className="contact-info">
               <label  className="form-label">
@@ -206,7 +203,6 @@ const handleCaptchaChange = (value) => {
               />
               {error.phone && <span>{error.phone}</span>}
             </div>
-
             <div className="contact-info">
               <label  className="form-label">
                 E-mail *
@@ -229,12 +225,13 @@ const handleCaptchaChange = (value) => {
             <label>
               Date
             <ReactDatePicker
+            placeholderText="Choisier le date"
             selected={selectedDate}
             onChange={(date) => {setSelectedDate(date); if(error.selectedDate && selectedDate === null){
               const {selectedDate: _, ...rest} = error;
               setError(rest)
             }}}
-            
+            className="dates"
             />
             {error.selectedDate && <span>{error.selectedDate}</span>}
             </label>
@@ -272,14 +269,12 @@ const handleCaptchaChange = (value) => {
             ></textarea>
             {error.message && <span>{error.message}</span>}
           </div>
-
           <ReCAPTCHA
           ref={recaptchaRef}
         sitekey={capchakey}
         onChange={handleCaptchaChange}
         className="capcha"
-      />
-
+          />
           <div className="button-sub">
             <button className="btn btn-primary" type="submit" disabled={!isCaptchaVerified}>
             {isLoading ? (
