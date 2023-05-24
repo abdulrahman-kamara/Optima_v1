@@ -46,7 +46,12 @@ const CardImage = () => {
     <>
       {images.map((card) => (
         <div className="s-cards">
-          <img src={card.url} alt={card.alt} className="card-image" />
+          <img
+            src={card.url}
+            alt={card.alt}
+            className="card-image"
+            loading="lazy"
+          />
           <Link to={card.link}>
             <p className="custom-card-title">{card.caption}</p>
           </Link>

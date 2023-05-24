@@ -52,7 +52,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
           </p> 
           </div>
           <motion.div className="section-image">
-            <img src="\images\section_image.jpg" alt="section" />
+            <img src="\images\section_image.jpg" alt="section" loading="lazy"/>
           </motion.div>
           <div className="section-number">
             <div className="section-année">
@@ -89,7 +89,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
         </div>
         <div className="section-activite">
         <div className="section-image">
-            <img src="\images\technicien tachy.jpg" alt="section" />
+            <img src="\images\technicien tachy.jpg" alt="section" loading="lazy"/>
           </div>
           
           <div className="activite-heading">

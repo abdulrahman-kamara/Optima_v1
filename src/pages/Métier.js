@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import {
   MdHighQuality,
   MdOutlineHouseSiding,
@@ -13,7 +12,7 @@ import Footer from "../components/Nav/Footer/fotter";
 
 function Métier() {
   return (
-    <Container fluid>
+    <div className="container" fluid>
       <div className="my-container">
         <div className="heading">
           <h2 className="hero-text">
@@ -212,9 +211,9 @@ function Métier() {
         </div>
       </div>
      <div fluid className="section-blank"></div>
-     <Footer/>
+     {/* <Footer/> */}
       
-    </Container>
+    </div>
   );
 }
 
