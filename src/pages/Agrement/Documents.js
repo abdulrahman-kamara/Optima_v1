@@ -15,16 +15,13 @@ function Documents() {
        const fileData  = response.fichier_contenu;
        const fileType = 'application/pdf'
 
-       const byteCharacters = Buffer.from(fileData, 'base64').toString('binary');
-       const byteNumbers = new Array(byteCharacters.length);
-     
-       for (let i = 0; i < byteCharacters.length; i++) {
-         byteNumbers[i] = byteCharacters.charCodeAt(i);
-       }
-     
-       const byteArray = new Uint8Array(byteNumbers);
+       const binaryString = window.atob(fileData);
+    const uintArray = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      uintArray[i] = binaryString.charCodeAt(i);
+    }
 
-      const blob = new Blob([byteArray], { type: fileType });
+      const blob = new Blob([uintArray], { type: fileType });
       saveAs(blob, 'example.pdf');
       console.log('file', blob);
     } catch (error) {
