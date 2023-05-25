@@ -23,11 +23,18 @@ const getAllAdherentAgrements = (numero_adherent) => {
     .then(response => response.data )
 }
 
+const GetDocumentListeByNumeroDocument = (numero) => { 
+    return axios.get(apilink + "/adherent/documents/" + numero)
+    .then(response => response.data )
+}
+
+
  const supervisionService = {
     getAllAdherent,
     getAdherent,
     getAdherentByIdentification,
-    getAllAdherentAgrements
+    getAllAdherentAgrements,
+    GetDocumentListeByNumeroDocument
 }
 export default supervisionService;
 
