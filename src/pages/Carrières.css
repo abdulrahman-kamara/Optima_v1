@@ -26,6 +26,7 @@
   border-radius: 10px;
   box-sizing: border-box;
   box-shadow: rgb(222, 235, 247);
+ 
 }
 .card-title {
   font-size: 34px;
@@ -45,11 +46,7 @@
 .card-second-text {
   color: red;
 }
-/* .section-blank {
-  margin-top: 100px;
-  background-color: black;
-  height: 40vh;
-} */
+
 .section-footer {
   background-color: #e65d5e;
   height: 35vh;
@@ -107,7 +104,7 @@
     height: 40vh;
   }
   .carriere {
-    width: 50%;
+    width: 100%;
   }
   .search-box {
     width: 100%;

@@ -83,7 +83,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
             <h4 style={{color:"black", }}>Nos Activite :</h4>
           </div>
           <div className="d-cards">
-            <CardImage />
+            <CardImage/>
           </div>
         
         </div>

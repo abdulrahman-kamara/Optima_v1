@@ -13,12 +13,12 @@ function Activities() {
         <h2 className="heading">Nos différentes Activités</h2>
       </span>
       <div className="main-container">
-        <div class="row">
-          <div class="col-sm-6 mb-5 mb-sm-0 ">
-            <div class="card mb-4">
-              <div class="card-body">
+        <div className="row">
+          <div className="col-sm-6 mb-5 mb-sm-0 ">
+            <div className="card mb-4">
+              <div className="card-body">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <img
                       src="https://static.wixstatic.com/media/558047_ee6e878e37544461bc7e1b85bb6b1288~mv2.jpg/v1/fill/w_138,h_78,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/558047_ee6e878e37544461bc7e1b85bb6b1288~mv2.jpg"
                       alt=""
@@ -56,10 +56,10 @@ function Activities() {
               </div>
             </div>
 
-            <div class="card mb-4">
-              <div class="card-body">
+            <div className="card mb-4">
+              <div className="card-body">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <img
                       src="https://static.wixstatic.com/media/558047_a14c948db0364833b849e7a6a98c2045~mv2.png/v1/fill/w_136,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_a14c948db0364833b849e7a6a98c2045~mv2.png"
                       alt=""
@@ -97,10 +97,10 @@ function Activities() {
               </div>
             </div>
 
-            <div class="card mb-4">
-              <div class="card-body placeholder-glow">
+            <div className="card mb-4">
+              <div className="card-body placeholder-glow">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <img
                       src="https://static.wixstatic.com/media/558047_f307aec7d0944e01a6f99f63e0e19e0f~mv2.png/v1/fill/w_172,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_f307aec7d0944e01a6f99f63e0e19e0f~mv2.png"
                       alt=""
@@ -141,10 +141,10 @@ function Activities() {
               </div>
             </div>
 
-            <div class="card mb-4">
-              <div class="card-body">
+            <div className="card mb-4">
+              <div className="card-body">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <img
                       src="https://static.wixstatic.com/media/558047_65444bda9cb84421800700b931226610~mv2.jpg/v1/fill/w_88,h_88,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/558047_65444bda9cb84421800700b931226610~mv2.jpg"
                       alt=""
@@ -173,11 +173,11 @@ function Activities() {
             </div>
           </div>
 
-          <div class="col-sm-6">
-            <div class="red-card mb-4 bg-danger">
-              <div class="card-body">
+          <div className="col-sm-6">
+            <div className="red-card mb-4 bg-danger">
+              <div className="card-body">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <RiTaxiLine size={50} color="white" />
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold text-light">
@@ -200,10 +200,10 @@ function Activities() {
                 </li>
               </div>
             </div>
-            <div class="red-card mb-4 bg-danger">
-              <div class="card-body">
+            <div className="red-card mb-4 bg-danger">
+              <div className="card-body">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <img
                       src="https://static.wixstatic.com/media/558047_6e2ba97064c34db4ba749def9a017d32~mv2.png/v1/fill/w_136,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_6e2ba97064c34db4ba749def9a017d32~mv2.png"
                       alt=""
@@ -243,10 +243,10 @@ function Activities() {
                 </li>
               </div>
             </div>
-            <div class="red-card mb-4 bg-danger">
-              <div class="card-body">
+            <div className="red-card mb-4 bg-danger">
+              <div className="card-body">
                 <div className="card-icon">
-                  <h5 class="card-title-icon">
+                  <h5 className="card-title-icon">
                     <img
                       src="https://static.wixstatic.com/media/558047_a2386c34c7174eb18cc9413d6efbbeb9~mv2.png/v1/fill/w_88,h_88,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_a2386c34c7174eb18cc9413d6efbbeb9~mv2.png"
                       alt="img"

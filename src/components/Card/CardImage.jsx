@@ -44,9 +44,10 @@ const CardImage = () => {
 
   return (
     <>
-      {images.map((card) => (
+      {images.map((card, i) => (
         <div className="s-cards">
           <img
+            key={i}
             src={card.url}
             alt={card.alt}
             className="card-image"

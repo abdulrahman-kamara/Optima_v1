@@ -13,6 +13,7 @@ import capchakey from "../Constant/capcha_key/capcha"
 // the values of the contact information
 const initialValue = {prenom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
 
+
 const Contact = () => {
   // i used useRef hook to be able to return an object that can i can use during the lifecyle of this component and also to access a DOM child directly
 const form = useRef();  
@@ -102,9 +103,10 @@ const handleCaptchaChange = (value) => {
                 onChange={e => {setFormData({...formData, prenom : e.target.value}); if (error.prenom && e.target.value) {
                   const { prenom: _, ...rest } = error;
                   setError(rest);
+                  
                 }} }
               />
-              {error.prenom && <div>{error.prenom}</div>}
+              {error.prenom && <div style={{color:"red"}}>{error.prenom}</div> }
                 
             </div>
             <div className="col-md-4 nom">
@@ -121,7 +123,7 @@ const handleCaptchaChange = (value) => {
                   const { nom: _, ...rest } = error;
                   setError(rest);
                 }} }              />
-              {error.nom && <div>{error.nom}</div>}
+              {error.nom && <div style={{color:"red"}}>{error.nom}</div>}
                 
             </div>
             <div className="email">
@@ -139,7 +141,7 @@ const handleCaptchaChange = (value) => {
               setError(rest);
             }} }
               />
-              {error.email && <div>{error.email}</div>}
+              {error.email && <div style={{color:"red"}}>{error.email}</div>}
                
             </div>
           </div>
@@ -162,7 +164,7 @@ const handleCaptchaChange = (value) => {
                 setError(rest);
               }}}
               />
-              {error.tel && <div>{error.tel}</div>}
+              {error.tel && <div style={{color:"red"}}>{error.tel}</div>}
                 
             </div>
             <div className="col-md-4 société">
@@ -179,7 +181,7 @@ const handleCaptchaChange = (value) => {
                   const { society: _, ...rest } = error;
                   setError(rest);
                 }} }              />
-              {error.society && <div>{error.society}</div>}
+              {error.society && <div style={{color:"red"}}>{error.society}</div>}
            
             </div>
             <div className="col-md-4 occupation">
@@ -196,7 +198,7 @@ const handleCaptchaChange = (value) => {
                   const { occupation: _, ...rest } = error;
                   setError(rest);
                 }} }              />
-              {error.occupation && <div>{error.occupation}</div>}
+              {error.occupation && <div style={{color:"red"}}>{error.occupation}</div>}
               
             </div>
           </div>
@@ -216,7 +218,7 @@ const handleCaptchaChange = (value) => {
                 setError(rest);
               }}}></textarea>
            
-            {error.message && <span>{error.message}</span>}
+            {error.message && <div style={{color:"red" }}>{error.message}</div >}
           </div>
           <ReCAPTCHA
           ref={recaptchaRef}

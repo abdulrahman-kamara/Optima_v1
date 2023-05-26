@@ -8,7 +8,6 @@ function Carrières() {
   return (
     <>
     <Container
-      fluid
       style={{
         backgroundColor: "#E0E8F2",
         height: "100vh",
@@ -30,10 +29,10 @@ function Carrières() {
                 mobile, n'hésitez plus, transmettez nous votre candidature.
               </p>
 
-              <h5 class="card-second-text-h">
+              <h5 className="card-second-text-h">
                 Vous souhaitez rejoindre notre équipe ?
               </h5>
-              <p class="card-second-text">
+              <p className="card-second-text">
                 Envoyez votre candidature à recrutement@cercleoptima.com
               </p>
             </div>
@@ -42,7 +41,7 @@ function Carrières() {
       </div>
      
     </Container>
-     <div fluid class="section-blank"></div>
+     <div fluid className="section-blank"></div>
     </>
   );
 }

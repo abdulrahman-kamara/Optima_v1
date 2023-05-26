@@ -8,11 +8,11 @@ import { AiOutlineSetting } from "react-icons/ai";
 import { ImMap } from "react-icons/im";
 import { FcMindMap } from "react-icons/fc";
 import "./Métier.css";
-import Footer from "../components/Nav/Footer/fotter";
+
 
 function Métier() {
   return (
-    <div className="container" fluid>
+    <div className="container">
       <div className="my-container">
         <div className="heading">
           <h2 className="hero-text">
@@ -211,7 +211,7 @@ function Métier() {
         </div>
       </div>
      <div fluid className="section-blank"></div>
-     {/* <Footer/> */}
+  
       
     </div>
   );

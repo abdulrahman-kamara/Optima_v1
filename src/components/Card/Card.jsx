@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 const Cards = ({ data }) => {
   const numero = data.numero_document_agrement;
-  console.log("me", numero);
 
   const cettime = data.date_agrement;
   const euroTime = new Date(cettime);

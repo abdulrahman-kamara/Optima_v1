@@ -1,7 +1,8 @@
 import React, {useState, useRef} from "react";
 import "./Réclamations.css";
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';import ReactDatePicker from "react-datepicker";
+import { ToastContainer, toast } from 'react-toastify';
+import ReactDatePicker from "react-datepicker";
 import ReCAPTCHA from "react-google-recaptcha";
 import  { Circles } from 'react-loader-spinner';
 import capchakey from "../Constant/capcha_key/capcha"
