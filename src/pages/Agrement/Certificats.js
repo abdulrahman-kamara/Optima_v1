@@ -57,7 +57,7 @@ const seleceted = (adherent) => {
     <div className="c-c" >
     <div className="custom-select">
       <select value={selectOption} onChange={handleOptionChange} className="c-select">
-        <option value="">All</option>
+        <option value="">Tous</option>
         <option value="1">Taximètre</option>
         <option value="2">Gaz/Opacimètre</option>
         <option value="4">Tachygraphe</option>

@@ -35,18 +35,16 @@ const Reseau = () => {
   const getAllAdherents = async (search, actif, activite) => {
     await supervisionService
       .getAllAdherent(search, actif, activite)
-      .then((response) => setAdherents(response)).then((response) => setMarkers(response))
-      .then(response => console.log("data", adherents))
+      .then((response) => {console.log("data", adherents)
+      setAdherents(response)}
+      ).then((response) => setMarkers(response))
   };
-
   useEffect(() => {
       getAllAdherents(search, actif, );
       setLoadingscreen(false);
-
       setTimeout(() =>{
         setIsLoading(false)
       }, 2000)
-      
   }, [search, actif]);
 
   const handleChange = (event) => {
@@ -64,13 +62,10 @@ const Reseau = () => {
 //updating the value change for each checkbox and unchecked checkbox in the array
 const handleChanges = async (e, activite) => {
   const { value, checked } = e.target;
- 
-
   var _valueOptions = [];
   var _adherents = [];
 
   if (checked) {
-    
     _valueOptions = [...valueOptions, e.target.value];
     setValueOptions((prev) => [...prev, e.target.value]);
 
@@ -79,7 +74,6 @@ const handleChanges = async (e, activite) => {
       console.log("response", response);
       _adherents = response;
     });
-
     if (_valueOptions.length === 1) {
       await supervisionService
         .getAllAdherent("", true, activite)
@@ -139,6 +133,7 @@ const handleChanges = async (e, activite) => {
     }
   }
 }
+
 // map icon with leaflet
 const iconMap = {
   taximetre: L.icon({
@@ -173,10 +168,7 @@ const iconMap = {
   <div className="adherent-container">
   <div className="map-container">
         <div className="maker-icon">
-          <div
-            
-            className="sub-checkbox"
-          >
+          <div className="sub-checkbox">
             <div className="form-check map-checkbox">
               <input
                 className="form-check-input "
@@ -229,7 +221,6 @@ const iconMap = {
                 Ethylotest
               </label>
             </div>
-
             <div className="form-check">
               <input
                 className="form-check-input"
@@ -245,7 +236,6 @@ const iconMap = {
             </div>
           </div>
         </div>
-
         <MapContainer
           center={center}
           zoom={6}

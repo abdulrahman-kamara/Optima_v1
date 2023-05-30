@@ -1,15 +1,15 @@
-import React, {useState, useRef} from "react";
+import React, {Suspense} from "react"
+import {useState, useRef} from "react";
 import "./Réclamations.css";
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import ReactDatePicker from "react-datepicker";
-import ReCAPTCHA from "react-google-recaptcha";
 import  { Circles } from 'react-loader-spinner';
 import capchakey from "../Constant/capcha_key/capcha"
 import emailId from "../Constant/email/reclamation-email/email_id"
 import templeteId from "../Constant/email/reclamation-email/email_template"
 import emailKey from "../Constant/email/reclamation-email/email_key"
-
+const  ReCAPTCHA = React.lazy(() => import('react-google-recaptcha'));
 // value of the reclamation infomation
 const initialValue = {activite: "", society: "", email: "", phone: "", civilite:"", address: "", place: "", contract_name: "", message: ""}
 
@@ -270,12 +270,26 @@ const handleCaptchaChange = (value) => {
             ></textarea>
             {error.message && <span>{error.message}</span>}
           </div>
-          <ReCAPTCHA
+          <Suspense fallback={ <div className="spinner">
+           <Circles
+              height="50"
+              width="50"
+              
+              color="blue"
+              ariaLabel="circles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+              </div>}>
+            <ReCAPTCHA
           ref={recaptchaRef}
         sitekey={capchakey}
         onChange={handleCaptchaChange}
         className="capcha"
           />
+          </Suspense>
+          
           <div className="button-sub">
             <button className="btn btn-primary" type="submit" disabled={!isCaptchaVerified}>
             {isLoading ? (
