@@ -4,7 +4,17 @@ import "./Carrières.css";
 
 function Carrières() {
 
-  
+  const  handleClick = (event) => {
+    event.preventDefault();
+
+    const recipient = 'example@example.com';
+    const subject = 'Hello';
+    const body = 'This is the body of the email.';
+
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  }
   return (
     <>
     <Container
@@ -32,8 +42,9 @@ function Carrières() {
               <h5 className="card-second-text-h">
                 Vous souhaitez rejoindre notre équipe ?
               </h5>
+              <a className="card-second-text" href="#" onClick={handleClick}> Envoyez votre candidature à recrutement@cercleoptima.com</a>
               <p className="card-second-text">
-                Envoyez votre candidature à recrutement@cercleoptima.com
+               
               </p>
             </div>
           </div>
@@ -41,7 +52,7 @@ function Carrières() {
       </div>
      
     </Container>
-     <div fluid className="section-blank"></div>
+     <div className="section-blank"></div>
     </>
   );
 }

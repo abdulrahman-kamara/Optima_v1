@@ -1,104 +1,122 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import supervisionService from "../../Context/SupervisionService";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
+import "@reach/combobox/styles.css";
 
+const libraries = ["places"];
 
+function MapComponent({ data, selectedLocation }) {
+  const center = useMemo(() => ({ lat: 47.824905, lng: 2.618787 }), []);
 
-function MapComponent() {
-  const [positions, setPositions] = useState([]);
-     //Tous les adherents
-  const [adherents, setAdherents] = useState([]);
-    // Element recherché
-  const [search, setSearch] = useState("");
-   //Etat de chargement d'un adherent
-  const [actif, setActif] = useState(true);
-  const [markers, setMarkers] = useState([])
-  
-  const center= useMemo(() =>
-  ({ lat: 47.824905, lng:  2.618787 }),
-  [])
-  useEffect(() => {
-    const fetchData = async (search, actif, activite) => {
-      try {
-        const response = await supervisionService.getAllAdherent(search, actif, activite)
-        .then((response) =>{
-           setAdherents(response)
-           console.log("data", adherents);
-        }
-       
-        ).then((response) => setMarkers(response))
-        
-        // const data = await response.json();
-        console.log("data", response);
-        const geocoder = new window.google.maps.Geocoder();
-        const positionsArray = [];
-
-        for (const item of adherents) {
-          geocoder.geocode({ address: item.address }, (results, status) => {
-            if (status === 'OK' && results[0]) {
-              const latitude = results[0].geometry.location.lat();
-              const longitude = results[0].geometry.location.lng();
-              
-              if (!isNaN(latitude) && !isNaN(longitude)) {
-                const position = {
-                  id: item.id,
-                  lat: latitude,
-                  lng: longitude,
-                };
-                positionsArray.push(position);
-                setPositions([...positionsArray]);
-              } else {
-                console.error('Invalid latitude or longitude value:', latitude, longitude);
-              }
-            } else {
-              console.error('Geocode was not successful for the following reason:', status);
-            }
-          });
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (!positions) {
-    return <div>Loading...</div>;
-  }
-
-
-  return (
-    <LoadScript googleMapsApiKey="AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk">
-      <GoogleMap
-        center={center}
-        zoom={6}
-        mapContainerStyle={{ width: '100%', height: '800px' }}
-      >
-        {adherents && adherents.map((position) => (
-           <Marker
-           key={position.numero_adherent}
-           position={{ lat: position.lat, lng: position.lng }}
-           icon={{
-             url: '/public/taxi.jpg', // Replace with your custom marker icon URL
-             scaledSize: new window.google.maps.Size(32, 32), // Adjust the size of the marker icon
-           }}
-         />
-        ))}
-      </GoogleMap>
-    </LoadScript>
-  );
-}
-
-function myMap() {
   return (
     <div>
-      <h1>Google Maps React Example</h1>
-      <MapComponent />
+      <div>
+        <PlaceAutocomplete setSelectedLocation={selectedLocation} />
+      </div>
+
+      <LoadScript
+        googleMapsApiKey="AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk"
+        libraries={libraries}
+      >
+        <GoogleMap
+          center={center}
+          zoom={12}
+          mapContainerStyle={{ width: "50%", height: "100vh" }}
+        >
+          {selectedLocation && (
+            <Marker
+              position={selectedLocation}
+              onClick={() => console.log("Marker clicked!")}
+            />
+          )}
+           {data.map((markerData) => (
+            <Marker
+              key={markerData.id}
+              position={{ lat: markerData.lat, lng: markerData.lng }}
+              onClick={() => console.log("Marker clicked!")}
+            />
+          ))}
+        </GoogleMap>
+      </LoadScript>
     </div>
   );
 }
-export default myMap;
+
+const PlaceAutocomplete = ({ setSelectedLocation }) => {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
+  } = usePlacesAutocomplete();
+
+  const handleSelect = async (address) => {
+    setValue(address, false);
+    clearSuggestions();
+
+    try {
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+      setSelectedLocation({ lat, lng });
+    } catch (error) {
+      console.error("Error retrieving geocode:", error);
+    }
+  };
+
+  return (
+    <Combobox onSelect={handleSelect}>
+      <ComboboxInput
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        disabled={!ready}
+        style={{ margin: "20px", width: "50%", padding: "0.5rem", zIndex: "1000" }}
+        placeholder="Search address"
+      />
+      <ComboboxPopover>
+        <ComboboxList>
+          {status === "OK" &&
+            data.map(({ place_id, description }) => (
+              <ComboboxOption key={place_id} value={description} />
+            ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
+  );
+}
+
+function MyMap() {
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [actif, setActif] = useState(true);
+
+  useEffect(() => {
+    const getAllAdherents = async () => {
+      await supervisionService
+        .getAllAdherent(search, actif, "")
+        .then((response) => {
+          setData(response);
+          console.log('data', response);
+        });
+    };
+
+    getAllAdherents();
+  }, [search, actif]);
+
+  return (
+    <div>
+      <div></div>
+      <MapComponent data={data} selectedLocation={selectedLocation} />
+    </div>
+  );
+}
+
+export default MyMap;
+
+
 
 
 //  import React, { useState, useEffect } from "react";

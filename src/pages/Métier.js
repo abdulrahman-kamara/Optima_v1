@@ -210,7 +210,7 @@ function Métier() {
           </div>
         </div>
       </div>
-     <div fluid className="section-blank"></div>
+     <div className="section-blank"></div>
   
       
     </div>

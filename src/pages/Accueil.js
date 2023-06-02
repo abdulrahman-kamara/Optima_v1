@@ -69,7 +69,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
             </div>
           </div>
         </div>
-        <motion.div className="plus-line" style={{ scaleX }}>
+        <div className="plus-line" >
         <div className="plus">
         </div>
         <div className="arrowlink">
@@ -77,7 +77,7 @@ Le réseau au croisement de la métrologie légale et du système qualité.
             </Link>
 
           </div>
-        </motion.div>
+        </div>
         <div className="section-card">
           <div className="para-link">
             <h4 style={{color:"black", }}>Nos Activite :</h4>

@@ -64,13 +64,7 @@ const Cards = ({ data }) => {
             <h6 className="c-title fs-4"> {data.activite_detail_agrement}</h6>
             <p className="card-text fs-5">{data.type_agrement}</p>
             <div className="b-sections">
-              <button
-                onClick={handleDownload}
-                // id={numero}
-                //  className="adherent"
-                // to={"/certificat/" + numero}
-                // data={data}
-              >
+              <button onClick={handleDownload}>
                 <p className="button-c">{data.numero_agrement}</p>
               </button>
 
