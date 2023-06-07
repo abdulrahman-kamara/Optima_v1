@@ -30,7 +30,7 @@ const Reseau = () => {
 
  
   //Tous les adherents
-  const [adherents, setAdherents] = useState([]);
+  const [adherents, setAdherents] = useState(null);
   // Element recherché
   const [search, setSearch] = useState("");
   //Etat de chargement d'un adherent
@@ -38,23 +38,16 @@ const Reseau = () => {
   // Chargement de la liste des adherents
   const [loadingscreen, setLoadingscreen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [adherentlocation, setadherentlocation] = useState(null);
   const [valueOptions, setValueOptions] = useState([]);
   const [markers, setMarkers] = useState([])
   const [map, setMap] = React.useState(null);
-  const [filteredData, setFilterData] = useState([])
-
-
-
-
-
+  const [coordonnees, setCoordonnees] = useState({})
 
     const { isLoaded, loadError  } = useLoadScript ({
     id: 'google-map-script',
     googleMapsApiKey:"AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk",
     // libraries: 'places',
   });
-
   const getIcon = (activite) => {
     if (activite === '1') {
       return '/public/gaz.jpg';
@@ -63,74 +56,58 @@ const Reseau = () => {
     }
   };
 
+
   useEffect(() => {
-    async function fetchData(search, actif, activite) {
+    const fetchData = async (search, actif, activite) => {
       try {
-        await supervisionService
-      .getAllAdherent(search, actif, activite)
-      .then((response) => {console.log("data", adherents)
-      setAdherents(response)}
-      )
-      
-        // use the geocoder to get the latitude and longitude coordinates for each address
-        // eslint-disable-next-line no-undef
-        const geocoder = await window.google.maps.Geocoder()
-        const newMarkers = [];
-        for (const address of adherents) {
-          geocoder.geocode({ address }, (results, status) => {
-            if (status === 'OK') {
-              newMarkers.push({
-                position: { lat: results[0].atelier_latitude
-                  .lat(), lng: results[0].atelier_longitude.lng() },
-                label: address,
-                icon: getIcon(results[0].adresse1_adherent
-                  )
-              });
-            } else {
-              console.error('Geocode was not successful for the following reason: ' + status);
-            }
-            setMarkers(newMarkers);// set the markers once all geocoding has completed
-            // center the map on the first marker
-            if (map && newMarkers.length > 0) {
-              map.panTo(newMarkers[0].position);
-             
-            }
-         
-          });
-        }
+        const response = await supervisionService.getAllAdherent(search, actif, activite);
+        setAdherents(response);
+        console.log("res", response);
+        // const geocoder = new window.google.maps.Geocoder(); // Create a new instance of Geocoder
+        // const newMarkers = [];
+        // for (const data of response) {
+        //   const address = data.adresse2_adherent 
+        //   if (typeof address === 'string' && address.trim() !== '') {
+        //     geocoder.geocode({ address : address }, (results, status) => {
+        //       if (status === 'OK') {
+        //         newMarkers.push({
+        //           position: {
+        //             lat: results[0].geometry.location.lat(),
+        //             lng: results[0].geometry.location.lng(),
+        //           },
+        //           label: address,
+        //           icon: getIcon(results[0].formatted_address),
+        //         });
+        //       } else {
+        //         console.error('Geocode was not successful for the following reason: ' + status);
+        //       }
+  
+        //       // center the map on the first marker
+        //       if (newMarkers.length > 0 && map) {
+        //         map.panTo(newMarkers[0].position);
+        //       }
+        //     });
+        //   } else {
+        //     console.error('Invalid address:', address);
+        //   }
+        // }
+        // setMarkers(newMarkers); // set the markers once all geocoding has completed
       } catch (error) {
         console.error(error);
       }
-    }
+    };
   
-    if(isLoaded){
-      fetchData();
+    if (isLoaded) {
+      fetchData(search, actif, "all");
     }
-    
     localStorage.setItem('markers', JSON.stringify(markers));
       setLoadingscreen(false);
       setTimeout(() =>{
         setIsLoading(false)
       }, 2000)
+  }, []);
+
   
-
-  }, [search, actif, map, isLoaded, markers]);
-
-
-
-  console.log("mk", markers);
-
-  const handleChange = (event) => {
-     const filteredData = adherents.filter(item => {
-      setSearch(event.target.value);
-      return item.nom_adherent && item.ville && item.departement.includes(search.toLowerCase())
-    })
-   
-  };
-
-  //the center of the map
-  // const center = [47.824905, 2.618787];
-  // const mapRef = useRef();
 
 //updating the value change for each checkbox and unchecked checkbox in the array
 const handleChanges = async (e, activite) => {
@@ -176,7 +153,7 @@ const handleChanges = async (e, activite) => {
   }
   else {
     _valueOptions = valueOptions.filter((val) => val !== e.target.value)
-     console.log(_valueOptions)
+     console.log("meemem",_valueOptions)
     setValueOptions(_valueOptions);
     if (_valueOptions.length === 0) {
       setValueOptions(_valueOptions);
@@ -207,6 +184,8 @@ const handleChanges = async (e, activite) => {
   }
 }
 
+console.log("ad", adherents);
+console.log("search", search);
 const center = useMemo(() =>({
   lat: 47.824905,
   lng: 2.618787
@@ -292,9 +271,9 @@ const center = useMemo(() =>({
           zoom={10}
           loadGoogleMapsApi={true}
           >
-             {markers && markers.map((marker) => (
+             {markers && markers.map((marker, i) => (
                <Marker
-               key={marker.identification_adherent}
+               key={i}
                id={marker.numero_adherent}
                position={[
                  marker.position,
@@ -310,7 +289,7 @@ const center = useMemo(() =>({
              />
              ))}
           
-  {/* <Marker position={center}/> */}
+  <Marker position={center}/>
   
           </GoogleMap>
         ): loadError ?(
@@ -330,9 +309,9 @@ const center = useMemo(() =>({
               type="text"
               value={search}
               placeholder="Recherche..."
-              onChange={(event) => {
-                handleChange(event);
-              }}
+              onChange={(e) => 
+                setSearch(e.target.value)
+              }
               autoComplete="off"
             />
           </div>
@@ -351,9 +330,11 @@ const center = useMemo(() =>({
       </div>):(
             <div className="list-background">
              <div className="list-adherent">
-           {(!loadingscreen &&
-        adherents &&
-        adherents.map((adherent, i) => (
+           {(!loadingscreen && adherents && adherents.filter((adherent) => {
+          const adherentVille  = adherent.ville.toLowerCase().includes(search)
+          const adherentDepartment = adherent.departement.toLowerCase().includes(search)
+          return adherentVille || adherentDepartment
+        }).map((adherent, i) => (
           <NavLink
             id={adherent.numero_adherent} 
             data={i}
@@ -417,6 +398,7 @@ const center = useMemo(() =>({
 
   );
 }
+
  export default Reseau;
 
 
@@ -479,57 +461,4 @@ const center = useMemo(() =>({
 
 
 
-// import React, { useState, useEffect, useMemo } from 'react';
-// import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-// import supervisionService from "../../Context/SupervisionService";
-// import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
-// import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
-// import "@reach/combobox/styles.css";
-
-
-
-
-
-// // const PlaceAutocomplete = ({ setSelectedLocation }) => {
-// //   const {
-// //     ready,
-// //     value,
-// //     suggestions: { status, data },
-// //     setValue,
-// //     clearSuggestions,
-// //   } = usePlacesAutocomplete();
-
-// //   const handleSelect = async (address) => {
-// //     setValue(address, false);
-// //     clearSuggestions();
-
-// //     try {
-// //       const results = await getGeocode({ address });
-// //       const { lat, lng } = await getLatLng(results[0]);
-// //       setSelectedLocation({ lat, lng });
-// //     } catch (error) {
-// //       console.error("Error retrieving geocode:", error);
-// //     }
-// //   };
-
-// //   return (
-// //     <Combobox onSelect={handleSelect}>
-// //       <ComboboxInput
-// //         value={value}
-// //         onChange={(e) => setValue(e.target.value)}
-// //         disabled={!ready}
-// //         style={{ margin: "20px", width: "50%", padding: "0.5rem", zIndex: "1000" }}
-// //         placeholder="Search address"
-// //       />
-// //       <ComboboxPopover>
-// //         <ComboboxList>
-// //           {status === "OK" &&
-// //             data.map(({ place_id, description }) => (
-// //               <ComboboxOption key={place_id} value={description} />
-// //             ))}
-// //         </ComboboxList>
-// //       </ComboboxPopover>
-// //     </Combobox>
-// //   );
-// // }
 
