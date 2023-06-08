@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
 import {  GoogleMap, Marker,  useLoadScript } from '@react-google-maps/api';
-// import { useRef } from "react";
+import Geocode from "react-geocode"
 import { Circles } from "react-loader-spinner";
 import { icon } from "leaflet";
 
@@ -23,7 +23,7 @@ const positioncenter = {
 
 
 
-// const API_KEY =  process.env.REACT_APP_GOOGLE_MAPS_API_KEY; // your google maps API key
+
 
 
 const Reseau = () => {
@@ -56,56 +56,62 @@ const Reseau = () => {
     }
   };
 
+  // const getAllAdherent = async (search, actif, activite) => {
+  //   await supervisionService
+  //     .getAllAdherent(search, actif, activite)
+  //     .then((response) => setAdherents(response));
+  // };
 
   useEffect(() => {
     const fetchData = async (search, actif, activite) => {
       try {
-        const response = await supervisionService.getAllAdherent(search, actif, activite);
-        setAdherents(response);
-        console.log("res", response);
-        // const geocoder = new window.google.maps.Geocoder(); // Create a new instance of Geocoder
-        // const newMarkers = [];
-        // for (const data of response) {
-        //   const address = data.adresse2_adherent 
-        //   if (typeof address === 'string' && address.trim() !== '') {
-        //     geocoder.geocode({ address : address }, (results, status) => {
-        //       if (status === 'OK') {
-        //         newMarkers.push({
-        //           position: {
-        //             lat: results[0].geometry.location.lat(),
-        //             lng: results[0].geometry.location.lng(),
-        //           },
-        //           label: address,
-        //           icon: getIcon(results[0].formatted_address),
-        //         });
-        //       } else {
-        //         console.error('Geocode was not successful for the following reason: ' + status);
-        //       }
+        if (!adherents) {
+          const response = await supervisionService.getAllAdherent(search, actif, activite);
+          setAdherents(response);
+          console.log(response);
+          Geocode.setApiKey("AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk");
   
-        //       // center the map on the first marker
-        //       if (newMarkers.length > 0 && map) {
-        //         map.panTo(newMarkers[0].position);
-        //       }
-        //     });
-        //   } else {
-        //     console.error('Invalid address:', address);
-        //   }
-        // }
-        // setMarkers(newMarkers); // set the markers once all geocoding has completed
+          const coordinatesArray = []; // New array to store coordinates
+  
+          // Assuming response is an array, loop through each element
+          for (const item of response) {
+            const address = item.adresse1_adherent + ", " + item.departement + " " + item.ville;
+  
+            try {
+              const geocodeResponse = await Geocode.fromAddress(address);
+              const { lat, lng } = geocodeResponse.results[0].geometry.location;
+  
+              setCoordonnees ({
+                lng: lng,
+                lat: lat,
+              })
+  
+              coordinatesArray.push(coordonnees); // Store coordinates in the array
+            } catch (error) {
+              console.error('An error occurred during geocoding:', error);
+            }
+          }
+  
+          console.log("test", response);
+          console.log("testrr", coordinatesArray); // Log the coordinates array
+        }
       } catch (error) {
         console.error(error);
       }
+      
+     
     };
-  
+   setLoadingscreen(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
     if (isLoaded) {
       fetchData(search, actif, "all");
     }
-    localStorage.setItem('markers', JSON.stringify(markers));
-      setLoadingscreen(false);
-      setTimeout(() =>{
-        setIsLoading(false)
-      }, 2000)
   }, []);
+  
+  
+  
 
   
 
@@ -184,8 +190,7 @@ const handleChanges = async (e, activite) => {
   }
 }
 
-console.log("ad", adherents);
-console.log("search", search);
+
 const center = useMemo(() =>({
   lat: 47.824905,
   lng: 2.618787
@@ -264,32 +269,20 @@ const center = useMemo(() =>({
             </div>
           </div>
         </div>
-        { isLoaded ? (
+        { isLoaded ?  (
            <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={6}
           loadGoogleMapsApi={true}
           >
-             {markers && markers.map((marker, i) => (
+             { coordonnees && coordonnees.lng && (
                <Marker
-               key={i}
-               id={marker.numero_adherent}
-               position={[
-                 marker.position,
-               ]}
-              
-              
-              //  eventHandlers={{
-              //    click: () => {
-              //      setadherentlocation(markers);
-              //    },
-              //  }}
-            
+              position={coordonnees}
              />
-             ))}
+             )}
           
-  <Marker position={center}/>
+  
   
           </GoogleMap>
         ): loadError ?(
