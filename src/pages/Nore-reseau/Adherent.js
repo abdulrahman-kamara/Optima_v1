@@ -8,27 +8,19 @@ import "./Adherent.css";
 import {  GoogleMap, Marker,  useLoadScript } from '@react-google-maps/api';
 import Geocode from "react-geocode"
 import { Circles } from "react-loader-spinner";
-import { icon } from "leaflet";
+
 
 const containerStyle = {
   width:'800px',
   height:'600px'
 };
-const positioncenter = {
-  lat: 47.824905,
-  lng: 2.618787
-};
-
-
-
-
-
-
+// const positioncenter = {
+//   lat: 47.824905,
+//   lng: 2.618787
+// };
 
 
 const Reseau = () => {
-
- 
   //Tous les adherents
   const [adherents, setAdherents] = useState(null);
   // Element recherché
@@ -40,7 +32,6 @@ const Reseau = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [valueOptions, setValueOptions] = useState([]);
   const [markers, setMarkers] = useState([])
-  const [map, setMap] = React.useState(null);
   const [coordonnees, setCoordonnees] = useState({})
 
     const { isLoaded, loadError  } = useLoadScript ({
@@ -84,6 +75,8 @@ const Reseau = () => {
               setCoordonnees ({
                 lng: lng,
                 lat: lat,
+                label: address,
+                icon: getIcon(address)
               })
   
               coordinatesArray.push(coordonnees); // Store coordinates in the array
@@ -91,7 +84,7 @@ const Reseau = () => {
               console.error('An error occurred during geocoding:', error);
             }
           }
-  
+          setMarkers(coordinatesArray); // Set the markers state with the coordinates array
           console.log("test", response);
           console.log("testrr", coordinatesArray); // Log the coordinates array
         }
@@ -108,7 +101,7 @@ const Reseau = () => {
     if (isLoaded) {
       fetchData(search, actif, "all");
     }
-  }, []);
+  }, [actif, adherents, coordonnees, isLoaded, search])
   
   
   
