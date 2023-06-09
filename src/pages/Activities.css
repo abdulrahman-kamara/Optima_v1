@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 100px;
+  padding: 80px;
 }
 .first-section {
   display: flex;
@@ -40,10 +41,11 @@ span {
 
   padding: 10px;
 }
-.heading h2 {
+.heading  {
+  display: flex;
   letter-spacing: 0.02em;
-  font-size: 40px;
   font-weight: bolder;
+  
 }
 
 .listtext {

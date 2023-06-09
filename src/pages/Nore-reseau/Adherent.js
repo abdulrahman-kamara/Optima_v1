@@ -8,6 +8,7 @@ import "./Adherent.css";
 import {  GoogleMap, Marker,  useLoadScript } from '@react-google-maps/api';
 import Geocode from "react-geocode"
 import { Circles } from "react-loader-spinner";
+// import { saveAs } from "file-saver";
 
 
 const containerStyle = {
@@ -31,7 +32,7 @@ const Reseau = () => {
   const [loadingscreen, setLoadingscreen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [valueOptions, setValueOptions] = useState([]);
-  const [markers, setMarkers] = useState([])
+  const [markers, setMarkers] = useState({})
   const [coordonnees, setCoordonnees] = useState({})
 
     const { isLoaded, loadError  } = useLoadScript ({
@@ -39,13 +40,13 @@ const Reseau = () => {
     googleMapsApiKey:"AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk",
     // libraries: 'places',
   });
-  const getIcon = (activite) => {
-    if (activite === '1') {
-      return '/public/gaz.jpg';
-    } else {
-      return '/public/logo.jpg';
-    }
-  };
+  // const getIcon = (activite) => {
+  //   if (activite === '1') {
+  //     return '/public/gaz.jpg';
+  //   } else {
+  //     return '/public/logo.jpg';
+  //   }
+  // };
 
   // const getAllAdherent = async (search, actif, activite) => {
   //   await supervisionService
@@ -66,27 +67,35 @@ const Reseau = () => {
   
           // Assuming response is an array, loop through each element
           for (const item of response) {
-            const address = item.adresse1_adherent + ", " + item.departement + " " + item.ville;
+            const address = item.adresse1_adherent + ", " + item.departement + " " + item.ville
+            const numero_adherent = item.numero_adherent
+            const nom_adherent = item.nom_adherent
   
             try {
               const geocodeResponse = await Geocode.fromAddress(address);
-              const { lat, lng } = geocodeResponse.results[0].geometry.location;
+              const { lat, lng  } = geocodeResponse.results[0].geometry.location;
   
-              setCoordonnees ({
+              const coordonnees = {
                 lng: lng,
                 lat: lat,
-                label: address,
-                icon: getIcon(address)
-              })
+                label: address, // Include label for the marker
+                numéro: numero_adherent,
+                nom_adherent: nom_adherent
+                // icon: getIcon(address), // Call a function to determine the appropriate icon for the address
+              };
+  
   
               coordinatesArray.push(coordonnees); // Store coordinates in the array
             } catch (error) {
               console.error('An error occurred during geocoding:', error);
             }
           }
-          setMarkers(coordinatesArray); // Set the markers state with the coordinates array
+        
           console.log("test", response);
           console.log("testrr", coordinatesArray); // Log the coordinates array
+          setMarkers(coordinatesArray); // Set the markers state with the coordinates array
+
+
         }
       } catch (error) {
         console.error(error);

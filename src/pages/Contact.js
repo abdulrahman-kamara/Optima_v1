@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import "./Contact.css";
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -64,12 +64,15 @@ const sendEmail = (e) => {
 };
 
 const handleCaptchaChange = (value) => {
-  console.log("im not a robot");
+  setTimeout(()=>{
+      console.log("im not a robot");
   setCaptchaValue(value);
-  setIsCaptchaVerified(true);
+  setIsCaptchaVerified(true)
+  }, 200)
+;
 };
-//seeting the submit button unclickable if the values are not yet given and make it clickable when all the fields are filled
-// const isDisabled = !(formData.prenom && formData.nom && formData.email && formData.tel && formData.society && formData.occupation && formData.message);
+
+
 
   return (
     <div className="form-container">

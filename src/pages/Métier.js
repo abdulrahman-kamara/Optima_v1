@@ -15,9 +15,9 @@ function Métier() {
     <div className="container">
       <div className="my-container">
         <div className="heading">
-          <h2 className="hero-text">
+          <h1 className="hero-text">
             Nos compétences et notre offre de service
-          </h2>
+          </h1>
         </div>
         <div className="main-section">
           <div className="row">

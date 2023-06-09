@@ -10,7 +10,7 @@ function Activities() {
   return (
     <section className="activite-contaier">
       <span className="spanheading">
-        <h2 className="heading">Nos différentes Activités</h2>
+        <h1 className="heading">Nos différentes Activités</h1>
       </span>
       <div className="main-container">
         <div className="row">

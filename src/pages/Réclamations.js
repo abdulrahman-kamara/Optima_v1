@@ -1,5 +1,4 @@
-import React, {Suspense} from "react"
-import {useState, useRef} from "react";
+import React, {Suspense, useState, useRef, useEffect} from "react"
 import "./Réclamations.css";
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -72,12 +71,17 @@ const sendEmail = (e) => {
   }
 };
 
-//handle the change of the capha
+  //handle the change of the capha
 const handleCaptchaChange = (value) => {
   console.log("im not a robot");
   setCaptchaValue(value);
   setIsCaptchaVerified(true);
 };
+useEffect(() => {
+
+
+handleCaptchaChange()
+},[])
 
   return (
     <div className="reclamation-container">
