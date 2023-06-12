@@ -35,14 +35,14 @@
 .adherent-container{
    display: flex;
    margin-top: 20px;
-   justify-content: space-evenly;
+   justify-content: space-around;
    box-shadow: var(--comet-shadow-medium);
 }
 .mes-aderent{
     display: block;
     flex-direction: column;
     justify-content: flex-end;
-    padding-left: 800px;
+    padding-left: 1000px;
     margin-top: 10px;
 }
 .mes-hero, h5{
@@ -157,6 +157,7 @@
     top: 110px;
     left: 20px;
     bottom: 0;
+    margin-bottom: 40px;
 }
 
 .map{ 

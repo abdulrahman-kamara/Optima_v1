@@ -5,20 +5,22 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
-import {  GoogleMap, Marker,  useLoadScript } from '@react-google-maps/api';
+import {  GoogleMap, InfoWindow, Marker,  useLoadScript } from '@react-google-maps/api';
 import Geocode from "react-geocode"
 import { Circles } from "react-loader-spinner";
+import taximetreIconUrl from "../../assets/images/taxi.jpg";
+import gazIconUrl from "../../assets/images/gaz.jpg";
+import truckIconUrl from "../../assets/images/truck.jpg";
+import ethylotestIconUrl from "../../assets/images/logo.jpg";
+import autoecoleIconUrl from "../../assets/images/auto-ecole.jpg";
+import { useRef } from "react";
 // import { saveAs } from "file-saver";
 
 
 const containerStyle = {
-  width:'800px',
-  height:'600px'
+  width:'900px',
+  height:'650px'
 };
-// const positioncenter = {
-//   lat: 47.824905,
-//   lng: 2.618787
-// };
 
 
 const Reseau = () => {
@@ -32,90 +34,74 @@ const Reseau = () => {
   const [loadingscreen, setLoadingscreen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [valueOptions, setValueOptions] = useState([]);
-  const [markers, setMarkers] = useState({})
-  const [coordonnees, setCoordonnees] = useState({})
+  const [markers, setMarkers] = useState([])
+  const [selectedMarker, setSelectedMarker] = useState(null);
+  const [infoWindowOpen, setInfoWindowOpen] = useState(false);
+  const mapRef = useRef(null);
+
 
     const { isLoaded, loadError  } = useLoadScript ({
     id: 'google-map-script',
     googleMapsApiKey:"AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk",
-    // libraries: 'places',
+    
   });
-  // const getIcon = (activite) => {
-  //   if (activite === '1') {
-  //     return '/public/gaz.jpg';
-  //   } else {
-  //     return '/public/logo.jpg';
-  //   }
-  // };
+  
+ 
 
-  // const getAllAdherent = async (search, actif, activite) => {
-  //   await supervisionService
-  //     .getAllAdherent(search, actif, activite)
-  //     .then((response) => setAdherents(response));
-  // };
-
+ 
+  
   useEffect(() => {
-    const fetchData = async (search, actif, activite) => {
-      try {
-        if (!adherents) {
-          const response = await supervisionService.getAllAdherent(search, actif, activite);
-          setAdherents(response);
-          console.log(response);
-          Geocode.setApiKey("AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk");
-  
-          const coordinatesArray = []; // New array to store coordinates
-  
-          // Assuming response is an array, loop through each element
-          for (const item of response) {
-            const address = item.adresse1_adherent + ", " + item.departement + " " + item.ville
-            const numero_adherent = item.numero_adherent
-            const nom_adherent = item.nom_adherent
-  
-            try {
-              const geocodeResponse = await Geocode.fromAddress(address);
-              const { lat, lng  } = geocodeResponse.results[0].geometry.location;
-  
-              const coordonnees = {
-                lng: lng,
-                lat: lat,
-                label: address, // Include label for the marker
-                numéro: numero_adherent,
-                nom_adherent: nom_adherent
-                // icon: getIcon(address), // Call a function to determine the appropriate icon for the address
-              };
-  
-  
-              coordinatesArray.push(coordonnees); // Store coordinates in the array
-            } catch (error) {
-              console.error('An error occurred during geocoding:', error);
-            }
-          }
-        
-          console.log("test", response);
-          console.log("testrr", coordinatesArray); // Log the coordinates array
-          setMarkers(coordinatesArray); // Set the markers state with the coordinates array
+ const getMarkers = async (search, actif, activite) => {
+    try {
+      const response =  await supervisionService
+      .getAllAdherent(search, actif, activite)
 
-
-        }
-      } catch (error) {
-        console.error(error);
-      }
+        setAdherents(response)
+        setMarkers(response)
+        console.log("markers", markers);
+        console.log("mark", adherents);
       
-     
-    };
-   setLoadingscreen(false);
+    } catch (error) {
+      console.error("error fetching", error);
+    }
+   
+  };
+    if (isLoaded) {
+      getMarkers();
+        }
+
+    setLoadingscreen(false);
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
-    if (isLoaded) {
-      fetchData(search, actif, "all");
-    }
-  }, [actif, adherents, coordonnees, isLoaded, search])
-  
-  
-  
+  },[isLoaded, actif, search])
 
   
+
+// map icon with leaflet
+const iconMap = {
+  taximetre: {
+    url: taximetreIconUrl,
+    scaledSize: new window.google.maps.Size(25, 25)
+  },
+  gaz: {
+    url: gazIconUrl,
+    scaledSize: new window.google.maps.Size(25, 25)
+  },
+  tachygraphie: {
+    url: truckIconUrl,
+    scaledSize: new window.google.maps.Size(25, 25)
+  },
+  ethylotest: {
+    url: ethylotestIconUrl,
+    scaledSize: new window.google.maps.Size(25, 25)
+  },
+  autoecole: {
+    url: autoecoleIconUrl,
+    scaledSize: new window.google.maps.Size(25, 25)
+  }
+};
+
 
 //updating the value change for each checkbox and unchecked checkbox in the array
 const handleChanges = async (e, activite) => {
@@ -213,6 +199,7 @@ const center = useMemo(() =>({
                 onChange={(e) => handleChanges(e, "1")}
                 id="flexCheckDefault"
               />
+              
               <label className="form-check-label" >
                 Taximètre
               </label>
@@ -272,27 +259,57 @@ const center = useMemo(() =>({
           </div>
         </div>
         { isLoaded ?  (
+          
            <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
           zoom={6}
           loadGoogleMapsApi={true}
+          ref={mapRef}
           >
-             { coordonnees && coordonnees.lng && (
-               <Marker
-              position={coordonnees}
-             />
-             )}
+            
+             {adherents && adherents.map((marker) => (
+          <Marker
           
+            key={marker.identification_adherent}
+            position={{ lat: parseFloat(marker.atelier_latitude), lng: parseFloat(marker.atelier_longitude) }}
+           
+           
+            
+            icon={
+              valueOptions.includes("1")  ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
+            valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
+                }
+                onClick={() => {
+    const mapUrl = `https://www.google.com/maps?q=${marker.atelier_latitude},${marker.atelier_longitude}`;
+    window.open(mapUrl, "_blank");
+  }}
+                
+          />
+        ))}
   
-  
+      {/* {selectedMarker && infoWindowOpen && (
+  <InfoWindow
+    map={mapRef.current}
+    position={{ lat: selectedMarker.atelier_latitude, lng: selectedMarker.atelier_longitude }}
+    onCloseClick={() => setInfoWindowOpen(false)}
+  >
+    <div>
+      <h3>Address: {selectedMarker.adresse1_adherent}</h3>
+      <p>Info: {selectedMarker.ville
+}</p>
+    </div>
+  </InfoWindow>
+)} */}
           </GoogleMap>
         ): loadError ?(
           <div>Error loading Google Maps API</div>
         ): (
           <div>Loading Google Maps API...</div>
         )}
-       
+    
+
+
         </div>
       <div className="mes-aderent c-mt-6"> 
         <h5 className="mes-hero">Mes Adherents</h5>
@@ -325,11 +342,11 @@ const center = useMemo(() =>({
       </div>):(
             <div className="list-background">
              <div className="list-adherent">
-           {(!loadingscreen && adherents && adherents.filter((adherent) => {
-          const adherentVille  = adherent.ville.toLowerCase().includes(search)
-          const adherentDepartment = adherent.departement.toLowerCase().includes(search)
-          return adherentVille || adherentDepartment
-        }).map((adherent, i) => (
+           {(!loadingscreen && adherents.filter((adherent) => {
+  const adherentVille = adherent.ville?.toLowerCase().includes(search);
+  const adherentDepartment = adherent.departement?.toLowerCase().includes(search);
+  return adherentVille || adherentDepartment;
+}).map((adherent, i) => (
           <NavLink
             id={adherent.numero_adherent} 
             data={i}
