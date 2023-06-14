@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
-import {  GoogleMap, InfoWindow, Marker,  useLoadScript } from '@react-google-maps/api';
+import {  GoogleMap, InfoWindow, Marker, useLoadScript, LoadScript } from '@react-google-maps/api';
 import Geocode from "react-geocode"
 import { Circles } from "react-loader-spinner";
 import taximetreIconUrl from "../../assets/images/taxi.jpg";
@@ -35,23 +35,50 @@ const Reseau = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [valueOptions, setValueOptions] = useState([]);
   const [markers, setMarkers] = useState([])
+  const [allAdherents, setAllAdherents] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [infoWindowOpen, setInfoWindowOpen] = useState(false);
   const mapRef = useRef(null);
 
-
     const { isLoaded, loadError  } = useLoadScript ({
     id: 'google-map-script',
     googleMapsApiKey:"AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk",
+    isScriptLoaded: () => window.google && window.google.maps,
+    isScriptLoadSucceed: () => !!window.google
+   
     
   });
-  
  
 
+// map icon 
+const iconSize = new window.google.maps.Size(25, 25);
+
+const iconMap = {
+  taximetre: {
+    url: taximetreIconUrl,
+    scaledSize: iconSize
+  },
+  gaz: {
+    url: gazIconUrl,
+    scaledSize: iconSize
+  },
+  tachygraphie: {
+    url: truckIconUrl,
+    scaledSize: iconSize
+  },
+  ethylotest: {
+    url: ethylotestIconUrl,
+    scaledSize: iconSize
+  },
+  autoecole: {
+    url: autoecoleIconUrl,
+    scaledSize: iconSize
+  },
+};
  
   
   useEffect(() => {
- const getMarkers = async (search, actif, activite) => {
+const getMarkers = async (search, actif, activite) => {
     try {
       const response =  await supervisionService
       .getAllAdherent(search, actif, activite)
@@ -66,7 +93,8 @@ const Reseau = () => {
     }
    
   };
-    if (isLoaded) {
+  
+    if (!isLoaded) {
       getMarkers();
         }
 
@@ -78,112 +106,92 @@ const Reseau = () => {
 
   
 
-// map icon with leaflet
-const iconMap = {
-  taximetre: {
-    url: taximetreIconUrl,
-    scaledSize: new window.google.maps.Size(25, 25)
-  },
-  gaz: {
-    url: gazIconUrl,
-    scaledSize: new window.google.maps.Size(25, 25)
-  },
-  tachygraphie: {
-    url: truckIconUrl,
-    scaledSize: new window.google.maps.Size(25, 25)
-  },
-  ethylotest: {
-    url: ethylotestIconUrl,
-    scaledSize: new window.google.maps.Size(25, 25)
-  },
-  autoecole: {
-    url: autoecoleIconUrl,
-    scaledSize: new window.google.maps.Size(25, 25)
-  }
-};
+// const handleChanges = async (e, activite) => {
+//   const { value, checked } = e.target;
 
+//   if (checked) {
+//     setValueOptions([...valueOptions, value]);
+//     const response = await supervisionService.getAllAdherent("", true, activite);
+//     setAdherents(response);
+//     setAllAdherents(response);
+//   } else {
+//     const updatedValueOptions = valueOptions.filter((val) => val !== value);
+//     setValueOptions(updatedValueOptions);
 
-//updating the value change for each checkbox and unchecked checkbox in the array
+//     if (updatedValueOptions.length === 0) {
+//       resetAdherentsList();
+//       const response = await supervisionService.getAllAdherent("", true, activite);
+//       setAdherents(response);
+//     } else {
+//       let l_adherents = []
+//       updatedValueOptions.forEach(async element => {
+//         const response = await supervisionService.getAllAdherent("", true, element);
+//         l_adherents = [...l_adherents, ...response]
+
+//         l_adherents = l_adherents.filter(
+//           (obj, index) =>
+//           l_adherents.findIndex(
+//               (_adherent) =>
+//                 _adherent.identification_adherent ===
+//                 obj.identification_adherent
+//             ) === index
+//         );
+//         console.log("l_adherents", l_adherents);
+//         setAdherents(l_adherents)
+//       });
+//     }
+//   }
+// }
+
 const handleChanges = async (e, activite) => {
   const { value, checked } = e.target;
-  var _valueOptions = [];
-  var _adherents = [];
 
   if (checked) {
-    _valueOptions = [...valueOptions, e.target.value];
-    setValueOptions((prev) => [...prev, e.target.value]);
+    setValueOptions([...valueOptions, value]);
+    const response = await supervisionService.getAllAdherent("", true, activite);
+    setAdherents(response);
+    setAllAdherents(response);
+  } else {
+    const updatedValueOptions = valueOptions.filter((val) => val !== value);
+    setValueOptions(updatedValueOptions);
 
-    console.log("_valueOptions", _valueOptions);
-    await supervisionService.getAllAdherent("", true, activite).then((response) => {
-      console.log("response", response);
-      _adherents = response;
-    });
-    if (_valueOptions.length === 1) {
-      await supervisionService
-        .getAllAdherent("", true, activite)
-        .then((response) => {
-          console.log("response", response);
-          setAdherents(response);
-        });
-    } else if (_valueOptions.length > 1) {
-      await supervisionService
-        .getAllAdherent("", true, activite)
-        .then((response) => {
-          let _adherents = [...adherents, ...response];
-          _adherents = _adherents.filter(
-            (obj, index) =>
-              _adherents.findIndex(
-                (_adherent) =>
-                  _adherent.identification_adherent ===
-                  obj.identification_adherent
-              ) === index
-          );
-          console.log("_adherents", _adherents);
-          setAdherents(_adherents);
-        });
+    if (updatedValueOptions.length === 0) {
+      resetAdherentsList();
     } else {
-      setValueOptions(valueOptions.filter((_value) => _value !== value));
+      const l_adherents = [];
+
+      for (const option of updatedValueOptions) {
+        const response = await supervisionService.getAllAdherent("", true, option);
+        l_adherents.push(...response);
+      }
+
+      const uniqueAdherents = l_adherents.filter((obj, index) =>
+        l_adherents.findIndex((_adherent) =>
+          _adherent.identification_adherent === obj.identification_adherent
+        ) === index
+      );
+      setAdherents(uniqueAdherents);
     }
   }
-  else {
-    _valueOptions = valueOptions.filter((val) => val !== e.target.value)
-     console.log("meemem",_valueOptions)
-    setValueOptions(_valueOptions);
-    if (_valueOptions.length === 0) {
-      setValueOptions(_valueOptions);
-      await supervisionService.getAllAdherent("", true, activite).then((response) => {
-        console.log("response", response);
-        setAdherents(response);
-      });
-    } else {
-      let l_adherents = []
-      _valueOptions.forEach(async element => {
-        await supervisionService
-        .getAllAdherent("", true, element)
-        .then((response) => {
-          l_adherents = [...l_adherents, ...response]
-        });
-        l_adherents = l_adherents.filter(
-          (obj, index) =>
-          l_adherents.findIndex(
-              (_adherent) =>
-                _adherent.identification_adherent ===
-                obj.identification_adherent
-            ) === index
-        );
-        console.log("l_adherents", l_adherents);
-        setAdherents(l_adherents)
-      });
-    }
-  }
-}
-
+};
 
 const center = useMemo(() =>({
   lat: 47.824905,
   lng: 2.618787
 }), []) 
 
+// useEffect(()=>{
+//   resetAdherentsList()
+// },[])
+// Call this to reset the list of adherents to the original list
+const resetAdherentsList = async (search, actif, activite) => {
+  const response = await supervisionService.getAllAdherent(search, actif, activite);
+  setAdherents(response);
+  setAllAdherents(response);
+};
+
+
+console.log("list", allAdherents);
   return (
   <div className="adherent_main-container"> 
   <div className="adherent-container">
@@ -259,7 +267,6 @@ const center = useMemo(() =>({
           </div>
         </div>
         { isLoaded ?  (
-          
            <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -267,49 +274,42 @@ const center = useMemo(() =>({
           loadGoogleMapsApi={true}
           ref={mapRef}
           >
-            
              {adherents && adherents.map((marker) => (
           <Marker
-          
             key={marker.identification_adherent}
             position={{ lat: parseFloat(marker.atelier_latitude), lng: parseFloat(marker.atelier_longitude) }}
            
-           
-            
             icon={
               valueOptions.includes("1")  ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
             valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
                 }
                 onClick={() => {
-    const mapUrl = `https://www.google.com/maps?q=${marker.atelier_latitude},${marker.atelier_longitude}`;
+    const mapUrl = `https://www.google.com/maps?q=${(marker && marker.nom_adherent) + ", " + (marker && marker.adresse1_adherent) + ", " + (marker && marker.ville)}}`;
     window.open(mapUrl, "_blank");
   }}
-                
-          />
+    />
         ))}
   
-      {/* {selectedMarker && infoWindowOpen && (
-  <InfoWindow
-    map={mapRef.current}
-    position={{ lat: selectedMarker.atelier_latitude, lng: selectedMarker.atelier_longitude }}
-    onCloseClick={() => setInfoWindowOpen(false)}
-  >
-    <div>
-      <h3>Address: {selectedMarker.adresse1_adherent}</h3>
-      <p>Info: {selectedMarker.ville
-}</p>
-    </div>
-  </InfoWindow>
-)} */}
+      {selectedMarker && infoWindowOpen && (
+                <InfoWindow
+                  map={mapRef.current}
+                  position={{ lat: selectedMarker.atelier_latitude, lng: selectedMarker.atelier_longitude }}
+                  onCloseClick={() => setInfoWindowOpen(false)}
+                >
+                  <div>
+                  <h3>name: {selectedMarker.nom_adherent}</h3>
+                    <h3>Address: {selectedMarker.adresse1_adherent}</h3>
+                    <p>Info: {selectedMarker.ville
+              }</p>
+                  </div>
+                </InfoWindow>
+              )}
           </GoogleMap>
         ): loadError ?(
           <div>Error loading Google Maps API</div>
         ): (
           <div>Loading Google Maps API...</div>
         )}
-    
-
-
         </div>
       <div className="mes-aderent c-mt-6"> 
         <h5 className="mes-hero">Mes Adherents</h5>
@@ -332,7 +332,6 @@ const center = useMemo(() =>({
    <Circles
       height="50"
       width="50"
-      
       color="#4869ee"
       ariaLabel="circles-loading"
       wrapperStyle={{}}
@@ -342,7 +341,7 @@ const center = useMemo(() =>({
       </div>):(
             <div className="list-background">
              <div className="list-adherent">
-           {(!loadingscreen && adherents.filter((adherent) => {
+           {(!loadingscreen && adherents?.filter((adherent) => {
   const adherentVille = adherent.ville?.toLowerCase().includes(search);
   const adherentDepartment = adherent.departement?.toLowerCase().includes(search);
   return adherentVille || adherentDepartment;
@@ -400,76 +399,16 @@ const center = useMemo(() =>({
           </div>
           </div> 
           )}
-         
-         
-   
       </div>
     </div> 
     </div>
-
-
   );
 }
 
  export default Reseau;
 
 
-// Map 
- /* <MapContainer
-          center={center}
-          zoom={6}
-          scrollWheelZoom={false}
-          className="map"
-          ref={mapRef}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {adherents &&
-            adherents.map((adherent) => (
-            <LayerGroup key={adherent.numero_adherent}>
-              {adherent.atelier_latitude && adherent.atelier_longitude &&(
-                <Marker
-                key={adherent.identification_adherent}
-                id={adherent.numero_adherent}
-                position={[
-                  adherent.atelier_latitude,
-                  adherent.atelier_longitude,
-                ]}
-                eventHandlers={{
-                  click: () => {
-                    setadherentlocation(adherent);
-                  },
-                }}
-              icon={
-            valueOptions.includes("1")  ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
-            valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
-                }
-              />
-              )}
-                </LayerGroup>
-            ))}
-          {adherentlocation && adherentlocation.atelier_latitude && adherentlocation.atelier_longitude && (
-            <Popup
-              position={[
-                adherentlocation.atelier_latitude,
-                adherentlocation.atelier_longitude,
-              ]}
-              onClose={() => {
-                setadherentlocation(null);
-              }}
-            >
-              <div>
-                <p>Identification <span>{adherentlocation.identification_adherent}</span></p>
-                <p>Nom<span>{adherentlocation.nom_adherent}</span> </p>
-                <p>Numero<span>{adherentlocation.numero_adherent}</span></p>
-                <p>Addresse <span>{adherentlocation.adresse1_adherent}</span></p>
-            
-              </div>
-            </Popup>
-          )}
-        </MapContainer>*/
+
 
 
 
