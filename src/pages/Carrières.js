@@ -42,7 +42,7 @@ function Carrières() {
               <h5 className="card-second-text-h">
                 Vous souhaitez rejoindre notre équipe ?
               </h5>
-              <a className="card-second-text" href="#" onClick={handleClick}> Envoyez votre candidature à recrutement@cercleoptima.com</a>
+              <a className="card-second-text" href="*" onClick={handleClick}> Envoyez votre candidature à recrutement@cercleoptima.com</a>
               <p className="card-second-text">
                
               </p>

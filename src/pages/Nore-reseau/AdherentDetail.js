@@ -79,7 +79,7 @@ console.log("mydata", identification_adherent);
             .catch(error => Navigate.push('/404'))
     }
    
-}, [])
+}, [adherent, identification_adherent])
 
 
 

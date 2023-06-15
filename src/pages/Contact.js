@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef} from "react";
 import "./Contact.css";
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,7 +11,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import capchakey from "../Constant/capcha_key/capcha"
 
 // the values of the contact information
-const initialValue = {prenom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
+const initialValue = {prénom: "", nom: "", email: "", tel: "", society:"", occupation: "", message: ""}
 
 
 const Contact = () => {
@@ -33,13 +33,13 @@ const recaptchaRef = React.createRef()
 const sendEmail = (e) => {
   e.preventDefault();
   let newErrors = {}
-  if (!formData.prenom)newErrors =  {...newErrors, prenom: "votre prenom est requirer"};
+  if (!formData.prénom)newErrors =  {...newErrors, prénom: "votre prénom est requirer"};
   if(!formData.nom)newErrors = {...newErrors, nom: "votre nom est requirer"};
   if(!formData.email)newErrors = {...newErrors, email: "votre email est requirer"}
   else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors = {...newErrors, email: "le format est invaliable"}
-  if(!formData.tel)newErrors = {...newErrors, tel: "votre tel est requirer"}
+  if(!formData.tel)newErrors = {...newErrors, tel: "votre téléphone est requirer"}
   else if  (!/^\d{10}$/.test(formData.tel)) newErrors = {...newErrors, tel: "le format est invaliable"}
-  if(!formData.society)newErrors = {...newErrors, society: "votre society est requirer"};
+  if(!formData.society)newErrors = {...newErrors, society: "votre société est requirer"};
   if(!formData.occupation)newErrors = {...newErrors, occupation: "votre occupation est requirer"};
   if(!formData.message)newErrors = {...newErrors, message: "votre message est requirer"};
   setError(newErrors)
@@ -63,14 +63,18 @@ const sendEmail = (e) => {
     }
 };
 
-const handleCaptchaChange = (value) => {
-  setTimeout(()=>{
-      console.log("im not a robot");
-  setCaptchaValue(value);
-  setIsCaptchaVerified(true)
-  }, 200)
-;
-};
+  //handle the change of the capha
+  const handleCaptchaChange = (value) => {
+    console.log("I am not a robot");
+    setCaptchaValue(value);
+    setIsCaptchaVerified(true);
+    if (error.captcha) {
+      const { captcha: _, ...rest } = error;
+      setError(rest);
+    }
+  };
+  
+
 
 
 
@@ -95,33 +99,33 @@ const handleCaptchaChange = (value) => {
           <div className="civilité">
             <div className="prenom">
               <label  className="form-label">
-                Prenom:
+                Prénom:
            </label>
               <input
                 type="text"
                 className="form-control"
-                value={formData.prenom}
-                name="prenom"
-                placeholder="prenom"
-                onChange={e => {setFormData({...formData, prenom : e.target.value}); if (error.prenom && e.target.value) {
-                  const { prenom: _, ...rest } = error;
+                value={formData.prénom}
+                name="prénom"
+                placeholder=" votre prénom"
+                onChange={e => {setFormData({...formData, prénom : e.target.value}); if (error.prénom && e.target.value) {
+                  const { prénom: _, ...rest } = error;
                   setError(rest);
                   
                 }} }
               />
-              {error.prenom && <div style={{color:"red"}}>{error.prenom}</div> }
+              {error.prénom && <div style={{color:"red"}}>{error.prénom}</div> }
                 
             </div>
             <div className="col-md-4 nom">
             <label  className="form-label">
-                nom:
+                Nom:
            </label>
               <input
                 type="text"
                 className="form-control"
                 value={formData.nom}
                 name="nom"
-                placeholder="nom"
+                placeholder="votre nom"
                 onChange={e => {setFormData({...formData, nom : e.target.value}); if (error.nom && e.target.value) {
                   const { nom: _, ...rest } = error;
                   setError(rest);
@@ -131,14 +135,14 @@ const handleCaptchaChange = (value) => {
             </div>
             <div className="email">
             <label  className="form-label">
-                email:
+                Email:
             </label>
               <input
                 type="text"
                 className="form-control"
                 value={formData.email}
                 name="email"
-                placeholder="email"
+                placeholder="votre adresse email"
                 onChange={e => {setFormData({...formData, email : e.target.value}); if (error.email && e.target.value) {
               const { email: _, ...rest } = error;
               setError(rest);
@@ -152,13 +156,13 @@ const handleCaptchaChange = (value) => {
           <div className="personal-info">
             <div className="telephone">
             <label  className="form-label">
-                Tel:
+                Téléphone:
            </label>
               <input
                 type="text"
                 className="form-control"
                 value={formData.tel}
-                placeholder="tel"
+                placeholder="téléphone"
                 pattern="^\d{10}$"
                 name="tel"
                 onChange={e => {setFormData({...formData, tel: e.target.value});
@@ -172,14 +176,14 @@ const handleCaptchaChange = (value) => {
             </div>
             <div className="col-md-4 société">
             <label  className="form-label">
-                society:
+                Société:
                 </label>
               <input
                 type="text"
                 className="form-control"
                 value={formData.society}
                 name="society"
-                placeholder="society"
+                placeholder="votre société"
                 onChange={e => {setFormData({...formData, society : e.target.value}); if (error.society && e.target.value) {
                   const { society: _, ...rest } = error;
                   setError(rest);
@@ -189,14 +193,14 @@ const handleCaptchaChange = (value) => {
             </div>
             <div className="col-md-4 occupation">
             <label  className="form-label">
-                occupation:
+                Occupation:
              </label>
               <input
                 type="text"
                 className="form-control"
                 value={formData.occupation}
                 name="occupation"
-                placeholder="occupation"
+                placeholder="votre occupation"
                 onChange={e => {setFormData({...formData, occupation : e.target.value}); if (error.occupation && e.target.value) {
                   const { occupation: _, ...rest } = error;
                   setError(rest);
@@ -215,7 +219,7 @@ const handleCaptchaChange = (value) => {
               value={formData.message}
               rows="3"
               name="message"
-              placeholder="Ecrir votre message"
+              placeholder="Ecrire votre message"
               onChange={e => {setFormData({...formData, message : e.target.value}); if (error.message && e.target.value) {
                 const { message: _, ...rest } = error;
                 setError(rest);
@@ -226,8 +230,10 @@ const handleCaptchaChange = (value) => {
           <ReCAPTCHA
           ref={recaptchaRef}
         sitekey={capchakey}
+        name={captchaValue}
         onChange={handleCaptchaChange}
         className="capcha"
+        onLoad={() => setIsCaptchaVerified(false)}
           />
           <div className="button-sub">
             <button className="btn btn-primary" type="submit" disabled={!isCaptchaVerified}>

@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Card.css";
 import supervisionService from "../../Context/SupervisionService";
 import { saveAs } from "file-saver";
-// import { useParams } from 'react-router-dom';
-// import { Circles } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 
 const Cards = ({ data }) => {

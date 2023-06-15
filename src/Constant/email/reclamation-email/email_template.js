@@ -1,3 +1,3 @@
-const serviceTemplate = 'template_3dp5g2a'
+const serviceTemplate = 'template_k0glzq9'
 export default serviceTemplate;
 

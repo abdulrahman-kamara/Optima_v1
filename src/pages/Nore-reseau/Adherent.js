@@ -5,8 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
-import {  GoogleMap, InfoWindow, Marker, useLoadScript, LoadScript } from '@react-google-maps/api';
-import Geocode from "react-geocode"
+import {  GoogleMap, InfoWindow, Marker, useLoadScript, } from '@react-google-maps/api';
 import { Circles } from "react-loader-spinner";
 import taximetreIconUrl from "../../assets/images/taxi.jpg";
 import gazIconUrl from "../../assets/images/gaz.jpg";
@@ -39,16 +38,17 @@ const Reseau = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [infoWindowOpen, setInfoWindowOpen] = useState(false);
   const mapRef = useRef(null);
-
+  const apiKey = process.env.REACT_APP_API_KEY;
     const { isLoaded, loadError  } = useLoadScript ({
     id: 'google-map-script',
-    googleMapsApiKey:"AIzaSyCA_ci3M6bA1zeImm816wm6dtt85OPihXk",
+    googleMapsApiKey:apiKey,
     isScriptLoaded: () => window.google && window.google.maps,
     isScriptLoadSucceed: () => !!window.google
    
     
   });
  
+
 
 // map icon 
 const iconSize = new window.google.maps.Size(25, 25);
@@ -102,47 +102,9 @@ const getMarkers = async (search, actif, activite) => {
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
-  },[isLoaded, actif, search])
+  },[isLoaded, actif, search, adherents, markers])
 
   
-
-// const handleChanges = async (e, activite) => {
-//   const { value, checked } = e.target;
-
-//   if (checked) {
-//     setValueOptions([...valueOptions, value]);
-//     const response = await supervisionService.getAllAdherent("", true, activite);
-//     setAdherents(response);
-//     setAllAdherents(response);
-//   } else {
-//     const updatedValueOptions = valueOptions.filter((val) => val !== value);
-//     setValueOptions(updatedValueOptions);
-
-//     if (updatedValueOptions.length === 0) {
-//       resetAdherentsList();
-//       const response = await supervisionService.getAllAdherent("", true, activite);
-//       setAdherents(response);
-//     } else {
-//       let l_adherents = []
-//       updatedValueOptions.forEach(async element => {
-//         const response = await supervisionService.getAllAdherent("", true, element);
-//         l_adherents = [...l_adherents, ...response]
-
-//         l_adherents = l_adherents.filter(
-//           (obj, index) =>
-//           l_adherents.findIndex(
-//               (_adherent) =>
-//                 _adherent.identification_adherent ===
-//                 obj.identification_adherent
-//             ) === index
-//         );
-//         console.log("l_adherents", l_adherents);
-//         setAdherents(l_adherents)
-//       });
-//     }
-//   }
-// }
-
 const handleChanges = async (e, activite) => {
   const { value, checked } = e.target;
 
@@ -180,9 +142,7 @@ const center = useMemo(() =>({
   lng: 2.618787
 }), []) 
 
-// useEffect(()=>{
-//   resetAdherentsList()
-// },[])
+
 // Call this to reset the list of adherents to the original list
 const resetAdherentsList = async (search, actif, activite) => {
   const response = await supervisionService.getAllAdherent(search, actif, activite);

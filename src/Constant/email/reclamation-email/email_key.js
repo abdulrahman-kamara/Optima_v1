@@ -1,3 +1,3 @@
-const serviceKey = "KweSbc76vuc4y4N6o"
+const serviceKey = "nUyq_68bVIcN59mZW"
 export default serviceKey;
 

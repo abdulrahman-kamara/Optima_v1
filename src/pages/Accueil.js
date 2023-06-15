@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BsArrowRight, BsBank, BsTelephoneForward } from "react-icons/bs";
 import { GiChart } from "react-icons/gi";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-import { motion, useScroll, useSpring } from "framer-motion"
+import { motion, } from "framer-motion"
 import "./Accueil.css"
 import "../components/Card/Card.css"
 import CardImage from "../components/Card/CardImage";
@@ -11,8 +11,8 @@ import Footer from "../components/Nav/Footer/fotter";
 
 
 function Accueil({images}) {
-  const { scrollYProgress,   } = useScroll();
-  const scaleX = useSpring(scrollYProgress)
+  // const { scrollYProgress,   } = useScroll();
+  // const scaleX = useSpring(scrollYProgress)
 
   return (
 
@@ -51,9 +51,9 @@ Le réseau au croisement de la métrologie légale et du système qualité.
  Nous sommes expert dans les métiers de la vérification, l'installation des instruments de mesure. Notre panel de services regroupés en une offre unique s'articulent autour d'un système qualité, d'un logiciel d'aide à la décision et d'un accompagnement terrain. (Formation, Hotline technique et réglementaire, audits internes et évaluation des compétences de vos équipes). Le but de cette démarche ? respect des normes et des réglementations, délivrance de produits conformes, amélioration continue et optimisation des temps d'immobilisation
           </p> 
           </div>
-          <motion.div className="section-image">
-            <img src="\images\section_image.jpg" alt="section" loading="lazy"/>
-          </motion.div>
+          <div className="section-image">
+            <img src="/images/section_image.jpg" alt="section" loading="lazy"/>
+          </div>
           <div className="section-number">
             <div className="section-année">
               <h3 style={{color:"white", fontSize:"30px"}}>
