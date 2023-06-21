@@ -5,6 +5,7 @@ import Geocode from "react-geocode"
 import company from "../../data/buildings.png"
 import supervisionService from '../../Context/SupervisionService'
 import "./AdherentDetail.css"
+import Rdv from './Rdv'
 
 
 // Style de la map
@@ -24,8 +25,8 @@ function AdherentDetail(props) {
 console.log("mydata", identification_adherent);
 
 
-  const getAdherentByIdentification = async (identification) => {
-    return await supervisionService.getAdherentByIdentification(identification)
+  const getAdherentByIdentification =  (identification) => {
+    return  supervisionService.getAdherentByIdentification(identification)
     .then(response => {
         console.log("test", response);
       setAdherent(response)
@@ -105,6 +106,10 @@ console.log("mydata", identification_adherent);
                                   <p>{adherent && adherent.adresse2_adherent}</p>
                                   <p>{adherent && adherent.cP_adherent} - {adherent && adherent.ville_adherent}</p>
                               </div>
+                              <div className='model-button'>
+                                  <Rdv/>
+                              </div>
+                            
                           </div>
                       </div>
                   </div>

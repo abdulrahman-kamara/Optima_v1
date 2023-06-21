@@ -47,7 +47,7 @@
 }
 .mes-hero, h5{
     display: flex;
-    padding-left: 10px;
+    padding-left: 30px;
     font-size: 24px;
 }
 .maker-icon{
@@ -62,6 +62,7 @@
 }
 .search-bar {
     display: flex;
+    justify-content: center;
     align-items: center;   
 }
 .list-background{
@@ -92,7 +93,10 @@
     margin-top: 10px; 
 }
 .search {
-    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 90%; 
     padding: 3px;
     border-radius: 5px;
     border-color: rgba(180, 180, 196, 0.481);
@@ -108,20 +112,20 @@
     color: #b1c5e0; 
 }
 .adherent-nom{
-    font-size: 28px;
+    font-size: 20px !important;
     font-weight:600;
     padding-left: 50px;
 }
 .icon-card{
     margin-bottom: 10px;
-    padding-left: 5px;
+    padding-right: 20px;
 }
 .adherent-ville{
     position: relative;
     display: inline;
    
 }
-.adherent-ville::after{
+/* .adherent-ville::after{
     content: "";
     width: 2px;
     height: 20px;
@@ -130,13 +134,12 @@
     position: absolute;
     right: -25px;
     top: 2px;
-}
+} */
 .adherent-depart{
     position: relative;
     display: inline;
-    
 }
-.adherent-depart::after{
+/* .adherent-depart::after{
     content: "";
     width: 2px;
     height: 20px;
@@ -145,7 +148,7 @@
     position: absolute;
     right: -35px;
     top: 2px;
-}
+} */
 .adherent p{
     font-size: 14px;
     margin-top: 0px !important;

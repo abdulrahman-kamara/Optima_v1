@@ -86,7 +86,7 @@ const getMarkers = async (search, actif, activite) => {
         setAdherents(response)
         setMarkers(response)
         console.log("markers", markers);
-        console.log("mark", adherents);
+      
       
     } catch (error) {
       console.error("error fetching", error);
@@ -103,7 +103,7 @@ const getMarkers = async (search, actif, activite) => {
         setIsLoading(false);
       }, 2000);
   },[isLoaded, actif, search, adherents, markers])
-
+  console.log("mark", adherents);
   
 const handleChanges = async (e, activite) => {
   const { value, checked } = e.target;
@@ -320,7 +320,7 @@ console.log("list", allAdherents);
             <div className="vill-depart">
                <p className="adherent-ville">{adherent.ville}</p>
                <p className="adherent-depart">{adherent.departement}</p>
-               <MdOutlineKeyboardArrowRight  size={30} className="icon-card"/>
+               <MdOutlineKeyboardArrowRight  size={50} className="icon-card"/>
             </div>
            </div>
           </NavLink>

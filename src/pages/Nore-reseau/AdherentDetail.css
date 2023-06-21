@@ -67,15 +67,16 @@
 .c-mt-5 {
     margin-top: 50px;
 }
-/* .adherent {
-    position: relative;
-    padding: 14px 20px;
-    margin-top: 10px;
-    transition: 0.3s;
-    
-    
-} */
 
+.model-button{
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--comet-yellow);
+    color: white;
+    width: 150px;
+    border-radius: 10px;
+    text-align: center;
+}
 .presentation-adherent h4 {
     font-size: 18px;
     margin-bottom: 5px;
