@@ -30,7 +30,7 @@ useEffect(() => {
   onHoverStart={e => {}}
   onHoverEnd={e => {}}>
     <motion.div>
-       <img src="/images/logo.jpg" alt="" className="logo-image" />
+       <img src="/logo.png" alt="" className="logo-image" />
     </motion.div>
           <h6 className="logo-name">CERCLE OPTIMA</h6>
         </motion.a>

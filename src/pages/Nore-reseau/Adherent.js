@@ -7,10 +7,10 @@ import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
 import {  GoogleMap, InfoWindow, Marker, useLoadScript, } from '@react-google-maps/api';
 import { Circles } from "react-loader-spinner";
-import taximetreIconUrl from "../../assets/images/taxi.jpg";
-import gazIconUrl from "../../assets/images/gaz.jpg";
-import truckIconUrl from "../../assets/images/truck.jpg";
-import ethylotestIconUrl from "../../assets/images/logo.jpg";
+import taximetreIconUrl from "../../assets/images/taxi.png";
+import gazIconUrl from "../../assets/images/gaz.png";
+import truckIconUrl from "../../assets/images/truck.png";
+import ethylotestIconUrl from "../../assets/images/logo.png";
 import autoecoleIconUrl from "../../assets/images/auto-ecole.jpg";
 import { useRef } from "react";
 // import { saveAs } from "file-saver";
@@ -51,7 +51,7 @@ const Reseau = () => {
 
 
 // map icon 
-const iconSize = new window.google.maps.Size(25, 25);
+const iconSize = new window.google.maps.Size(30, 30);
 
 const iconMap = {
   taximetre: {
@@ -68,7 +68,8 @@ const iconMap = {
   },
   ethylotest: {
     url: ethylotestIconUrl,
-    scaledSize: iconSize
+    scaledSize: iconSize,
+    
   },
   autoecole: {
     url: autoecoleIconUrl,
@@ -167,7 +168,7 @@ console.log("list", allAdherents);
                 onChange={(e) => handleChanges(e, "1")}
                 id="flexCheckDefault"
               />
-              
+
               <label className="form-check-label" >
                 Taximètre
               </label>

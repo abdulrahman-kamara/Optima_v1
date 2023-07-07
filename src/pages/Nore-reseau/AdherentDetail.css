@@ -71,11 +71,13 @@
 .model-button{
     padding: 10px;
     margin-top: 20px;
-    background-color: var(--comet-yellow);
-    color: white;
+    background-color: var(--comet-blue);
     width: 150px;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
+}
+.rdv-button{
+    color: var(--comet-white);
 }
 .presentation-adherent h4 {
     font-size: 18px;

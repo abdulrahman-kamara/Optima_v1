@@ -107,7 +107,7 @@ console.log("mydata", identification_adherent);
                                   <p>{adherent && adherent.cP_adherent} - {adherent && adherent.ville_adherent}</p>
                               </div>
                               <div className='model-button'>
-                                  <Rdv/>
+                                  <a className='rdv-button' href='http://localhost:3001/'>Prandre RDV</a>
                               </div>
                             
                           </div>
