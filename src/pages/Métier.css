@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #e0e8f2;
+  background-color: white;
   width: 100%;
+  padding: 10px;
 }
 
 .heading {
@@ -21,33 +22,37 @@
 
 .main-section {
   display: flex;
-  width: 30%;
+  width: 100%;
   background-color: black;
-  margin-right: 1050px;
+  
+
 }
 .my-card {
   padding-top: 20px;
-  width: 350px;
+  width: 100%;
+  padding: 20px;
 }
 .my-left-card {
-  width: 200%;
+  width: 100%;
   background-color: #e65d5e;
+  padding: 20px;
 }
+
 .text-icon {
   display: flex;
   margin-top: 20px;
 }
 
 .card-left {
-  padding-top: 250px;
-  padding-left: 200px;
+  padding-top: 210px;
+ 
 }
 .card-right {
-  padding-left: 150px;
+  padding-left: 10px;
 }
 
 .my-card-body {
-  margin-right: 150px;
+  margin-right: 10px;
 }
 .head-text {
   font-size: 40px;
@@ -62,6 +67,8 @@
 .text-li-right {
   list-style: circle;
   padding: 5px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 .text-li {
   color: white;
@@ -69,10 +76,16 @@
   padding: 5px;
 }
 
-.carriere {
+
+.metier-carriere {
   transition: none !important;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+
 }
-.carriere:hover {
+.metier-carriere:hover {
   transform: none !important;
 }
 
@@ -137,9 +150,11 @@
     background-color: black;
     margin-right: 0px;
   }
-  .carriere {
+  .metier-carriere {
     width: 100%;
     height: 100%;
+   
+    
   }
   .my-card {
     padding-top: 20px;
@@ -248,6 +263,7 @@
     flex-direction: column;
     padding-left: 0px;
     padding-top: 150px;
+    width: 100%;
   }
   .card-right {
     display: block;
@@ -265,6 +281,10 @@
   }
   .text-li-right {
     display: contents;
+    list-style: circle;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 10px;
   }
   .text-li {
     display: contents;
@@ -305,13 +325,18 @@
   }
 
   .main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+  
+  }
+  .metier-carriere {
     display: block;
 
-    background-color: black;
-    margin-right: 0px;
-  }
-  .carriere {
-    display: block;
+    align-items: center;
   }
   .my-card {
     display: block;
@@ -320,6 +345,7 @@
 
   .my-left-card {
     background-color: #e65d5e;
+
   }
   .text-icon {
     display: flex;
@@ -329,12 +355,12 @@
   .card-left {
     display: flex;
     flex-direction: column;
-
+    padding-left: 0px;
     padding-top: 150px;
   }
   .card-right {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    padding-left: 0px;
   }
 
   .my-card-body {
@@ -344,9 +370,16 @@
 
   .text-li-right {
     display: inline;
+    list-style: circle;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+    
   }
   .text-li {
     display: inline;
+    text-align: center;
+    line-height: 10px;
   }
   .section-footer {
     align-self: center;

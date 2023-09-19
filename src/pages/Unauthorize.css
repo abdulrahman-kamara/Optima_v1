@@ -1,0 +1,20 @@
+
+.unauthorized-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-top: 20%;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.unauthorized-content * {
+    margin-bottom: 10px;
+}
+
+.unauthorized-content h2 {
+    padding: 0 10px;
+    text-align: center;
+}

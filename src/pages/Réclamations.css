@@ -1,6 +1,8 @@
-.container {
+.reclamation-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .form-header {
   display: flex;
@@ -26,7 +28,6 @@
 .form-select {
   display: flex;
   flex-direction: column;
-  width: 400px;
 }
 .Société {
   display: flex;
@@ -39,22 +40,17 @@
   padding-left: 50px;
   justify-content: space-evenly;
 }
-.sex-option {
+.options {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-right: 20px;
+  width: 100%;
 }
-.select-sex {
-  width: 100px;
-  height: 40px;
+.option-select {
+  height: 37px;
   border-radius: 5px;
+  border-color: #6e8ffb55;
 }
-.contact-name {
-  display: flex;
-  flex-direction: column;
-  width: 650px;
-}
+
 .address {
   display: flex;
   flex-direction: column;
@@ -71,9 +67,46 @@
   flex-direction: column;
   width: 380px;
 }
+.datepicker {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 50px;
+ 
+}
+.dates{
+   border-radius: 5px;
+   border-color: #6e8ffb2d;
+   padding: 5px;
+}
+.lieu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  padding-left: 50px;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 50px;
+}
+
 .button-sub {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
+}
+span{
+  font-size: small;
+  color: #e65d5e;
+}
+.capcha{
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 .btn {
   width: 200px;
@@ -93,4 +126,158 @@
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+@media (max-width: 576px) {
+  .reclamation-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+  .my-form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .select-list {
+    display: block;
+  }
+  .form-select {
+    display: block;
+    flex-direction: column;
+  }
+  .civilité {
+    display: block;
+  }
+  .sex-option {
+    display: block;
+  }
+  .select-sex {
+    height: 40px;
+    border-radius: 5px;
+  }
+  .contact-name {
+    display: flex;
+    flex-direction: column;
+  }
+  .personal-info {
+    display: block;
+  }
+  .contact-info {
+    width: 220px;
+  }
+  .section-footer {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #e65d5e;
+    height: 50vh;
+  }
+  .email-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reclamation-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+  .my-form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .form-select {
+    display: block;
+    width: 220px;
+  }
+  .civilité {
+    display: block;
+  }
+  .sex-option {
+    display: block;
+  }
+  .select-sex {
+    width: 220px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  .contact-name {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+  }
+  .personal-info {
+    display: block;
+  }
+  .contact-info {
+    width: 220px;
+  }
+  .section-footer {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #e65d5e;
+    height: 50vh;
+  }
+  .email-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+@media (max-width: 1200px) {
+  .reclamation-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+  .my-form {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .section-footer {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #e65d5e;
+    height: 50vh;
+  }
 }

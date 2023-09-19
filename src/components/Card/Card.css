@@ -1,0 +1,211 @@
+.section-card{
+    display: flex;
+    flex-direction:  column;
+    justify-content: center;
+   margin-bottom: 150px;
+   
+}
+.d-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 50px;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    position: relative;
+    width: 100%;
+}
+.para-link{
+    padding-left: 80px;
+}
+
+.s-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    margin-bottom: 140px; 
+  }
+  
+  .card-image {
+    height: 240px;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 5px;
+  }
+  
+   .custom-card-title{
+   top: 11.5rem;
+    position: absolute;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 17rem;
+    padding: 1rem;
+    margin: 0;
+    border-radius: 2px;
+  }
+  .custom-card-title:hover{
+    background-color:snow;
+    color: rgb(163, 41, 41);
+  }
+/* certificat et agreements styles */
+  .card-certificat{
+    display: grid;
+    margin-top: 10px;
+  }
+  .grids-card{
+    display: grid;
+  }
+  .my-grid-c{
+     display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    gap: 10px; /* Gap between the cards */
+   
+  }
+  .c-sections{
+    max-width: 40rem;
+    margin-bottom: 3px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #586069;
+  }
+  .body-cards{
+    padding: 10px;
+     width: 100%;
+  }
+    .c-c{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px
+     ;
+    }
+    .c-select{
+      width: 40rem;
+      padding: 10px;
+      border: black 1px solid;
+      border-radius: 5px;
+    }
+    .c-title{
+      color: #6e8efb;
+    }
+    .b-sections{
+      display: flex;
+      justify-content: space-between;
+    }
+    .button-c{
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #6e8efb;
+      color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+
+
+  @media (max-width: 568px) {
+    .section-card{
+        display: flex;
+        flex-direction:  column;
+        justify-content: center;
+       margin-bottom: 10px;
+   }
+   .d-cards{
+    display: grid;
+  
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    margin-bottom: 40px; 
+}
+.my-grid-c{
+  display: grid;
+ grid-template-columns: repeat(1, 1fr); /* Two columns with equal width */
+ gap: 10px; /* Gap between the cards */
+}
+.c-sections{
+  max-width:min-content;
+  margin-bottom: 3px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+.b-sections{
+  display: block
+}
+ }
+
+ @media ( max-width: 768px) {
+    .section-card{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    
+   }
+   .d-cards{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr) !important;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px; 
+}
+    
+  }
+  @media ( max-width: 992px) {
+    .section-card{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    
+   }
+   .d-cards{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px; 
+}
+    
+  }
+
+  @media (max-width: 1400px) {
+    .section-card{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    
+   }
+   .d-cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    /* overflow: hidden; */
+    position: relative;
+    padding: 10px;
+    margin-bottom: 40px; 
+}
+    
+  }
+
+ 
+
+  

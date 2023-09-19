@@ -33,12 +33,7 @@
   color: var(--comet-text);
 }
 
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
+
 .navbar {
   line-height: 10vh;
   height: 10vh;
@@ -48,32 +43,41 @@ a {
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  border-bottom:1px solid #dedcdc;
+
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
 }
 .logo {
   display: flex;
-  justify-content: center;
+   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
-a .logo-image {
-  align-items: center;
+ .logo-image {
+  width: 25px;
+  margin-bottom: 15px;
+}
+
+.nav-bar-link{
   display: flex;
-  position: absolute;
-  top: 20px;
-  left: 40px;
-  width: 40px;
-  height: 40px;
-  line-height: 20px;
+  margin-bottom: 15px;
+  
 }
-a .logo-name {
-  margin-top: 10px;
-  padding-left: 30px;
+ .logo-name {
+  margin-top: 20px;
   font-weight: bold;
+  font-size: 20px ;
+  padding-left: 15px;
+  color:#265386 ;
 }
 .nav-link {
   display: flex;
-  justify-content: flex-end;
-  width: 75%;
+  margin-bottom: 15px;
 }
 
 .nav-link li {
@@ -81,20 +85,18 @@ a .logo-name {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: #586069;
+  color: #265386;
   font-size: 20px;
-  padding: 0 10px;
+  font-weight: 700;
+  padding:10px;
   margin: 0 10px;
   cursor: pointer;
   text-decoration: none;
   font-size: small;
 }
 
-li :hover {
-  background-color: blueviolet;
-}
-.nav-link li :hover {
-  color: var(--comet-text);
+ul li:hover{
+  color: #6e8efb
 }
 
 .nav-link link {
@@ -116,6 +118,9 @@ button {
 .mobile-menu-icon {
   display: none;
 }
+
+/* responsive design */
+
 @media (max-width: 576px) {
   .logo {
     display: flex;
@@ -126,7 +131,7 @@ button {
   a .logo-name {
     display: none;
   }
-  a .logo-image {
+  /* a .logo-image {
     align-items: center;
     display: flex;
     position: absolute;
@@ -135,7 +140,7 @@ button {
     width: 30px;
     height: 30px;
     line-height: 20px;
-  }
+  } */
 
   .nav-bar-link {
     display: flex;
@@ -155,44 +160,39 @@ button {
   .nav-links-mobile {
     display: block;
     list-style: none;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
+    box-shadow: rgba(244, 244, 246, 0.867) 0 30px 30px -20px;
     transition: all 0.5s ease-in-out;
-    width: 50%;
+    width: 100%;
     background-color: #ffff;
     overflow-x: scroll;
     height: 100vh;
     box-sizing: border-box;
     margin-right: 10px;
-    right: 0;
+    left: 134px;
+    z-index: 1000;
   }
 
-  ul {
+  ul .nav-link {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     right: 0;
     padding: 10px;
-    border-radius: 20px;
     margin-bottom: 100px;
   }
 
-  ul li {
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    width: 100%;
-    transition: all 0.5s ease-in-out;
-    text-align: center;
-    font-size: 10px;
-    background-color: rgba(255, 255, 255, 0.575);
-    right: 0;
+ 
+  ul li:hover{
+    padding: 10px;
+    color: #4869ee;
   }
 
   .hero h1 {
     font-size: 50px;
   }
 }
+
 
 @media (max-width: 768px) {
   a .logo-image {
@@ -218,20 +218,11 @@ button {
     display: none;
   }
   .nav-links-mobile {
-    position: absolute;
+   
     display: block;
-    list-style: none;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
-    transition: all 0.5s ease-in-out;
-    width: 100%;
-    background-color: #ffff;
-    overflow-x: scroll;
-    height: 100%;
-    box-sizing: border-box;
-    left: 200px;
+   
   }
   ul {
-    position: fixed;
     top: -20px;
     padding-bottom: 20px;
     cursor: pointer;
@@ -244,7 +235,7 @@ button {
     margin: 10px;
   }
 
-  ul li {
+  ul li .nav-link {
     display: flex;
     flex-direction: column;
     padding: 32px;
@@ -253,7 +244,7 @@ button {
     text-align: center;
     font-size: small;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.575);
+   
   }
   .mobile-menu-icon {
     position: absolute;
@@ -289,22 +280,22 @@ button {
     display: none;
   }
   .nav-links-mobile {
-    position: absolute;
     display: block;
     list-style: none;
     box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
     transition: all 0.5s ease-in-out;
     width: 100%;
     background-color: #ffff;
+    z-index: 1000;
     overflow-x: scroll;
     height: 100%;
     box-sizing: border-box;
-    border-left: 1px solid rgb(126, 117, 117);
+    border-left: 1px solid rgb(232, 223, 223);
     right: 0;
   }
 
-  ul {
-    position: fixed;
+    ul {
+    position: fixed; 
     top: -20px;
     padding-bottom: 20px;
     cursor: pointer;
@@ -317,13 +308,17 @@ button {
     margin: 10px;
   }
 
+  ul li .nav-link:hover{
+    padding: 2px;
+    background-color: #d9dfed;
+    color: var(--comet-hover-color)
+  }
+
   ul li {
     padding: 10px;
     width: 30vh;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
     text-align: center;
     font-size: large;
-    background-color: rgba(255, 255, 255, 0.575);
   }
 
   .mobile-menu-icon {

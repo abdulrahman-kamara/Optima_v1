@@ -1,0 +1,64 @@
+:root {
+    --comet-text: #586069;
+    --comet-black: #24292e;
+    --comet-light-black: #c8c8c8;
+    --comet-light: #f7fafb;
+    --comet-white: #ffffff;
+    --comet-white-secondary: #fcfdfd;
+    --comet-primary: #604888;
+    --comet-primary-dark: #4e3a6f;
+    --comet-success: #01c461;
+    --comet-red: #e65d5e;
+    --comet-yellow: #fdaf13;
+    --comet-danger: #F21905;
+    --comet-danger-dark: #b30f00;
+    --comet-dark-blue: #151b26;
+    --comet-blue: #4869ee;
+    --comet-linear-secondary: linear-gradient(135deg, #6e8efb, #a777e3);
+    --comet-shadow-small: 0 1px 0 rgb(27 31 35 / 4%) !important;
+    --comet-shadow-medium: 0 3px 6px rgb(149 157 165 / 15%) !important;
+    --comet-border: 1px solid #e1e4e8;
+    --comet-hover-color: #f8f8fb !important
+        /*rgba(0, 0, 0, 0.08)*/
+    ;
+    --comet-input-placeholder: #CBD1DC;
+}
+
+/* body {
+    background-color: #f8f8fb !important;
+    color: var(--comet-text);
+} */
+
+* {
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+a {
+    text-decoration: none !important;
+}
+
+h1 {
+    font-size: 28px !important;
+}
+
+h2 {
+    font-size: 20px !important;
+}
+
+
+h1,
+h2 {
+    color: var(--comet-text);
+}
+h5{
+    font-size: 20px;
+   
+}
+
+h4{
+ 
+    font-size: 15px;
+   
+  
+}

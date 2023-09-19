@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import {
   MdHighQuality,
   MdOutlineHouseSiding,
@@ -10,41 +9,42 @@ import { ImMap } from "react-icons/im";
 import { FcMindMap } from "react-icons/fc";
 import "./Métier.css";
 
+
 function Métier() {
   return (
-    <Container fluid>
+    <div className="container">
       <div className="my-container">
         <div className="heading">
-          <h2 className="hero-text">
+          <h1 className="hero-text">
             Nos compétences et notre offre de service
-          </h2>
+          </h1>
         </div>
         <div className="main-section">
-          <div class="row">
-            <div class="card-right">
-              <div class="col-sm-6 mb-3 mb-sm-0 my-card">
-                <div class="card carriere">
-                  <div class="card-body my-card-body">
-                    <div class="text-icon">
+          <div className="row">
+            <div className="card-right">
+              <div className="col-sm-6 mb-3 mb-sm-0 my-card">
+                <div className="metier-carriere">
+                  <div className="card-body my-card-body">
+                    <div className="text-icon">
                       <p>
                         <MdPhoneIphone size={50} color="white" />
                       </p>
-                      <h5 class="card-title">Editeur de logiciel</h5>
+                      <h5 className="card-title">Editeur de logiciel</h5>
                     </div>
 
-                    <ul class="text-ul">
-                      <li class="text-li-right">
+                    <ul className="text-ul">
+                      <li className="text-li-right">
                         Nous développons pour l'ensemble des activités, le
                         logiciel Comet qui tire profit du Cloud et de sa valeur
                         ajoutée. La gestion du parc d'instruments est intégrée.
                       </li>
-                      <li class="text-li-right">
+                      <li className="text-li-right">
                         Un respect strict des réglementations afin de délivrer
                         un produit conforme. Un véritable outil d'aide à la
                         décision pour le technicien lorsqu'il réalise ses
                         inspections et vérifications.
                       </li>
-                      <li class="text-li-right">
+                      <li className="text-li-right">
                         Il s'appuie également sur une gestion électronique de
                         documents qui facilite la gestion du système qualité !
                         La base de données intègre tous les documents
@@ -55,28 +55,28 @@ function Métier() {
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 mb-3 mb-sm-0 my-card">
-                <div class="card carriere">
-                  <div class="card-body my-card-body ">
-                    <div class="text-icon">
+              <div className="col-sm-6 mb-3 mb-sm-0 my-card">
+                <div className=" metier-carriere">
+                  <div className="card-body my-card-body ">
+                    <div className="text-icon">
                       <p>
                         <MdHighQuality size={50} color="white" />
                       </p>
-                      <h5 class="card-title">Système Qualité</h5>
+                      <h5 className="card-title">Système Qualité</h5>
                     </div>
 
-                    <ul class="text-ul">
-                      <li class="text-li-right">
+                    <ul className="text-ul">
+                      <li className="text-li-right">
                         Un système qualité multi-activités qui a fait ses
                         preuves, audité et validé par 4 organismes depuis prés
                         de 17 ans !
                       </li>
-                      <li class="text-li-right">
+                      <li className="text-li-right">
                         Que vous pratiquiez une ou plusieurs activités
                         réglementées dans votre entreprise, un seul système est
                         utilisé.
                       </li>
-                      <li class="text-li-right">
+                      <li className="text-li-right">
                         Les documents dématérialisés sont centralisés dans le
                         logiciel Comet, permettant ainsi une gestion
                         documentaire allégée et libère le temps de vos
@@ -88,30 +88,30 @@ function Métier() {
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6 mb-3 mb-sm-0 my-card">
-                <div class="card carriere">
-                  <div class="card-body my-card-body">
-                    <div class="text-icon">
+              <div className="col-sm-6 mb-3 mb-sm-0 my-card">
+                <div className=" metier-carriere">
+                  <div className="card-body my-card-body">
+                    <div className="text-icon">
                       <p>
                         <FcMindMap size={50} color="white" />
                       </p>
-                      <h5 class="card-title">La mutualisation</h5>
+                      <h5 className="card-title">La mutualisation</h5>
                     </div>
 
-                    <ul class="text-ul">
-                      <li class="text-li-right">
+                    <ul className="text-ul">
+                      <li className="text-li-right">
                         Tirez profit des retours d'expérience de nos nombreux
                         adhérents, la consolidation et le partage des
                         connaissances est notre leitmotiv. En intégrant le
                         réseau vous n'êtes plus seul dans votre entité face aux
                         différents acteurs.
                       </li>
-                      <li class="text-li-right">
+                      <li className="text-li-right">
                         D'autre part nous rejoindre, c'est aussi profiter d'une
                         récurrence moins importante des audits externes des
                         institutionnels et donc de rationaliser vos coûts liés.
                       </li>
-                      <li class="text-li-right">
+                      <li className="text-li-right">
                         Enfin, nous concentrons vos besoins de consommables afin
                         de vous proposer les produits dont vous avez besoin à
                         des prix intéressants, sur la boutique en ligne. Le
@@ -123,30 +123,30 @@ function Métier() {
               </div>
             </div>
           </div>
-          <div class="card-left">
-            <div class="col-sm-6 mb-3 mb-sm-0 my-card">
-              <div class="card my-left-card">
-                <div class="card-body my-card-body">
-                  <div class="text-icon">
+          <div className="card-left">
+            <div className="col-sm-6 mb-3 mb-sm-0 my-card">
+              <div className="card my-left-card">
+                <div className="card-body my-card-body">
+                  <div className="text-icon">
                     <p>
                       <MdOutlineHouseSiding size={50} color="white" />
                     </p>
-                    <h5 class="card-title">Conseil, Formation et Audit</h5>
+                    <h5 className="card-title">Conseil, Formation et Audit</h5>
                   </div>
 
-                  <ul class="text-ul">
-                    <li class="text-li">
+                  <ul className="text-ul">
+                    <li className="text-li">
                       Fort de notre expérience, nous pouvons vous conseillez
                       dans vos choix d'investissement structurels.
                     </li>
-                    <li class="text-li">
+                    <li className="text-li">
                       Centre de gestion agréé (prise en charge OPCA) nous
                       dispensons des formations multi-marques biennales de vos
                       équipes, maintenons et évaluons leur niveau de
                       compétences. Des solutions d'E-learning sont aussi
                       proposées.
                     </li>
-                    <li class="text-li">
+                    <li className="text-li">
                       La surveillance du réseau est effectuée par le biais d'un
                       audit blanc annuel in-situ par notre équipe d'auditeurs.
                     </li>
@@ -154,52 +154,52 @@ function Métier() {
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 mb-3 mb-sm-0 my-card">
-              <div class="card my-left-card">
-                <div class="card-body my-card-body">
-                  <div class="text-icon">
+            <div className="col-sm-6 mb-3 mb-sm-0 my-card">
+              <div className="card my-left-card">
+                <div className="card-body my-card-body">
+                  <div className="text-icon">
                     <p>
                       <AiOutlineSetting size={50} color="white" />
                     </p>
-                    <h5 class="card-title">
+                    <h5 className="card-title">
                       Hotline Technique et réglementaire
                     </h5>
                   </div>
 
-                  <ul class="text-ul">
-                    <li class="text-li">
+                  <ul className="text-ul">
+                    <li className="text-li">
                       Un interlocuteur unique pour toutes les questions
                       réglementaires, techniques et informatiques que vos
                       collaborateurs se posent pendant leurs interventions.
                     </li>
-                    <li class="text-li">
+                    <li className="text-li">
                       La hotline est disponible 6/7 J de 8 h à 18 h
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 mb-3 mb-sm-0 my-card">
-              <div class="card my-left-card">
-                <div class="card-body my-card-body">
-                  <div class="text-icon">
+            <div className="col-sm-6 mb-3 mb-sm-0 my-card">
+              <div className="card my-left-card">
+                <div className="card-body my-card-body">
+                  <div className="text-icon">
                     <p>
                       <ImMap size={50} color="white" />
                     </p>
-                    <h5 class="card-title">Réglementation</h5>
+                    <h5 className="card-title">Réglementation</h5>
                   </div>
 
-                  <ul class="text-ul">
-                    <li class="text-li">
+                  <ul className="text-ul">
+                    <li className="text-li">
                       Cercle Optima assure la veille réglementaire et se
                       positionne en interface entre vous et les services de
                       contrôle et régulation de l'état.
                     </li>
-                    <li class="text-li">
+                    <li className="text-li">
                       Nous défendons ainsi vos intêréts et l'assurance du
                       maintien des agréments et la pérennité de vos activités.
                     </li>
-                    <li class="text-li">
+                    <li className="text-li">
                       La réponse aux audits externes est traitée par notre
                       équipe de spécialistes.
                     </li>
@@ -210,23 +210,10 @@ function Métier() {
           </div>
         </div>
       </div>
-      <div fluid class="section-blank"></div>
-      <div class="section-footer">
-        <span class="email-text">
-          <h6 class="section-text">E-mail</h6>
-          <p class="section-text">contact@cercleoptima.com</p>
-        </span>
-        <span class="email-text">
-          <h6 class="section-text">Téléphone</h6>
-          <p class="section-text">04 42 50 96 90</p>
-        </span>
-        <span class="email-text">
-          <p class="section-text">
-            Cercle Optima 31 avenue Francis Perrin 13106 Rousset Cedex France
-          </p>
-        </span>
-      </div>
-    </Container>
+     <div className="section-blank"></div>
+  
+      
+    </div>
   );
 }
 
