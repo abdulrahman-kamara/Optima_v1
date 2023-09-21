@@ -193,16 +193,23 @@
       margin-bottom: 10px;
     
    }
-   .d-cards{
+   .d-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+    grid-gap: 20px;
     grid-auto-rows: minmax(100px, auto);
-    /* overflow: hidden; */
+    overflow-x: hidden;
     position: relative;
-    padding: 10px;
-    margin-bottom: 40px; 
+    padding: 0px;
+    margin-bottom: 40px;
 }
+
+/* .d-cards img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+} */
     
   }
 

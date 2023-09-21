@@ -320,7 +320,7 @@
         align-items: flex-start;
     }
     .main-container{
-        display: block;
+        display: flex;
         background-color: transparent;
     }
     .adherent-container{
