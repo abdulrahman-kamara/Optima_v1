@@ -9,20 +9,14 @@ import * as IoIcons from 'react-icons/io';
 export const NavData = [
 
     {
-
-        title : 'Accuiel',
-
+        title : 'Accueil',
         path :'/',
-
         icon: <AiIcons.AiFillHome/>,
-
         cName : 'nav-text'
-
      },
-
      {
 
-        title : 'Nos Activitiés',
+        title : 'Nos activités',
 
         path :'/activities',
 
@@ -46,7 +40,7 @@ export const NavData = [
 
      {
 
-        title : 'Certificats & Agreements',
+        title : 'Certificats & Agréments',
 
         path :'/certificat',
 
