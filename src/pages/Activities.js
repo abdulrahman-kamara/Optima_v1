@@ -1,5 +1,6 @@
 import React from "react";
 import { RiTaxiLine } from "react-icons/ri";
+// import PiTaxiThin from "react-icons/"
 import "./Activities.css";
 
 
@@ -178,7 +179,7 @@ function Activities() {
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
-                    <RiTaxiLine size={50} color="white" />
+                    <RiTaxiLine size={50} style={{color:"white"}} />
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold text-light">
                     Taximètre

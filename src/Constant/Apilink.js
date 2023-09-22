@@ -1,5 +1,5 @@
 //const apilink = "/api"
 //const apilink = "/test"
-const apilink = "https://localhost:6001"
+const apilink = "https://cometoptima.com/api"
 
 export default apilink

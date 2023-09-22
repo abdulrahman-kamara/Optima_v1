@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import { ImMenu } from "react-icons/im";
+import MenuIcon from "../Svg/MenuIcon";
 import { ImCross } from "react-icons/im";
 import {NavData} from "./NavData";
 
@@ -51,7 +52,7 @@ useEffect(() => {
        })}
       </ul>
       <button className="mobile-menu-icon" onClick={() => setmobile(!mobile)}>
-        {mobile ? <ImCross size={15} /> : <ImMenu size={25} />}
+        {mobile ? <ImCross size={15} /> : <MenuIcon  className="menuiconstyle" />}
       </button>
      
     </nav>
