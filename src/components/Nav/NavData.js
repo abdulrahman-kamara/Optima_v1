@@ -67,6 +67,17 @@ export const NavData = [
         cName : 'nav-text'
 
      },
+     {
+
+      title : 'Notre Reseau',
+
+      path :'/reseau',
+
+      icon: <FaIcons.FaEnvelopeOpenText/>,
+
+      cName : 'nav-text'
+
+   },
 
      {
 
