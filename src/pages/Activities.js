@@ -1,7 +1,11 @@
 import React from "react";
-import { RiTaxiLine } from "react-icons/ri";
-// import PiTaxiThin from "react-icons/"
+import { AiOutlineCar } from "react-icons/ai";
+import {GiSteeringWheel, GiWineGlass} from "react-icons/gi"
+import {MdOutlineBookmarkAdded} from "react-icons/md"
+import {MdCo2} from "react-icons/md"
+import {BiGasPump} from "react-icons/bi"
 import "./Activities.css";
+import PointEnlever from "../components/Svg/Pointenlever"
 
 
 
@@ -20,16 +24,7 @@ function Activities() {
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
-                    <img
-                      src="https://static.wixstatic.com/media/558047_ee6e878e37544461bc7e1b85bb6b1288~mv2.jpg/v1/fill/w_138,h_78,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/558047_ee6e878e37544461bc7e1b85bb6b1288~mv2.jpg"
-                      alt=""
-                      style={{
-                        width: "60px",
-                        height: "40px",
-                        objectFit: "cover",
-                        objectPosition: "50% 50%",
-                      }}
-                    />
+                    <MdOutlineBookmarkAdded size={50}/>
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold">
                     Système Qualité
@@ -102,16 +97,7 @@ function Activities() {
               <div className="card-body placeholder-glow">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
-                    <img
-                      src="https://static.wixstatic.com/media/558047_f307aec7d0944e01a6f99f63e0e19e0f~mv2.png/v1/fill/w_172,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_f307aec7d0944e01a6f99f63e0e19e0f~mv2.png"
-                      alt=""
-                      style={{
-                        width: "70px",
-                        height: "70px",
-                        objectFit: "cover",
-                        objectPosition: "50% 50%",
-                      }}
-                    />
+                    <GiWineGlass size={50}/>
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold">
                     Ethylotests Anti-Démarrage
@@ -179,7 +165,7 @@ function Activities() {
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
-                    <RiTaxiLine size={50} style={{color:"white"}} />
+                    <AiOutlineCar size={50} fill="white" />
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold text-light">
                     Taximètre
@@ -205,16 +191,8 @@ function Activities() {
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
-                    <img
-                      src="https://static.wixstatic.com/media/558047_6e2ba97064c34db4ba749def9a017d32~mv2.png/v1/fill/w_136,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_6e2ba97064c34db4ba749def9a017d32~mv2.png"
-                      alt=""
-                      style={{
-                        width: "67px",
-                        height: "26px",
-                        objectFit: "cover",
-                        objectPosition: "50% 50%",
-                      }}
-                    />
+                    
+                    <BiGasPump size={50} fill="white"/>
                   </h5>
                   <h6 className="card-subtitle fs-2 fw-bold text-light">
                     Analyseur de gaz et Opacimètre
@@ -247,19 +225,11 @@ function Activities() {
             <div className="red-card mb-4 bg-danger">
               <div className="card-body">
                 <div className="card-icon">
-                  <h5 className="card-title-icon">
-                    <img
-                      src="https://static.wixstatic.com/media/558047_a2386c34c7174eb18cc9413d6efbbeb9~mv2.png/v1/fill/w_88,h_88,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/558047_a2386c34c7174eb18cc9413d6efbbeb9~mv2.png"
-                      alt="img"
-                      style={{
-                        width: "44px",
-                        height: "44px",
-                        objectFit: "cover",
-                        objectPosition: "50% 50%",
-                      }}
-                    />
-                  </h5>
-                  <h6 className="card-subtitle fs-2 fw-bold text-light">
+                  <div className="card-title-icon">
+                
+                      <GiSteeringWheel fill="white" enableBackground="white" size={50}/>
+                  </div>
+                  <h6 className="card-subtitle fs-3 fw-bold text-light ">
                     Auto-Ecole
                   </h6>
                 </div>

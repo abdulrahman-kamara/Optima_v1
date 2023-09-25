@@ -132,7 +132,7 @@ function Métier() {
                 <div className="card-body my-card-body">
                   <div className="text-icon">
                     <div className="icon-left">
-                      <MdOutlineHouseSiding  style={{color:"white"}}  />
+                      <MdOutlineHouseSiding  fill="white"  />
                     </div>
                     <h5 className="métier-title">Conseil, Formation et Audit</h5>
                   </div>
@@ -162,7 +162,7 @@ function Métier() {
                 <div className="card-body my-card-body">
                   <div className="text-icon">
                     <p>
-                      <AiOutlineSetting size={35} color="white" />
+                      <AiOutlineSetting size={35} fill="white" />
                     </p>
                     <h5 className="métier-title">
                       Hotline Technique et réglementaire
@@ -187,7 +187,7 @@ function Métier() {
                 <div className="card-body my-card-body">
                   <div className="text-icon">
                     <p>
-                      <ImMap size={35} color="white" />
+                      <ImMap size={35} fill="white" />
                     </p>
                     <h5 className="métier-title">Réglementation</h5>
                   </div>

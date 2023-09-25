@@ -76,7 +76,11 @@ span {
 .card-icon {
   display: flex;
   padding: 10px;
+  justify-content: flex-start;
   align-items: center;
+}
+.card-icon img {
+ color: aliceblue;
 }
 .card-title-icon {
   padding-right: 10px;
@@ -92,6 +96,9 @@ span {
   font-size: 20px;
   padding-left: 5px;
   list-style: circle;
+}
+.card-title-icon img{
+  color: aliceblue;
 }
 /* Responsive Tablets, Mobile, Ipads */
 
