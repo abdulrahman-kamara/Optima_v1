@@ -60,6 +60,7 @@ const sendEmail = (e) => {
         setFormData(initialValue)
     }).catch ((error) => {
         console.log(error.text);
+        console.log("message not sent"); 
         toast.error("Votre message est pas envoyer Merci!")
        
     })

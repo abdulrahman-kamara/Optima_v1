@@ -12,6 +12,7 @@ import gazIconUrl from "../../assets/images/gaz.png";
 import truckIconUrl from "../../assets/images/truck.png";
 import ethylotestIconUrl from "../../assets/images/logo.png";
 import autoecoleIconUrl from "../../assets/images/auto-ecole.jpg";
+import googleKey from "../../Constant/googleKay/Mapkey"
 import { useRef } from "react";
 // import { saveAs } from "file-saver";
 
@@ -38,7 +39,7 @@ const Reseau = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [infoWindowOpen, setInfoWindowOpen] = useState(false);
   const mapRef = useRef(null);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = googleKey;
     const { isLoaded, loadError  } = useLoadScript ({
     id: 'google-map-script',
     googleMapsApiKey:apiKey,
@@ -234,6 +235,7 @@ console.log("list", allAdherents);
           zoom={6}
           loadGoogleMapsApi={true}
           ref={mapRef}
+          className='map'
           >
              {adherents && adherents.map((marker) => (
           <Marker

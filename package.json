@@ -37,6 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "w-prod": "copy .\\src\\Constant\\Apilink.production.js .\\src\\Constant\\Apilink.js && react-scripts build && copy .\\src\\Constant\\Apilink.development.js .\\src\\Constant\\Apilink.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

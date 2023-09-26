@@ -20,7 +20,7 @@ function Activities() {
       <div className="main-container">
         <div className="row">
           <div className="col-sm-6 mb-5 mb-sm-0 ">
-            <div className="card mb-4">
+            <div className="card-white mb-4">
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
@@ -52,7 +52,7 @@ function Activities() {
               </div>
             </div>
 
-            <div className="card mb-4">
+            <div className="card-white mb-4">
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
@@ -93,7 +93,7 @@ function Activities() {
               </div>
             </div>
 
-            <div className="card mb-4">
+            <div className="card-white mb-4">
               <div className="card-body placeholder-glow">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
@@ -128,7 +128,7 @@ function Activities() {
               </div>
             </div>
 
-            <div className="card mb-4">
+            <div className="card-white mb-4">
               <div className="card-body">
                 <div className="card-icon">
                   <h5 className="card-title-icon">
