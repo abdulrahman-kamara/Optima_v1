@@ -97,9 +97,8 @@ span {
   padding-left: 5px;
   list-style: circle;
 }
-.card-title-icon img{
-  color: aliceblue;
-}
+
+  
 /* Responsive Tablets, Mobile, Ipads */
 
 @media (max-width: 576px) {

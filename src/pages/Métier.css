@@ -40,12 +40,8 @@
 
 .text-icon {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
 }
-.icon-left{
-  font-size: 50px;
-}
+
 
 .card-left {
   padding-top: 180px;
@@ -119,13 +115,13 @@
   font-size: 30px;
   padding-left: 20px;
   font-weight: bold;
-  color: black;
+
   }
-  .métier-title{
+  .métier-title, h5 {
     font-size: 30px;
     padding-left: 20px;
     font-weight: bold;
-    color: white;
+    
     }
 
   .card-body {
@@ -362,7 +358,7 @@
   }
   .text-icon {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .card-left {
     display: block;
