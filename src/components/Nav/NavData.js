@@ -72,6 +72,17 @@ export const NavData = [
       cName : 'nav-text'
 
    },
+   {
+
+      title : 'Boutique',
+
+      path :'https://www.cercleoptima.fr/shop/',
+
+      icon: <FaIcons.FaEnvelopeOpenText/>,
+
+      cName : 'nav-text'
+
+   },
 
      {
 

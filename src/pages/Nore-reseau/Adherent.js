@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
-import {  GoogleMap, InfoWindow, Marker, useLoadScript, } from '@react-google-maps/api';
+import {  GoogleMap, InfoWindow, Marker, useLoadScript, Popup } from '@react-google-maps/api';
 import { Circles } from "react-loader-spinner";
 import taximetreIconUrl from "../../assets/images/taxi.png";
 import gazIconUrl from "../../assets/images/gaz.png";
@@ -78,6 +78,13 @@ const iconMap = {
   },
 };
  
+const title = () => {
+  return (
+    <div>
+      <p>{markers.ville}</p>
+    </div>
+  )
+}
   
   useEffect(() => {
 const getMarkers = async (search, actif, activite) => {
@@ -151,6 +158,16 @@ const resetAdherentsList = async (search, actif, activite) => {
   setAdherents(response);
   setAllAdherents(response);
 };
+
+// const handleMarkerMouseOver = (marker) => {
+//   setSelectedMarker(marker);
+
+// };
+
+// const handleMarkerMouseOut = () => {
+//   setSelectedMarker(null);
+
+// };
 
 
 console.log("list", allAdherents);
@@ -247,17 +264,23 @@ console.log("list", allAdherents);
             valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
                 }
                 onClick={() => {
-    const mapUrl = `https://www.google.com/maps?q=${(marker && marker.nom_adherent) + ", " + (marker && marker.adresse1_adherent) + ", " + (marker && marker.ville)}}`;
-    window.open(mapUrl, "_blank");
+                  window.open(`https://www.google.com/maps?q=${(marker && marker.nom_adherent) + ", " + (marker && marker.adresse1_adherent) + ", " + (marker && marker.ville)}}`,
+     "_blank");
+    
   }}
+  onMouseOver={() => setInfoWindowOpen(true)}
+            onMouseOut={() => setInfoWindowOpen(false)}
+   
     />
+
         ))}
-  
-      {selectedMarker && infoWindowOpen && (
+        
+      {selectedMarker && infoWindowOpen &&(
                 <InfoWindow
                   map={mapRef.current}
                   position={{ lat: selectedMarker.atelier_latitude, lng: selectedMarker.atelier_longitude }}
                   onCloseClick={() => setInfoWindowOpen(false)}
+                   onMouseOver={() => setInfoWindowOpen(true)}
                 >
                   <div>
                   <h3>name: {selectedMarker.nom_adherent}</h3>
@@ -266,8 +289,10 @@ console.log("list", allAdherents);
               }</p>
                   </div>
                 </InfoWindow>
+                
               )}
           </GoogleMap>
+        
         ): loadError ?(
           <div>Error loading Google Maps API</div>
         ): (
