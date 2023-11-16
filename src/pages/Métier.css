@@ -40,11 +40,11 @@
 
 .text-icon {
   display: flex;
-  margin-top: 20px;
 }
 
+
 .card-left {
-  padding-top: 210px;
+  padding-top: 180px;
  
 }
 .card-right {
@@ -111,6 +111,17 @@
     font-size: 10px;
     font-weight: bolder;
   }
+  .métier-title-right{
+  font-size: 30px;
+  padding-left: 20px;
+  font-weight: bold;
+
+  }
+  .métier-title, h5 {
+    font-size: 30px;
+    padding-left: 20px;
+    font-weight: bold;
+  }
 
   .card-body {
     margin-top: 20px;
@@ -174,8 +185,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-    padding-top: 150px;
+    padding-top: 0px;
   }
   .card-right {
     display: flex;
@@ -261,9 +271,7 @@
   .card-left {
     display: block;
     flex-direction: column;
-    padding-left: 0px;
-    padding-top: 150px;
-    width: 100%;
+    padding-top: 0px;
   }
   .card-right {
     display: block;
@@ -349,18 +357,16 @@
   }
   .text-icon {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
   }
-
   .card-left {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0px;
-    padding-top: 150px;
+    display: block;
+    width: 100%;
+  
   }
   .card-right {
     display: block;
-    padding-left: 0px;
+   
   }
 
   .my-card-body {

@@ -1,4 +1,4 @@
-.activite-contaier {
+activite-contaier {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,6 +53,11 @@ span {
   text-align: center;
   padding: 5px;
 }
+.card-white{
+  border-radius: 10px;
+  transition: transform 0.5s ease-out 0s;
+  background-color: #f7fafb;
+}
 .red-card{
   border-radius: 10px;
   transition: transform 0.5s ease-out 0s;
@@ -106,9 +111,9 @@ span {
     font-weight: bolder;
   }
 
-  .card-body {
+  /* .card-body {
     margin-top: 20px;
-  }
+  } */
 
   .card-text li {
     font-size: 15px;

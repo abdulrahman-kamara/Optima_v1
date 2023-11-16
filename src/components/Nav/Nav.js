@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import { ImMenu } from "react-icons/im";
+import MenuIcon from "../Svg/MenuIcon";
 import { ImCross } from "react-icons/im";
-import { motion} from "framer-motion";
+import {NavData} from "./NavData";
+
 
 function NavBar() {
   const [mobile, setmobile] = useState(false);
@@ -25,52 +27,34 @@ useEffect(() => {
 
   return (
     <nav className="navbar shadow-sm">
+      
       <div className="logo">
-        <motion.a className="nav-bar-link" href="/"  whileHover={{ scale: 1.2 }}
-  onHoverStart={e => {}}
-  onHoverEnd={e => {}}>
-    <motion.div>
+        <a className="nav-bar-link" href="/"  >
+    <div>
        <img src="/logo.png" alt="" className="logo-image" />
-    </motion.div>
+    </div>
           <h6 className="logo-name">CERCLE OPTIMA</h6>
-        </motion.a>
+        </a>
       </div>
 
-      <motion.ul className={mobile ? "nav-links-mobile" : "nav-link"}
-       ref={mobileMenuRef}
-       
-        >
-        <Link to="/">
-          <li>Accueil</li>
-        </Link>
-        <Link to="/activities">
-          <li>Nos Activités</li>
-        </Link>
-        <Link to="/notre-métier">
-          <li>Notre métier</li>
-        </Link>
-        <Link to="/certificat">
-          <li>Certificats & Agréments</li>
-        </Link>
-        <Link to="https://www.cercleoptima.fr/shop/">
-          <li>Boutique</li>
-        </Link>
-        <Link to="/carrières">
-          <li>Carrières</li>
-        </Link>
-        <Link to="/reseau">
-          <li>Notre Réseau</li>
-        </Link>
-        <Link to="/contact">
-          <li>Contact</li>
-        </Link>
-        <Link to="/réclamations">
-          <li>Réclamations / Appels</li>
-        </Link>
-      </motion.ul>
+      <ul className={mobile ? "nav-links-mobile" : "nav-link"}
+       ref={mobileMenuRef}>
+       {NavData.map((item, index) => {
+        return (
+          <li key={index} className={item.cName}>
+            <Link to={item.path}>
+              <span className="span-link">
+                {item.title}
+              </span>
+            </Link>
+          </li>
+        )
+       })}
+      </ul>
       <button className="mobile-menu-icon" onClick={() => setmobile(!mobile)}>
-        {mobile ? <ImCross size={15} /> : <ImMenu size={25} />}
+        {mobile ? <ImCross size={15} /> : <MenuIcon  className="menuiconstyle" />}
       </button>
+     
     </nav>
   );
 }

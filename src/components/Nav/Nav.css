@@ -34,19 +34,20 @@
 }
 
 
+
 .navbar {
-  line-height: 10vh;
+  
   height: 10vh;
   box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
   border-bottom:1px solid #dedcdc;
+ 
 
 }
-
 li {
   list-style: none;
 }
@@ -55,25 +56,33 @@ a {
 }
 .logo {
   display: flex;
-   justify-content: center;
+   justify-content: space-around;
   align-items: center;
+  margin-top: 10px;
+  
+  
 }
  .logo-image {
-  width: 25px;
-  margin-bottom: 15px;
+  width: 45px;
+  padding-left: 10px;
+  
+ 
 }
 
 .nav-bar-link{
   display: flex;
-  margin-bottom: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+
   
 }
  .logo-name {
-  margin-top: 20px;
+  margin-top: 10px;
   font-weight: bold;
   font-size: 20px ;
-  padding-left: 15px;
   color:#265386 ;
+  padding-left: 10px;
 }
 .nav-link {
   display: flex;
@@ -85,7 +94,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: #265386;
+  
   font-size: 20px;
   font-weight: 700;
   padding:10px;
@@ -93,6 +102,9 @@ a {
   cursor: pointer;
   text-decoration: none;
   font-size: small;
+}
+.span-link{
+  color: #265386;
 }
 
 ul li:hover{
@@ -128,19 +140,17 @@ button {
     align-items: center;
     padding: 10px;
   }
-  a .logo-name {
+   .logo-name {
     display: none;
   }
-  /* a .logo-image {
-    align-items: center;
-    display: flex;
-    position: absolute;
-    top: 15px;
-    left: 40px;
+  .logo-image {
     width: 30px;
-    height: 30px;
-    line-height: 20px;
-  } */
+    position: absolute;
+    display: block;
+    left: 20px;
+   
+   
+  }
 
   .nav-bar-link {
     display: flex;
@@ -156,6 +166,7 @@ button {
     position: absolute;
     display: block;
     right: 20px;
+   
   }
   .nav-links-mobile {
     display: block;
@@ -195,18 +206,20 @@ button {
 
 
 @media (max-width: 768px) {
-  a .logo-image {
-    align-items: center;
+  .logo {
     display: flex;
-    position: absolute;
-    top: 5px;
-    left: 40px;
-    width: 30px;
-    height: 30px;
-    line-height: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 0px;
   }
-  a .logo-name {
+   .logo-name {
     display: none;
+  }
+  .logo-image {
+    width: 45px;
+    padding-left: 0px;
+   
   }
   .nav-bar-link {
     display: flex;
@@ -256,19 +269,24 @@ button {
   }
 }
 
+.menuiconstyle{
+  width: 60px;
+  height: 60px;
+}
 @media (max-width: 992px) {
-  a .logo-image {
-    align-items: center;
+  .logo {
     display: flex;
-    position: absolute;
-    top: 5px;
-    left: 40px;
-    width: 30px;
-    height: 30px;
-    line-height: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
   }
-  a .logo-name {
+   .logo-name {
     display: none;
+  }
+  .logo-image {
+    width: 45px;
+    padding-left: 0px;
+   
   }
   .nav-bar-link {
     display: flex;
@@ -332,16 +350,15 @@ button {
   }
 }
 @media (max-width: 1200px) {
-  a .logo-image {
-    align-items: center;
-    display: flex;
-    position: absolute;
-    top: 10px;
-    left: 23px;
-    width: 30px;
-    height: 30px;
-    line-height: 20px;
-  }
+   
+    .logo-image {
+      width: 45px;
+     
+      
+     
+    }
+  
+  
   a .logo-name {
     display: none;
   }
@@ -384,9 +401,17 @@ button {
 @media (max-width: 1400px) {
   .logo {
     display: flex;
-    position: absolute;
-    top: 15px;
-    left: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+   .logo .logo-name {
+    display: none;
+  }
+  .logo-image {
+    width: 50px;
+    margin-left: 10px;
+    margin-bottom: 30px;
   }
   li {
     list-style: none;
@@ -396,11 +421,11 @@ button {
     cursor: pointer;
   }
   .navbar {
-    line-height: 10vh;
+
     height: 10vh;
     box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
   }
   .nav-link li {
@@ -412,39 +437,6 @@ button {
     font-size: 10px;
   }
 
-  .hero h1 {
-    font-size: 50px;
-  }
-}
-@media (max-width: 1400px) {
-  .logo {
-    display: flex;
-    position: absolute;
-    top: 15px;
-    left: 30px;
-  }
-  li {
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-  }
-  .navbar {
-    line-height: 10vh;
-    height: 10vh;
-    box-shadow: rgba(50, 50, 93, 0.23) 0 30px 30px -20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .nav-link li {
-    align-items: center;
-    padding: 0 3px;
-    margin: 0 3px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 10px;
-  }
   .hero h1 {
     font-size: 50px;
   }

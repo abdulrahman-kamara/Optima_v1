@@ -7,6 +7,7 @@ import {
 import { AiOutlineSetting } from "react-icons/ai";
 import { ImMap } from "react-icons/im";
 import { FcMindMap } from "react-icons/fc";
+import {FaPeopleArrows} from "react-icons/fa"
 import "./Métier.css";
 
 
@@ -29,7 +30,7 @@ function Métier() {
                       <p>
                         <MdPhoneIphone size={50} color="white" />
                       </p>
-                      <h5 className="card-title">Editeur de logiciel</h5>
+                      <h5 className="métier-title-right">Editeur de logiciel</h5>
                     </div>
 
                     <ul className="text-ul">
@@ -62,7 +63,7 @@ function Métier() {
                       <p>
                         <MdHighQuality size={50} color="white" />
                       </p>
-                      <h5 className="card-title">Système Qualité</h5>
+                      <h5 className="mmétier-title-right">Système Qualité</h5>
                     </div>
 
                     <ul className="text-ul">
@@ -93,9 +94,9 @@ function Métier() {
                   <div className="card-body my-card-body">
                     <div className="text-icon">
                       <p>
-                        <FcMindMap size={50} color="white" />
+                        <FaPeopleArrows size={50} color="white" />
                       </p>
-                      <h5 className="card-title">La mutualisation</h5>
+                      <h5 className="métier-title-right">La mutualisation</h5>
                     </div>
 
                     <ul className="text-ul">
@@ -122,16 +123,19 @@ function Métier() {
                 </div>
               </div>
             </div>
+
+
+
           </div>
           <div className="card-left">
             <div className="col-sm-6 mb-3 mb-sm-0 my-card">
               <div className="card my-left-card">
                 <div className="card-body my-card-body">
                   <div className="text-icon">
-                    <p>
-                      <MdOutlineHouseSiding size={50} color="white" />
-                    </p>
-                    <h5 className="card-title">Conseil, Formation et Audit</h5>
+                    <div className="icon-left">
+                      <MdOutlineHouseSiding  fill="white" size={50} />
+                    </div>
+                    <h5 className="métier-title" style={{color:"white"}}>Conseil, Formation et Audit</h5>
                   </div>
 
                   <ul className="text-ul">
@@ -159,9 +163,9 @@ function Métier() {
                 <div className="card-body my-card-body">
                   <div className="text-icon">
                     <p>
-                      <AiOutlineSetting size={50} color="white" />
+                      <AiOutlineSetting size={50} fill="white" />
                     </p>
-                    <h5 className="card-title">
+                    <h5 className="métier-title" style={{color:"white"}}>
                       Hotline Technique et réglementaire
                     </h5>
                   </div>
@@ -184,9 +188,9 @@ function Métier() {
                 <div className="card-body my-card-body">
                   <div className="text-icon">
                     <p>
-                      <ImMap size={50} color="white" />
+                      <ImMap size={50} fill="white" />
                     </p>
-                    <h5 className="card-title">Réglementation</h5>
+                    <h5 className="métier-title" style={{color:"white"}}>Réglementation</h5>
                   </div>
 
                   <ul className="text-ul">
