@@ -1,17 +1,17 @@
 
  import React, { useState, useEffect, useMemo } from "react";
 import { NavLink } from "react-router-dom";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import supervisionService from "../../Context/SupervisionService";
 import "./Adherent.css";
-import {  GoogleMap, InfoWindow, Marker, useLoadScript, } from '@react-google-maps/api';
+import {  GoogleMap, InfoWindow, Marker, useLoadScript } from '@react-google-maps/api';
 import { Circles } from "react-loader-spinner";
 import taximetreIconUrl from "../../assets/images/taxi.png";
 import gazIconUrl from "../../assets/images/gaz.png";
 import truckIconUrl from "../../assets/images/truck.png";
 import ethylotestIconUrl from "../../assets/images/logo.png";
 import autoecoleIconUrl from "../../assets/images/auto-ecole.jpg";
+import googleKey from "../../Constant/googleKay/Mapkey"
 import { useRef } from "react";
 // import { saveAs } from "file-saver";
 
@@ -38,7 +38,7 @@ const Reseau = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [infoWindowOpen, setInfoWindowOpen] = useState(false);
   const mapRef = useRef(null);
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = googleKey;
     const { isLoaded, loadError  } = useLoadScript ({
     id: 'google-map-script',
     googleMapsApiKey:apiKey,
@@ -48,7 +48,6 @@ const Reseau = () => {
     
   });
  
-
 
 // map icon 
 const iconSize = new window.google.maps.Size(30, 30);
@@ -77,6 +76,7 @@ const iconMap = {
   },
 };
  
+
   
   useEffect(() => {
 const getMarkers = async (search, actif, activite) => {
@@ -144,13 +144,29 @@ const center = useMemo(() =>({
 }), []) 
 
 
+
+const onMarkerClick = (marker) => {
+  setSelectedMarker(marker);
+  setInfoWindowOpen(true);
+};
+
+const onInfoWindowClose = () => {
+  setInfoWindowOpen(false);
+};
+
+const openInfoWindow = (marker) => {
+  window.open(
+    `https://www.google.com/maps?q=${marker.nom_adherent}, ${marker.adresse1_adherent}, ${marker.ville}`,
+    "_blank"
+  );
+};
+
 // Call this to reset the list of adherents to the original list
 const resetAdherentsList = async (search, actif, activite) => {
   const response = await supervisionService.getAllAdherent(search, actif, activite);
   setAdherents(response);
   setAllAdherents(response);
 };
-
 
 console.log("list", allAdherents);
   return (
@@ -234,6 +250,7 @@ console.log("list", allAdherents);
           zoom={6}
           loadGoogleMapsApi={true}
           ref={mapRef}
+          className='map'
           >
              {adherents && adherents.map((marker) => (
           <Marker
@@ -244,28 +261,49 @@ console.log("list", allAdherents);
               valueOptions.includes("1")  ?    iconMap.taximetre : valueOptions.includes("2") ? iconMap.gaz :
             valueOptions.includes("4") ? iconMap.tachygraphie : valueOptions.includes("5")? iconMap.ethylotest : valueOptions.includes("6") ?iconMap.autoecole : iconMap.ethylotest
                 }
-                onClick={() => {
-    const mapUrl = `https://www.google.com/maps?q=${(marker && marker.nom_adherent) + ", " + (marker && marker.adresse1_adherent) + ", " + (marker && marker.ville)}}`;
-    window.open(mapUrl, "_blank");
-  }}
-    />
+           
+
+              onClick={() => onMarkerClick(marker)}
+                  />
+
         ))}
-  
-      {selectedMarker && infoWindowOpen && (
-                <InfoWindow
-                  map={mapRef.current}
-                  position={{ lat: selectedMarker.atelier_latitude, lng: selectedMarker.atelier_longitude }}
-                  onCloseClick={() => setInfoWindowOpen(false)}
-                >
-                  <div>
-                  <h3>name: {selectedMarker.nom_adherent}</h3>
-                    <h3>Address: {selectedMarker.adresse1_adherent}</h3>
-                    <p>Info: {selectedMarker.ville
-              }</p>
-                  </div>
-                </InfoWindow>
-              )}
+        {/* {selectedMarker && (
+            <InfoWindow
+              position={{
+                lat: parseFloat(selectedMarker.atelier_latitude),
+                lng: parseFloat(selectedMarker.atelier_longitude),
+              }}
+              onCloseClick={() => setSelectedMarker(null)}
+            >
+              <div>
+                <h3>{selectedMarker.nom_adherent}</h3>
+                <h3>{selectedMarker.adresse1_adherent}</h3>
+                <p>Info: {selectedMarker.ville}</p>
+                <button role="link" onClick={() => openInfoWindow(selectedMarker)}>
+                  Voir sur Google Maps
+                </button>
+              </div>
+            </InfoWindow>
+          )}
+         */}
+        {selectedMarker && infoWindowOpen && (
+          <InfoWindow
+            map={mapRef.current}
+            position={{ lat: selectedMarker.atelier_latitude, lng: selectedMarker.atelier_longitude }}
+            onCloseClick={() => setInfoWindowOpen(false)}
+          >
+            <div>
+              <h3>{selectedMarker.nom_adherent}</h3>
+              <h3>{selectedMarker.adresse1_adherent}</h3>
+              <p>Info: {selectedMarker.ville}</p>
+              <button role="link" onClick={() => openInfoWindow(selectedMarker)}>
+                  Voir sur Google Maps
+                </button>
+            </div>
+          </InfoWindow>
+        )}
           </GoogleMap>
+        
         ): loadError ?(
           <div>Error loading Google Maps API</div>
         ): (
@@ -321,8 +359,8 @@ console.log("list", allAdherents);
             <div className="vill-depart">
                <p className="adherent-ville">{adherent.ville}</p>
                <p className="adherent-depart">{adherent.departement}</p>
-               <MdOutlineKeyboardArrowRight  size={50} className="icon-card"/>
-            </div>
+               <button className="icon-card">Voir l'nfo</button>
+            </div> 
            </div>
           </NavLink>
         ))) || (

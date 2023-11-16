@@ -117,8 +117,13 @@
     padding-left: 50px;
 }
 .icon-card{
+    background-color: var(--comet-blue);
+    padding: 6px;
+    border-radius: 5px;
+    color: var(--comet-light);
     margin-bottom: 10px;
-    padding-right: 20px;
+
+    text-align: center;
 }
 .adherent-ville{
     position: relative;
